@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreetBiz — Valide la rentabilité de ton concept street food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F4F0E6;color:#1F1F1F;font-family:'Montserrat',sans-serif;font-weight:400;line-height:1.7;font-size:15px}
+.page{max-width:700px;margin:0 auto}
+
+/* BANDEAU */
+.top-banner{background:#F26A21;color:#FAF9F4;text-align:center;padding:1.5rem 2rem}
+.top-banner-title{font-family:'Archivo Black',sans-serif;font-size:clamp(20px,5vw,32px);text-transform:uppercase;line-height:1.1;margin-bottom:0.5rem}
+.top-banner-sub{font-size:13px;font-weight:400;line-height:1.5}
+
+/* HERO */
+.hero{padding:3rem 2rem 2.5rem;background:#FAF9F4;border-bottom:3px solid #F26A21}
+.badge-black{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#FAF9F4;background:#1F1F1F;padding:6px 16px;border-radius:2px;margin-bottom:1.25rem}
+.hero h1{font-family:'Archivo Black',sans-serif;font-size:clamp(38px,8vw,66px);line-height:0.95;color:#1F1F1F;margin-bottom:1rem;text-transform:uppercase}
+.hero h1 em{color:#F26A21;font-style:normal}
+.hero-exp{font-family:'Archivo Black',sans-serif;font-size:12px;color:#F26A21;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem}
+.hero-keyphrase{background:#1F1F1F;padding:1.25rem 1.5rem;margin:0 0 1.5rem;border-left:4px solid #F26A21}
+.hero-keyphrase p{font-size:16px;font-weight:700;color:#FAF9F4;line-height:1.6;margin:0}
+.hero-keyphrase p em{color:#F26A21;font-style:normal}
+.hero-disqualif{background:#F4F0E6;border-left:3px solid #c0392b;padding:1rem 1.25rem;margin:0 0 1.5rem;font-size:14px;color:#3a3a2a;line-height:1.7}
+.hero-disqualif strong{color:#c0392b}
+.even-if-list{display:flex;flex-direction:column;gap:8px;margin-bottom:1.75rem}
+.even-if-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#3a3a2a;line-height:1.5}
+.even-if-check{color:#F26A21;font-weight:700;font-size:15px;flex-shrink:0;margin-top:1px}
+.cta-block{background:#1F1F1F;padding:1.5rem 1.75rem;margin-top:1.5rem}
+.price-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#a8a498;margin-bottom:4px}
+.price{font-family:'Archivo Black',sans-serif;font-size:52px;color:#F26A21;line-height:1;margin-bottom:1rem}
+.cta-btn{background:#F26A21;color:#FAF9F4;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;border:none;padding:16px 20px;cursor:pointer;text-decoration:none;display:block;text-align:center;text-transform:uppercase;width:100%;transition:background 0.2s;white-space:normal;box-sizing:border-box}
+.cta-btn:hover{background:#d95e1a}
+.cta-btn-black{background:#1F1F1F;color:#FAF9F4;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;border:2px solid #F26A21;padding:16px 20px;cursor:pointer;text-decoration:none;display:block;text-align:center;text-transform:uppercase;width:100%;transition:background 0.2s;white-space:normal;box-sizing:border-box}
+.guarantee-note{font-size:12px;color:#7a7a6a;margin-top:0.75rem;font-style:italic;text-align:center;line-height:1.6}
+
+/* SECTIONS */
+.section{padding:3rem 2rem;border-bottom:1px solid #e0dcd0}
+.section-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#F26A21;font-weight:700;margin-bottom:1rem}
+.section h2{font-family:'Archivo Black',sans-serif;font-size:clamp(24px,5vw,36px);line-height:1.05;color:#1F1F1F;margin-bottom:1.25rem;text-transform:uppercase}
+.section h2 em{color:#F26A21;font-style:normal}
+.section-white{background:#FAF9F4}
+.section-beige{background:#F4F0E6}
+.section-dark{background:#1C2410}
+.section-dark .section-label{color:#6D7A2F}
+.section-dark h2{color:#FAF9F4}
+.section-dark h2 em{color:#F26A21}
+.section-black{background:#1F1F1F}
+
+p{color:#3a3a2a;margin-bottom:0.9rem;line-height:1.75}
+p:last-child{margin-bottom:0}
+p strong{color:#1F1F1F;font-weight:700}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.25rem 0}
+.stat-card{background:#F4F0E6;padding:1rem;text-align:center;border-radius:3px}
+.stat-num{font-family:'Archivo Black',sans-serif;font-size:22px;color:#F26A21;line-height:1}
+.stat-label{font-size:10px;color:#7a7a6a;margin-top:5px;line-height:1.3}
+
+/* POUR QUI */
+.pain-list{display:flex;flex-direction:column;gap:14px;margin:1.25rem 0}
+.pain-item{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#3a3a2a;line-height:1.6}
+.pain-dash{color:#c0392b;font-size:16px;flex-shrink:0;font-weight:700;margin-top:2px}
+
+/* TU AS DÉJÀ CHERCHÉ */
+.tried-list{display:flex;flex-direction:column;gap:10px;margin:1.25rem 0}
+.tried-item{display:flex;align-items:flex-start;gap:12px;padding:1rem 1.25rem;background:#F4F0E6;border-radius:3px}
+.tried-x{color:#c0392b;font-weight:700;font-size:15px;flex-shrink:0;margin-top:2px}
+.tried-content{font-size:14px;color:#3a3a2a;line-height:1.6}
+.tried-content strong{color:#1F1F1F}
+.tried-conclusion{background:#1F1F1F;padding:1.25rem 1.5rem;margin-top:1.5rem}
+.tried-conclusion p{color:#FAF9F4;font-size:15px;font-weight:700;margin:0;line-height:1.7}
+.tried-conclusion p em{color:#F26A21;font-style:normal}
+
+/* IMAGINE */
+.imagine-list{display:flex;flex-direction:column;gap:12px;margin:1.25rem 0}
+.imagine-item{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#3a3a2a;line-height:1.6}
+.imagine-check{color:#6D7A2F;font-weight:700;font-size:17px;flex-shrink:0;margin-top:2px}
+
+/* CHECKPOINTS */
+.checkpoints{display:flex;flex-direction:column;gap:14px;margin-top:1.5rem}
+.checkpoint-card{background:#FAF9F4;padding:1.25rem 1.5rem;border-radius:3px}
+.checkpoint-num{font-family:'Archivo Black',sans-serif;font-size:34px;color:#e0dcd0;line-height:1;margin-bottom:4px}
+.checkpoint-card h4{font-size:15px;font-weight:700;color:#1F1F1F;margin-bottom:4px}
+.checkpoint-card p{font-size:14px;color:#5a5a4a;line-height:1.6;margin-bottom:0}
+.checkpoint-bonus{background:#6D7A2F;padding:1.25rem 1.5rem;margin-top:14px;border-radius:3px}
+.checkpoint-bonus-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#c8d4a0;font-weight:700;margin-bottom:6px}
+.checkpoint-bonus h5{font-size:15px;font-weight:700;color:#FAF9F4;margin-bottom:4px}
+.checkpoint-bonus p{font-size:14px;color:#c8d4a0;line-height:1.6;margin-bottom:0}
+
+/* VALEUR */
+.value-list{display:flex;flex-direction:column;gap:10px;margin:1.25rem 0}
+.value-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:1rem 1.25rem;background:#FAF9F4;border-radius:3px;border-left:3px solid #e0dcd0}
+.value-text{font-size:14px;color:#3a3a2a;line-height:1.5}
+.value-price{font-family:'Archivo Black',sans-serif;font-size:13px;color:#c0392b;white-space:nowrap;flex-shrink:0}
+.value-autonomy{background:#FAF9F4;border-left:4px solid #6D7A2F;padding:1rem 1.25rem;margin:1.25rem 0}
+.value-autonomy h5{font-size:14px;font-weight:700;color:#4A5A25;margin-bottom:6px}
+.value-autonomy p{font-size:14px;color:#5a5a4a;line-height:1.6;margin:0}
+.value-highlight{background:#F26A21;padding:1.5rem;text-align:center;margin:1.25rem 0}
+.value-highlight p{color:#FAF9F4;font-size:15px;font-weight:700;margin:0 0 8px;line-height:1.6}
+.value-big-price{font-family:'Archivo Black',sans-serif;font-size:56px;color:#FAF9F4;line-height:1;display:block}
+
+/* BONUS */
+.bonus-card{background:#FAF9F4;border-radius:3px;padding:1.25rem 1.5rem;margin-bottom:12px}
+.bonus-card.orange{border-left:4px solid #F26A21}
+.bonus-card.green{border-left:4px solid #6D7A2F}
+.bonus-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.bonus-card.orange .bonus-label{color:#F26A21}
+.bonus-card.green .bonus-label{color:#6D7A2F}
+.bonus-card h4{font-size:15px;font-weight:700;color:#1F1F1F;margin-bottom:4px}
+.bonus-card p{font-size:14px;color:#5a5a4a;line-height:1.6;margin:0}
+
+/* CAS TERRAIN */
+.cas-list{display:flex;flex-direction:column;gap:14px;margin-top:1.5rem}
+.cas-item{background:#FAF9F4;padding:1.25rem 1.5rem;border-radius:3px;border-top:3px solid #6D7A2F}
+.cas-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:#6D7A2F;margin-bottom:6px}
+.cas-item h4{font-size:15px;font-weight:700;color:#1F1F1F;margin-bottom:6px}
+.cas-item p{font-size:14px;color:#5a5a4a;line-height:1.6;margin:0}
+
+/* HISTOIRE */
+.stat-box{background:#1C2410;padding:1.25rem 1.5rem;margin:1.25rem 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;border:1px solid #2a3a18}
+.stat-box-num{font-family:'Archivo Black',sans-serif;font-size:38px;color:#F26A21;line-height:1}
+.stat-box-text{font-size:15px;color:#e8e4dc;font-weight:700;line-height:1.4}
+.citation{border-left:3px solid #F26A21;padding:0.75rem 1.25rem;margin:1.25rem 0;font-size:15px;font-style:italic;color:#FAF9F4;line-height:1.6}
+.story-toggle{background:#FAF9F4;border:1px solid #e0dcd0;padding:1.25rem 1.5rem;margin-top:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.story-toggle h3{font-family:'Archivo Black',sans-serif;font-size:15px;color:#1F1F1F;text-transform:uppercase}
+.story-toggle span{color:#F26A21;font-weight:700;font-size:20px;margin-left:1rem;flex-shrink:0}
+.story-content{display:none;padding-top:2rem}
+.story-content.open{display:block}
+.chapter{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid #2a3a18;position:relative;padding-left:1.5rem}
+.chapter::before{content:'';position:absolute;left:0;top:6px;width:3px;height:calc(100% - 2.5rem);background:#F26A21}
+.chapter:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.chapter h2{font-family:'Archivo Black',sans-serif;font-size:18px;color:#FAF9F4;margin-bottom:1rem;text-transform:uppercase;line-height:1.2}
+.chapter h2 em{color:#F26A21;font-style:normal}
+.chapter-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#F26A21;font-weight:700;margin-bottom:0.5rem;display:block}
+.qa-block{display:flex;flex-direction:column;gap:0;margin:1rem 0}
+.qa-q{font-size:14px;color:#e8e4dc;font-style:italic;padding:0.5rem 0 0.25rem}
+.qa-a{font-size:14px;color:#F26A21;font-weight:700;padding:0 0 0.75rem 1rem;border-bottom:1px solid #2a3a18}
+.punch{color:#F26A21;font-style:italic;font-size:15px;margin:0.5rem 0;display:block;font-weight:600}
+.you-box{color:#FAF9F4;font-style:italic;font-size:13px;margin:0.75rem 0;padding:0.75rem 1.25rem;display:block;font-weight:600;background:#F26A21;text-align:center}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:1.25rem}
+.faq-item{background:#FAF9F4;border:1px solid #e0dcd0;border-radius:3px;padding:1rem 1.25rem}
+.faq-q{font-size:14px;font-weight:700;color:#1F1F1F;margin-bottom:6px}
+.faq-a{font-size:14px;color:#5a5a4a;line-height:1.6;margin:0}
+
+/* RECAP */
+.recap-box{background:#FAF9F4;border:1px solid #e0dcd0;border-radius:4px;padding:1.5rem;margin:1.5rem 0}
+.recap-item{display:flex;align-items:flex-start;gap:10px;padding:0.6rem 0;border-bottom:1px solid #f0ece2;font-size:14px;color:#3a3a2a;line-height:1.5}
+.recap-item:last-child{border-bottom:none}
+.recap-check{color:#F26A21;font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* FINAL CTA */
+.final-cta{background:#1F1F1F;padding:3.5rem 2rem;text-align:center}
+.final-cta h2{font-family:'Archivo Black',sans-serif;font-size:clamp(28px,6vw,42px);color:#FAF9F4;margin-bottom:0.5rem;text-transform:uppercase;line-height:1.05}
+.final-cta h2 em{color:#F26A21;font-style:normal}
+.final-cta p{font-size:15px;color:#a8a498;margin-bottom:1.5rem;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+/* FOOTER */
+.footer{padding:2rem;text-align:center;font-size:11px;color:#a8a498;line-height:2;background:#F4F0E6;border-top:1px solid #e0dcd0}
+.footer-links{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:0.5rem}
+.footer-link{border:1px solid #c8c4ba;border-radius:20px;padding:4px 14px;font-size:11px;color:#7a7a6a;text-decoration:none}
+
+/* SÉPARATEUR */
+.sep-orange{height:3px;background:#F26A21}
+
+@media(max-width:600px){
+  .hero h1{font-size:clamp(34px,10vw,48px)}
+  .stats-grid{grid-template-columns:1fr}
+  .value-item{flex-direction:column;gap:4px}
+  .final-cta h2{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ===== 1. BANDEAU ===== -->
+<div class="top-banner">
+  <div class="top-banner-title">Lance ton stand ou foodtruck en 45 jours</div>
+  <div class="top-banner-sub">grâce au système StreetBiz — pour créer un commerce rentable qui cartonne.</div>
+</div>
+
+<!-- ===== 2. HERO ===== -->
+<div class="hero">
+  <div class="badge-black">✦ FUTUR ENTREPRENEUR STREET FOOD</div>
+  <h1>Ne te lance pas avant d'avoir <em>validé</em> tes chiffres</h1>
+  <p class="hero-exp">✦ 7 ANS D'EXPÉRIENCE TERRAIN CONDENSÉS EN UN OUTIL</p>
+
+  <div class="hero-disqualif">
+    <strong>Et NON —</strong> ce n'est pas une formation générale sur la création d'entreprise. Pas un rendez-vous à la CMA. Pas une étude de marché à 2 000€. Pas un ebook à lire sur le canapé.
+  </div>
+
+  <div class="hero-keyphrase">
+    <p>Le playbook qui te dit si ton concept street food peut te faire vivre — <em>avant de te lancer.</em></p>
+  </div>
+
+  <div class="even-if-list">
+    <div class="even-if-item"><span class="even-if-check">✓</span> Même si tu es encore salarié·e</div>
+    <div class="even-if-item"><span class="even-if-check">✓</span> Même si tu n'y connais rien en gestion</div>
+    <div class="even-if-item"><span class="even-if-check">✓</span> Même si tu n'as pas de formation en cuisine</div>
+    <div class="even-if-item"><span class="even-if-check">✓</span> Même si tu ne sais pas encore quoi vendre précisément</div>
+    <div class="even-if-item"><span class="even-if-check">✓</span> Même si tu pars de zéro et n'as jamais créé d'entreprise</div>
+  </div>
+
+  <div class="cta-block">
+    <div class="price-label">ACCÈS IMMÉDIAT</div>
+    <div class="price">37€</div>
+    <a href="https://www.streetbiz.io/paiement" class="cta-btn">JE VEUX MON PLAYBOOK</a>
+    <p class="guarantee-note" style="color:#a8a498">C'est ta garantie de créer un business rentable · Paiement unique</p>
+  </div>
+</div>
+
+<div class="sep-orange"></div>
+
+<!-- ===== 3. PREUVE IMMÉDIATE ===== -->
+<div class="section section-white">
+  <div class="section-label">Mon terrain</div>
+  <h2>7 ans de terrain.<br><em>Des vrais chiffres.</em></h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">110K€</div>
+      <div class="stat-label">de CA · 6 mois/an</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">4 000€</div>
+      <div class="stat-label">nets/mois · toute l'année</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">emplacements testés en 7 ans</div>
+    </div>
+  </div>
+  <p>J'ai appris à construire une offre rentable, maîtriser mes coûts de revient, fixer des prix justes, calculer le volume de ventes pour me payer. <strong>Tout ce que j'ai appris sur le terrain en 7 ans — je l'ai condensé dans un outil que tu travailles à ton rythme.</strong></p>
+</div>
+
+<!-- ===== 4. POUR QUI ===== -->
+<div class="section section-beige">
+  <div class="section-label">Pour qui</div>
+  <h2>Ce playbook est<br><em>fait pour toi si...</em></h2>
+  <div class="pain-list">
+    <div class="pain-item"><span class="pain-dash">—</span><span>Tu rêves de te lancer dans la street food mais tu ne sais pas si ton idée est viable</span></div>
+    <div class="pain-item"><span class="pain-dash">—</span><span>Tu as peur d'investir pour te rendre compte que ça ne marche pas</span></div>
+    <div class="pain-item"><span class="pain-dash">—</span><span>Tu n'es pas à l'aise pour jongler avec les chiffres</span></div>
+    <div class="pain-item"><span class="pain-dash">—</span><span>Tu veux te lancer mais tu ne sais pas par où commencer</span></div>
+    <div class="pain-item"><span class="pain-dash">—</span><span>Tu as conscience que te lancer sans préparation c'est la meilleure façon de te planter</span></div>
+  </div>
+</div>
+
+<!-- ===== 5. TU AS SÛREMENT DÉJÀ CHERCHÉ — NOUVEAU ===== -->
+<div class="section section-white">
+  <div class="section-label">Le problème</div>
+  <h2>Tu as sûrement<br><em>déjà cherché.</em></h2>
+  <p>Et tu n'as pas trouvé ce qu'il te fallait. Parce que ça n'existe pas ailleurs.</p>
+  <div class="tried-list">
+    <div class="tried-item">
+      <span class="tried-x">✕</span>
+      <div class="tried-content"><strong>Google</strong> — Des conseils généraux. Pas tes chiffres à toi.</div>
+    </div>
+    <div class="tried-item">
+      <span class="tried-x">✕</span>
+      <div class="tried-content"><strong>La CMA</strong> — Elle t'accompagne sur la création d'entreprise et te fournit des documents génériques. Utile pour les démarches administratives — pas pour calculer la rentabilité spécifique de ton concept street food.</div>
+    </div>
+    <div class="tried-item">
+      <span class="tried-x">✕</span>
+      <div class="tried-content"><strong>Un comptable</strong> — Il peut faire les calculs à ta place, mais à quel prix ? Et tu restes dépendant de lui à chaque décision : nouveau produit, changement de fournisseur, ajustement de prix. StreetBiz te rend autonome une bonne fois pour toutes.</div>
+    </div>
+    <div class="tried-item">
+      <span class="tried-x">✕</span>
+      <div class="tried-content"><strong>YouTube</strong> — Des inspirations, des tendances. Pas une méthode pour calculer ta rentabilité réelle.</div>
+    </div>
+    <div class="tried-item">
+      <span class="tried-x">✕</span>
+      <div class="tried-content"><strong>Ton entourage</strong> — Tout le monde a un avis. Personne n'a de méthode adaptée.</div>
+    </div>
+  </div>
+  <div class="tried-conclusion">
+    <p>Aucune de ces options ne te dit si <em>ton concept</em>, dans <em>ta ville</em>, avec <em>tes recettes</em>, peut te générer le salaire que tu vises.<br><br>C'est exactement ce que fait StreetBiz.</p>
+  </div>
+</div>
+
+<!-- ===== 6. IMAGINE — NOUVEAU ===== -->
+<div class="section section-beige">
+  <div class="section-label">Et si...</div>
+  <h2>Imagine te lancer<br><em>avec des chiffres.</em></h2>
+  <p>Pas des espoirs. Des chiffres réels, calculés sur ton concept à toi.</p>
+  <div class="imagine-list">
+    <div class="imagine-item"><span class="imagine-check">✦</span><span>Tu as croisé tes chiffres avec ta stratégie d'emplacement — et tu sais si c'est réaliste.</span></div>
+    <div class="imagine-item"><span class="imagine-check">✦</span><span>Si ton concept ne tient pas, tu as l'opportunité de pivoter vers quelque chose de plus rentable — avant d'avoir investi un seul euro.</span></div>
+    <div class="imagine-item"><span class="imagine-check">✦</span><span>Tu sais exactement combien de portions vendre par jour pour te payer.</span></div>
+    <div class="imagine-item"><span class="imagine-check">✦</span><span>Tu sais combien tu dois vendre tes portions pour être toujours rentable.</span></div>
+    <div class="imagine-item"><span class="imagine-check">✦</span><span>Tu ouvres ton stand avec une vision claire. Pas en espérant que ça marche.</span></div>
+  </div>
+  <p style="font-size:16px;font-weight:700;color:#1F1F1F;margin-top:1.5rem">C'est ce que le Playbook StreetBiz te permet de faire. En 6 checkpoints.</p>
+  <div class="cta-block" style="margin-top:1.5rem">
+    <div class="price-label">ACCÈS IMMÉDIAT</div>
+    <div class="price">37€</div>
+    <a href="https://www.streetbiz.io/paiement" class="cta-btn">JE VEUX MON PLAYBOOK</a>
+    <p class="guarantee-note" style="color:#a8a498">C'est ta garantie de créer un business rentable · Paiement unique</p>
+  </div>
+</div>
+
+<!-- ===== 7. LE PLAYBOOK ===== -->
+<div class="section section-white">
+  <div class="section-label">Le Playbook StreetBiz</div>
+  <h2>Tu ne lis pas.<br><em>Tu travailles ton concept.</em></h2>
+  <p>Calculs, fiches, tableaux, questions ciblées. Je te guide pas à pas pour que tu prennes les bonnes décisions.</p>
+  <div class="checkpoints">
+    <div class="checkpoint-card">
+      <div class="checkpoint-num">01</div>
+      <h4>Définis ton offre principale</h4>
+      <p>Pose les fondations de ton concept avec méthode et clarté.</p>
+    </div>
+    <div class="checkpoint-card">
+      <div class="checkpoint-num">02</div>
+      <h4>Détaille tes portions et tes recettes</h4>
+      <p>Construis ta base de données : fiches-portions, fiches-recettes, fiche-fournisseurs.</p>
+    </div>
+    <div class="checkpoint-card">
+      <div class="checkpoint-num">03</div>
+      <h4>Calcule tes coûts de revient</h4>
+      <p>Combien te coûte chaque portion à produire ? C'est la base de la rentabilité et c'est ici que la plupart des projets révèlent leurs failles.</p>
+    </div>
+    <div class="checkpoint-card">
+      <div class="checkpoint-num">04</div>
+      <h4>Définis tes prix de vente minimum</h4>
+      <p>Le plancher en dessous duquel tu travailles à perte. Tu testes l'acceptabilité de tes prix côté client.</p>
+    </div>
+    <div class="checkpoint-card">
+      <div class="checkpoint-num">05</div>
+      <h4>Calcule ton volume de vente minimum</h4>
+      <p>Combien de clients dois-tu servir chaque mois pour te payer ? Tu définis ton salaire minimum, calcules ton panier moyen, et obtiens le chiffre d'affaires à atteindre.</p>
+    </div>
+    <div class="checkpoint-card">
+      <div class="checkpoint-num">06</div>
+      <h4>Valide ton concept — ou pivote</h4>
+      <p>L'étape qui valide ton concept une bonne fois pour toutes.</p>
+    </div>
+    <div class="checkpoint-bonus">
+      <div class="checkpoint-bonus-label">CHECKPOINT BONUS</div>
+      <h5>Finalise ta carte</h5>
+      <p>Choisis tes produits complémentaires, fixe tes tarifs définitifs et crée tes menus.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 8. CTA MILIEU ===== -->
+<div class="section section-beige" style="text-align:center">
+  <h2 style="color:#1F1F1F">C'est exactement<br>ce qu'il me faut</h2>
+  <div style="font-family:'Archivo Black',sans-serif;font-size:72px;color:#F26A21;line-height:1;margin:0.5rem 0 1rem">37€</div>
+  <a href="https://www.streetbiz.io/paiement" class="cta-btn" style="max-width:500px;margin:0 auto;display:block">ACCÉDER AU PLAYBOOK STREETBIZ</a>
+  <p class="guarantee-note" style="margin-top:1rem">C'est ta garantie de créer un business rentable.</p>
+</div>
+
+<!-- ===== 9. BONUS ===== -->
+<div class="section section-white">
+  <div class="section-label">Inclus dans le Playbook</div>
+  <h2><em>12 annexes</em><br>+ <em style="color:#6D7A2F">ta feuille de route</em></h2>
+  <div class="bonus-card orange">
+    <div class="bonus-label">12 ANNEXES</div>
+    <h4>Structure et optimisation</h4>
+    <p>Toutes les fiches et tableaux nécessaires pour organiser ton travail de façon structurée.</p>
+  </div>
+  <div class="bonus-card green">
+    <div class="bonus-label">LE BONUS</div>
+    <h4>Feuille de route StreetBiz</h4>
+    <p>Elle retrace les prochaines étapes après avoir validé ton concept pour ne rien oublier. Tu sais exactement quoi faire pour avancer jusqu'au lancement.</p>
+  </div>
+</div>
+
+<!-- ===== 10. VALEUR VS PRIX — NOUVEAU ===== -->
+<div class="section section-beige">
+  <div class="section-label">La valeur</div>
+  <h2>Ce que tu obtiens<br><em>pour 37€.</em></h2>
+  <p>Ce type d'accompagnement ultra spécifique au street food n'existe quasiment nulle part. Voici ce que ça te coûterait autrement :</p>
+  <div class="value-list">
+    <div class="value-item">
+      <span class="value-text">La CMA — formations entre 280€ et 700€, utiles pour les démarches administratives mais pas spécifiques à ton concept street food</span>
+      <span class="value-price">280–700€</span>
+    </div>
+    <div class="value-item">
+      <span class="value-text">Un comptable pour calculer ta rentabilité — sans forcément être spécialiste de ton secteur ni de tes contraintes terrain</span>
+      <span class="value-price">300–800€</span>
+    </div>
+    <div class="value-item">
+      <span class="value-text">Te planter en lançant sans avoir validé tes chiffres</span>
+      <span class="value-price">des milliers d'€</span>
+    </div>
+    <div class="value-item">
+      <span class="value-text">Tâtonner seul·e pendant des semaines pour des réponses approximatives</span>
+      <span class="value-price">ton temps</span>
+    </div>
+  </div>
+
+  <div style="background:#1F1F1F;padding:1.25rem 1.5rem;margin:1.25rem 0;text-align:center">
+    <p style="font-family:'Archivo Black',sans-serif;font-size:13px;color:#F26A21;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px">LE PLAYBOOK STREETBIZ</p>
+    <p style="font-size:15px;font-weight:700;color:#FAF9F4;margin:0;line-height:1.6">Ultra précis. Ultra adapté.<br>Fait exclusivement pour le street food.</p>
+  </div>
+
+  <div class="value-autonomy">
+    <h5>Et une fois que tu maîtrises tes chiffres ?</h5>
+    <p>Tu es autonome pour toujours. Tu veux ajouter un produit à ta carte ? Tu recalcules toi-même. Tu changes de fournisseur ? Tu ajustes en 10 minutes. Plus besoin de repasser par un comptable à chaque décision.</p>
+  </div>
+
+  <div style="border-left:4px solid #F26A21;padding:1rem 1.25rem;margin:1.25rem 0;background:#FAF9F4;border-radius:0">
+    <p style="font-family:'Archivo Black',sans-serif;font-size:13px;color:#F26A21;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px">On dit souvent...</p>
+    <p style="font-size:15px;font-style:italic;color:#3a3a2a;margin:0 0 8px;line-height:1.7">"Donne du poisson à un homme, il mange un jour. Apprends-lui à pêcher, il mange toujours."</p>
+    <p style="font-size:14px;font-weight:700;color:#1F1F1F;margin:0">StreetBiz t'apprend à maîtriser tes chiffres — une bonne fois pour toutes.</p>
+  </div>
+
+  <div style="background:#1F1F1F;padding:2rem 1.5rem;margin:1.25rem 0;text-align:center">
+    <p style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#a8a498;margin:0 0 6px">ACCÈS IMMÉDIAT</p>
+    <p style="font-family:'Archivo Black',sans-serif;font-size:64px;color:#F26A21;line-height:1;margin:0 0 1.25rem">37€</p>
+    <a href="https://www.streetbiz.io/paiement" class="cta-btn" style="margin-bottom:1rem">ACCÉDER AU PLAYBOOK STREETBIZ</a>
+    <p style="font-size:13px;font-style:italic;color:#7a7a6a;margin:0;line-height:1.6">Ta garantie de partir sur un concept rentable dès le départ.</p>
+  </div>
+</div>
+
+<!-- ===== 11. CAS TERRAIN — NOUVEAU ===== -->
+<div class="section section-white">
+  <div style="background:#1F1F1F;padding:1.75rem 1.5rem;margin:0 0 1.5rem;border-radius:3px">
+    <p style="font-family:'Archivo Black',sans-serif;font-size:11px;color:#F26A21;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px">À savoir</p>
+    <p style="font-family:'Archivo Black',sans-serif;font-size:20px;color:#FAF9F4;margin:0 0 14px;line-height:1.2">StreetBiz est né bien avant le playbook officiel.</p>
+    <p style="font-size:14px;color:#e8e4dc;margin:0 0 10px;line-height:1.7">Pendant 7 ans, des porteurs de projets venaient me trouver sur les marchés avec les mêmes questions. Comment je fixe mes prix ? Tu peux regarder mes chiffres ? Qu'est-ce que tu penses de mon concept ?</p>
+    <p style="font-size:14px;color:#F26A21;font-weight:700;margin:0;line-height:1.7">Ce que tu vas lire ci-dessous, c'est concret. Ce sont des gens que j'ai accompagnés entre deux services.</p>
+  </div>
+  <div class="section-label">Exemples concrets du terrain</div>
+  <h2>Ce que j'ai vu.<br><em>Des cas réels.</em></h2>
+  <div class="cas-list">
+    <div class="cas-item">
+      <div class="cas-label">Cas terrain #1 — Le concept qui a pivoté</div>
+      <h4>Solène & Mathieu — poulet frit au hot-dogs</h4>
+      <p>Ils voulaient se lancer dans le poulet frit. En appliquant le système StreetBiz étape par étape, ils ont réalisé que leurs coûts de revient rendaient le concept trop fragile. Ils ont pivoté. Résultat : marges solides, lancement serein.</p>
+    </div>
+    <div class="cas-item">
+      <div class="cas-label">Cas terrain #2 — Les coûts de revient 40% trop élevés</div>
+      <h4>Alex — concept burger</h4>
+      <p>En calculant ses coûts au centime près avec la méthode StreetBiz, Alex a réalisé que l'un de ses burgers avait un coût de revient 40% trop élevé. Malgré ses efforts, il n'a pas réussi à le rendre à la fois rentable et accessible côté client. Il a pris la décision de retirer ce produit et de le remplacer par un burger végétarien. Résultat inattendu : non seulement ses marges sont respectées sur toute sa gamme, mais il touche désormais un public plus large — et il ne l'aurait jamais fait sans avoir posé ses chiffres.</p>
+    </div>
+    <div class="cas-item">
+      <div class="cas-label">Cas terrain #3 — Du client fidèle au food entrepreneur</div>
+      <h4>Maël — lancé dans le sud de la France</h4>
+      <p>En suivant les checkpoints un par un, il a validé son concept point par point avant d'investir — et a ouvert avec une vision claire basée sur des chiffres réels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 12. MON HISTOIRE ===== -->
+<div class="section section-dark">
+  <div class="section-label">Mon histoire</div>
+  <h2>Tu veux en savoir<br><em>plus sur moi ?</em></h2>
+  <p style="color:#e8e4dc">J'ai tout quitté pour vendre des falafels en Normandie. La banque a ri. Tout le monde m'a dit que j'étais folle.</p>
+  <p style="font-family:'Archivo Black',sans-serif;font-size:24px;color:#F26A21;line-height:1;margin:1.5rem 0 0.5rem">RÉSULTAT.</p>
+  <p style="color:#e8e4dc;margin:0">4 000€ nets par mois. 288 000€ de crédit immo. La maison de mon enfance rachetée.</p>
+  <p style="color:#e8e4dc">Ce que j'ai appris en 7 ans, je l'ai condensé dans ce playbook pour que tu n'aies pas à tout réinventer.</p>
+  <div class="citation">"Tu n'as pas besoin que tout soit aligné pour te lancer. Tu as besoin d'être préparé·e."</div>
+
+  <div class="story-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'↑':'↓'">
+    <h3>Lire mon histoire complète</h3>
+    <span>↓</span>
+  </div>
+
+  <div class="story-content">
+    <div class="chapter">
+      <span class="chapter-label">Avant</span>
+      <h2>Un CDI. Un bureau.<br><em>Une odeur de bulot à 8h du matin.</em></h2>
+      <p style="color:#e8e4dc">Depuis toujours, j'avais une idée en tête : ouvrir un fast-food sain, bio, équilibré. C'est pour ça que j'avais choisi un BTS GUC. Et bossé chez Subway en parallèle. J'y étais devenue manager.</p>
+      <p style="color:#e8e4dc">Sauf que Subway m'a vaccinée. Les horaires à rallonge. La même journée qui se répète à perpétuité. Pour un salaire de misère.</p>
+      <p style="color:#e8e4dc">J'ai abandonné l'idée. Après mon master, j'ai été embauchée pour exporter des huîtres normandes. Dans les faits : téléphone, téléphone, téléphone. Lumière artificielle. L'odeur du bulot. <strong style="color:#FAF9F4">J'avais fini par me convaincre moi-même que je n'allais pas bien.</strong></p>
+      <div class="you-box">Tu t'es peut-être déjà retrouvé·e dans un boulot qui, de l'extérieur, semblait parfait — et qui au fond ne te correspondait pas du tout.</div>
+    </div>
+
+    <div class="chapter">
+      <span class="chapter-label">Le déclic</span>
+      <h2>Pleine nuit. Marché de la Villette.<br><em>La révélation.</em></h2>
+      <p style="color:#e8e4dc">Et puis un jour, mon patron m'emmène à Paris, sur le marché de la Villette. 5h du matin. Les stands qui s'installent à l'aube. L'odeur des épices. Le soleil qui se lève. L'argent qui passe de main en main.</p>
+      <p style="color:#e8e4dc"><strong style="color:#FAF9F4">La vie.</strong></p>
+      <p style="color:#e8e4dc"><strong style="color:#FAF9F4">Ce n'était pas que j'allais mal. C'est que je n'étais pas à ma place.</strong></p>
+      <p style="color:#e8e4dc">À gauche — l'inconfort de la stagnation. À droite — l'inconfort de l'évolution. Si d'autres pouvaient le faire, moi aussi.</p>
+      <p style="color:#e8e4dc"><strong style="color:#FAF9F4">Alors j'ai choisi de foncer. Et j'ai eu raison !</strong></p>
+    </div>
+
+    <div class="chapter">
+      <span class="chapter-label">Les débuts</span>
+      <h2>Et après la révélation ?<br><em>Back to reality !</em></h2>
+      <div class="qa-block">
+        <div class="qa-q">Est-ce que tout le monde me disait que j'étais folle de lâcher mon CDI ?</div>
+        <div class="qa-a">Oui.</div>
+        <div class="qa-q">Est-ce que ma banque m'a ri au nez ?</div>
+        <div class="qa-a">Évidemment.</div>
+        <div class="qa-q">Est-ce que j'ai embarqué mon mari ?</div>
+        <div class="qa-a">Oui.</div>
+        <div class="qa-q">Est-ce qu'à force de travailler ensemble, j'ai voulu le quitter ?</div>
+        <div class="qa-a">Environ deux mille fois.</div>
+        <div class="qa-q">Est-ce que j'ai fait 30€ la première semaine ?</div>
+        <div class="qa-a">Oui, j'ai bien cru avoir lâché mon CDI pour trente balles.</div>
+        <div class="qa-q">Est-ce que le Covid est arrivé juste après l'ouverture ?</div>
+        <div class="qa-a">Oui.</div>
+        <div class="qa-q">Est-ce qu'il y a eu des galères et des imprévus ?</div>
+        <div class="qa-a">Tous les jours.</div>
+      </div>
+      <p style="color:#e8e4dc;margin-top:1rem"><strong style="color:#FAF9F4">J'ai dû m'accrocher, ajuster, affiner, corriger, apprendre de mes erreurs. Et la deuxième année, les falafels ont décollé.</strong></p>
+      <p style="color:#F26A21;font-style:italic;font-size:15px;margin-top:1rem">StreetBiz, c'est tout ce que j'ai mis des années à apprendre — condensé pour que toi, tu ne commettes pas les mêmes erreurs.</p>
+    </div>
+
+    <div class="chapter">
+      <span class="chapter-label">Aujourd'hui</span>
+      <h2>Des falafels en Normandie,<br><em>ça a cartonné !</em></h2>
+      <p style="color:#e8e4dc">Je me souviendrai toujours de ce service où j'ai compté la caisse : 270€. Mais ça commençait à marcher. J'ai mis les billets dans ma poche et on est allé boire un café dans la brasserie d'à côté, face à la mer.</p>
+      <span class="punch">Sensation de liberté et de satisfaction incroyable.</span>
+      <div class="stat-box">
+        <div class="stat-box-num">110 000€</div>
+        <div class="stat-box-text">de CA à nous deux. 4 000€ nets par mois — avec du temps libre.</div>
+      </div>
+      <p style="color:#e8e4dc">La banque qui m'avait ri au nez ? Elle nous a accordé 288 000€ de crédit immobilier. On a racheté la maison de mon enfance.</p>
+      <span class="punch">Ça, c'est ce que j'appelle une belle revanche.</span>
+    </div>
+
+    <div class="chapter">
+      <span class="chapter-label">Ce que j'ai retenu</span>
+      <h2>Il y a des erreurs<br><em>qui ne pardonnent pas.</em></h2>
+      <p style="color:#e8e4dc">J'ai vu des dizaines de concepts montés et fermés en trois mois. Des food trucks flambant neufs achetés avant de savoir si la recette était rentable. Des collègues qui vendaient à perte sans le savoir.</p>
+      <p style="color:#e8e4dc"><strong style="color:#FAF9F4">Parce qu'une bonne idée, ça ne suffit pas pour pouvoir vivre de la street food.</strong></p>
+      <span class="punch">Seulement j'ai décidé de choisir ce qui me faisait vibrer.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 13. FAQ ===== -->
+<div class="section section-beige">
+  <div class="section-label">Questions fréquentes</div>
+  <h2>Ce que tu te<br><em>demandes sûrement.</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">C'est juste un ebook ?</div>
+      <div class="faq-a">Non. Ce n'est pas un ebook que tu lis. C'est un outil sur lequel je te fais travailler ton concept en temps réel. Calculs, tableaux, questions précises. Tu travailles — tu ne lis pas de théorie.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Je n'ai aucune formation en gestion ou en finance…</div>
+      <div class="faq-a">C'est exactement pour ça que le playbook existe. Chaque tableau est conçu pour être rempli sans formation comptable. Pas de jargon, pas de formules complexes — juste des cases claires.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Je n'ai aucune formation en cuisine…</div>
+      <div class="faq-a">Ce playbook s'adresse à ceux qui veulent créer un commerce rentable — pas forcément à des chefs. La street food, c'est autant du business, de la relation client et de la logistique que de la cuisine.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">37€, ça vaut vraiment le coup ?</div>
+      <div class="faq-a">Une erreur de pricing, un concept non validé, un coût de revient mal calculé — ça peut te coûter plusieurs milliers d'euros et des mois de travail. Ce playbook c'est ta garantie de te lancer dans les meilleures conditions, pour le prix d'un repas au restaurant.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Et après le playbook, qu'est-ce que je fais ?</div>
+      <div class="faq-a">C'est la première étape du système StreetBiz — conçu pour t'accompagner jusqu'à l'ouverture de ton stand ou ton foodtruck. La feuille de route incluse te montre les prochaines étapes.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">J'ai une question !</div>
+      <div class="faq-a">Écris-moi à <a href="mailto:contact@streetbiz.io" style="color:#F26A21">contact@streetbiz.io</a> — je réponds personnellement.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 14. RÉCAP FINAL — NOUVEAU ===== -->
+<div class="section section-white">
+  <div class="section-label">Récapitulatif</div>
+  <h2>Tu as scrollé<br>jusqu'en bas ?<br><em>Voici ce que tu obtiens.</em></h2>
+  <div class="recap-box">
+    <p style="font-family:'Archivo Black',sans-serif;font-size:16px;color:#F26A21;text-transform:uppercase;margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid #e0dcd0">Le Playbook StreetBiz — 6 checkpoints pour valider ton concept</p>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint 01 — Définis ton offre principale</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint 02 — Détaille tes portions et recettes</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint 03 — Calcule tes coûts de revient</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint 04 — Définis tes prix de vente minimum</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint 05 — Calcule ton volume de ventes pour te payer</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint 06 — Valide ou pivote</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Checkpoint Bonus — Finalise ta carte et tes menus</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span><strong>12 annexes</strong> — fiches et tableaux structurés</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span><strong>Bonus</strong> — Feuille de route jusqu'à l'ouverture</span></div>
+    <div class="recap-item"><span class="recap-check">✦</span><span>Accès immédiat · Paiement unique</span></div>
+  </div>
+  <div style="text-align:center">
+    <p style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#a8a498;margin-bottom:4px">TOUT ÇA POUR</p>
+    <div style="font-family:'Archivo Black',sans-serif;font-size:72px;color:#F26A21;line-height:1;margin-bottom:1rem">37€</div>
+    <a href="https://www.streetbiz.io/paiement" class="cta-btn" style="max-width:500px;margin:0 auto;display:block">ACCÉDER AU PLAYBOOK STREETBIZ</a>
+    <p class="guarantee-note">Ta garantie de partir sur un concept rentable dès le départ.</p>
+  </div>
+</div>
+
+<!-- ===== 15. CTA FINAL ===== -->
+<div class="final-cta">
+  <h2>Valide ton concept.<br><em>Puis lance-toi.</em></h2>
+  <p>37€ pour prendre les bonnes décisions et ouvrir un commerce qui cartonne.</p>
+  <a href="https://www.streetbiz.io/paiement" class="cta-btn" style="max-width:500px;margin:0 auto;display:block">ACCÉDER AU PLAYBOOK STREETBIZ</a>
+  <p style="font-family:'Archivo Black',sans-serif;font-size:18px;color:#F26A21;text-align:center;margin-top:1.5rem">Que l'aventure commence !</p>
+</div>
+
+<!-- ===== 16. FOOTER ===== -->
+<div class="footer">
+  <p>© 2026 StreetBiz — Manon Taha · contact@streetbiz.io</p>
+  <div class="footer-links">
+    <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+    <a href="cgv.html" class="footer-link">CGV</a>
+    <a href="confidentialite.html" class="footer-link">Politique de confidentialité</a>
+  </div>
+</div>
+
+</div>
+<script>
+</script>
+</body>
+</html>
