@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de confidentialité — StreetBiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --orange: #F26A21;
+    --noir: #1F1F1F;
+    --vert: #6D7A2F;
+    --beige: #F4F0E6;
+    --blanc: #FAF9F4;
+    --texte: #3a3a2a;
+    --gris: #7a7a6a;
+    --bordure: #e0dcd0;
+  }
+
+  body {
+    background: var(--beige);
+    color: var(--noir);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  header {
+    background: var(--noir);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    color: var(--blanc);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  .logo span { color: var(--orange); }
+
+  .header-back {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  .header-back:hover { opacity: 0.75; }
+
+  .page-hero {
+    background: var(--vert);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(24px, 4.5vw, 36px);
+    color: var(--blanc);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-hero .date {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  .article {
+    background: var(--blanc);
+    border-radius: 4px;
+    border-left: 4px solid var(--vert);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .article.orange { border-left-color: var(--orange); }
+  .article.noir { border-left-color: var(--noir); }
+
+  .article h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    color: var(--vert);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+
+  .article.orange h2 { color: var(--orange); }
+  .article.noir h2 { color: var(--noir); }
+
+  .article p {
+    color: var(--texte);
+    margin-bottom: 0.6rem;
+    line-height: 1.8;
+  }
+
+  .article p:last-child { margin-bottom: 0; }
+
+  .article a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .article a:hover { text-decoration: underline; }
+
+  /* Tirets */
+  .tirets {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+  }
+
+  .tirets li {
+    color: var(--texte);
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    position: relative;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .tirets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--vert);
+    font-weight: 700;
+  }
+
+  /* Prestataires */
+  .prestataires {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .prestataire {
+    background: var(--beige);
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+  }
+
+  .prestataire .nom {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--noir);
+    margin-bottom: 0.2rem;
+  }
+
+  .prestataire .role {
+    font-size: 12px;
+    color: var(--gris);
+  }
+
+  /* Droits grid */
+  .droits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+  }
+
+  .droit-item {
+    background: var(--beige);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texte);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .droit-item::before {
+    content: '✓';
+    color: var(--vert);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* Bloc CNIL */
+  .bloc-cnil {
+    background: var(--noir);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .bloc-cnil p {
+    color: rgba(255,255,255,0.75) !important;
+    font-size: 13px;
+    margin: 0;
+    flex: 1;
+  }
+
+  .bloc-cnil a {
+    color: var(--orange) !important;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  footer {
+    background: var(--noir);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    color: var(--blanc);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo span { color: var(--orange); }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-nav a {
+    color: var(--gris);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border: 1px solid #3a3a3a;
+    border-radius: 100px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .footer-nav a:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .footer-copy { font-size: 11px; color: #555548; }
+
+  @media (max-width: 600px) {
+    .page { padding: 2rem 1.25rem 3rem; }
+    .article { padding: 1.25rem 1.25rem; }
+    .droits-grid { grid-template-columns: 1fr; }
+    .bloc-cnil { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Street<span>Biz</span></a>
+  <a href="index.html" class="header-back">← Retour</a>
+</header>
+
+<div class="page-hero">
+  <h1>Politique de confidentialité</h1>
+  <p class="date">Mise à jour : 06 juin 2026</p>
+</div>
+
+<div class="page">
+
+  <div class="article orange">
+    <h2>1. Responsable du traitement</h2>
+    <p><strong>Manon Martin</strong><br>
+    5 place le Duc, 50000 Saint-Lô, France<br>
+    <a href="mailto:contact@streetbiz.io">contact@streetbiz.io</a></p>
+  </div>
+
+  <div class="article">
+    <h2>2. Données collectées</h2>
+    <p>Dans le cadre de l'achat d'un produit StreetBiz, les données suivantes sont collectées :</p>
+    <ul class="tirets">
+      <li>Nom et prénom</li>
+      <li>Adresse email</li>
+      <li>Données de paiement — traitées directement par Stripe ou PayPal (StreetBiz n'a pas accès aux données bancaires)</li>
+    </ul>
+  </div>
+
+  <div class="article">
+    <h2>3. Finalité du traitement</h2>
+    <p>Les données collectées sont utilisées pour :</p>
+    <ul class="tirets">
+      <li>Traiter et confirmer votre commande</li>
+      <li>Vous envoyer l'accès à votre produit</li>
+      <li>Vous envoyer des communications relatives à vos achats et aux produits StreetBiz</li>
+    </ul>
+  </div>
+
+  <div class="article">
+    <h2>4. Base légale</h2>
+    <p>Le traitement est fondé sur l'exécution du contrat de vente (article 6.1.b du RGPD).</p>
+  </div>
+
+  <div class="article">
+    <h2>5. Durée de conservation</h2>
+    <p>Vos données sont conservées pendant la durée nécessaire à l'exécution du contrat et aux obligations légales, soit <strong>5 ans</strong> à compter de la dernière transaction.</p>
+  </div>
+
+  <div class="article">
+    <h2>6. Partage des données</h2>
+    <p>Vos données peuvent être transmises aux prestataires suivants dans le cadre de l'exécution du service :</p>
+    <div class="prestataires">
+      <div class="prestataire">
+        <div class="nom">Systeme.io</div>
+        <div class="role">Gestion du tunnel de vente et des emails</div>
+      </div>
+      <div class="prestataire">
+        <div class="nom">Stripe / PayPal</div>
+        <div class="role">Traitement sécurisé des paiements</div>
+      </div>
+    </div>
+    <p style="margin-top:0.85rem;font-size:13px;color:var(--gris);">Ces prestataires agissent en qualité de sous-traitants et sont soumis à des obligations de confidentialité. Vos données ne sont jamais vendues à des tiers.</p>
+  </div>
+
+  <div class="article">
+    <h2>7. Cookies</h2>
+    <p>Le site streetbiz.io n'utilise pas de cookies de tracking ou d'analyse. Seuls les cookies strictement nécessaires au fonctionnement du site et du tunnel de paiement peuvent être déposés.</p>
+  </div>
+
+  <div class="article">
+    <h2>8. Vos droits</h2>
+    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+    <div class="droits-grid">
+      <div class="droit-item">Droit d'accès</div>
+      <div class="droit-item">Droit de rectification</div>
+      <div class="droit-item">Droit à l'effacement</div>
+      <div class="droit-item">Droit d'opposition</div>
+      <div class="droit-item">Droit à la portabilité</div>
+    </div>
+    <p style="margin-top:0.85rem;font-size:14px;">Pour exercer ces droits : <a href="mailto:contact@streetbiz.io">contact@streetbiz.io</a></p>
+  </div>
+
+  <div class="article noir">
+    <h2>9. Réclamation</h2>
+    <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL.</p>
+    <div class="bloc-cnil">
+      <p>Commission Nationale de l'Informatique et des Libertés</p>
+      <a href="https://www.cnil.fr" target="_blank">→ cnil.fr</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Street<span>Biz</span></div>
+  <nav class="footer-nav">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgv.html">CGV</a>
+    <a href="confidentialite.html">Politique de confidentialité</a>
+    <a href="mailto:contact@streetbiz.io">contact@streetbiz.io</a>
+  </nav>
+  <p class="footer-copy">© 2026 StreetBiz — Manon Martin</p>
+</footer>
+
+</body>
+</html>

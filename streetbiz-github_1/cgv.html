@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGV — StreetBiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --orange: #F26A21;
+    --noir: #1F1F1F;
+    --vert: #6D7A2F;
+    --beige: #F4F0E6;
+    --blanc: #FAF9F4;
+    --texte: #3a3a2a;
+    --gris: #7a7a6a;
+    --bordure: #e0dcd0;
+  }
+
+  body {
+    background: var(--beige);
+    color: var(--noir);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--noir);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    color: var(--blanc);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  .logo span {
+    color: var(--orange);
+  }
+
+  .header-back {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  .header-back:hover { opacity: 0.75; }
+
+  /* ── HERO BANDEAU ── */
+  .page-hero {
+    background: var(--orange);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(26px, 5vw, 38px);
+    color: var(--blanc);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-hero .date {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CONTENU ── */
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  /* Section article */
+  .article {
+    background: var(--blanc);
+    border-radius: 4px;
+    border-left: 4px solid var(--orange);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .article h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+
+  .article p {
+    color: var(--texte);
+    margin-bottom: 0.6rem;
+    line-height: 1.8;
+  }
+
+  .article p:last-child { margin-bottom: 0; }
+
+  .article a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .article a:hover { text-decoration: underline; }
+
+  /* Liste tirets */
+  .tirets {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tirets li {
+    color: var(--texte);
+    padding: 0.3rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.8;
+  }
+
+  .tirets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* Bloc produits */
+  .produits-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .produit-item {
+    background: var(--beige);
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .produit-item .nom {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--noir);
+  }
+
+  .produit-item .desc {
+    font-size: 12px;
+    color: var(--gris);
+    margin-top: 2px;
+  }
+
+  .produit-item .prix {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: var(--orange);
+    white-space: nowrap;
+  }
+
+  /* Bloc attention */
+  .bloc-attention {
+    background: var(--noir);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .bloc-attention p {
+    color: var(--blanc) !important;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .bloc-attention strong {
+    color: var(--orange);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--noir);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    color: var(--blanc);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo span { color: var(--orange); }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-nav a {
+    color: var(--gris);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border: 1px solid #3a3a3a;
+    border-radius: 100px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .footer-nav a:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: #555548;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .page { padding: 2rem 1.25rem 3rem; }
+    .article { padding: 1.25rem 1.25rem; }
+    .produit-item { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Street<span>Biz</span></a>
+  <a href="index.html" class="header-back">← Retour</a>
+</header>
+
+<div class="page-hero">
+  <h1>Conditions Générales de Vente</h1>
+  <p class="date">Mise à jour : 06 juin 2026</p>
+</div>
+
+<div class="page">
+
+  <div class="article">
+    <h2>1. Vendeur</h2>
+    <p>Manon Martin — Micro-entreprise</p>
+    <p>SIRET : 878 017 516 00039</p>
+    <p>5 place le Duc, 50000 Saint-Lô, France</p>
+    <p><a href="mailto:contact@streetbiz.io">contact@streetbiz.io</a></p>
+  </div>
+
+  <div class="article">
+    <h2>2. Produits proposés</h2>
+    <p>StreetBiz propose les produits numériques suivants :</p>
+    <div class="produits-grid">
+      <div class="produit-item">
+        <div>
+          <div class="nom">Playbook StreetBiz "Valide ton concept"</div>
+          <div class="desc">Outil de validation de concept street food</div>
+        </div>
+        <div class="prix">37€ TTC</div>
+      </div>
+      <div class="produit-item">
+        <div>
+          <div class="nom">Fiches interactives StreetBiz</div>
+          <div class="desc">Fiches portions, recettes et fournisseurs</div>
+        </div>
+        <div class="prix">12€ TTC</div>
+      </div>
+      <div class="produit-item">
+        <div>
+          <div class="nom">Tableur StreetBiz</div>
+          <div class="desc">Outil de calcul des coûts de revient</div>
+        </div>
+        <div class="prix">49€ TTC</div>
+      </div>
+      <div class="produit-item">
+        <div>
+          <div class="nom">Chiffre ton budget de lancement</div>
+          <div class="desc">Outil de planification financière du lancement</div>
+        </div>
+        <div class="prix">57€ TTC</div>
+      </div>
+    </div>
+    <p style="margin-top:0.85rem;font-size:13px;color:var(--gris);">Ces produits sont des fichiers numériques accessibles immédiatement après paiement. Aucune livraison physique n'est effectuée.</p>
+  </div>
+
+  <div class="article">
+    <h2>3. Prix</h2>
+    <p>Les prix sont indiqués en euros toutes taxes comprises (TTC). Manon Martin, en tant que micro-entrepreneuse, ne facture pas de TVA (article 293 B du CGI).</p>
+    <p>Les prix peuvent être modifiés à tout moment. Le prix applicable est celui affiché au moment de la commande.</p>
+  </div>
+
+  <div class="article">
+    <h2>4. Commande et paiement</h2>
+    <p>La commande est validée lors du paiement en ligne, effectué de manière sécurisée via Stripe ou PayPal. L'accès au produit est délivré immédiatement après confirmation du paiement, par email ou lien de téléchargement.</p>
+    <p>Plusieurs produits peuvent être commandés simultanément dans le cadre du tunnel de vente StreetBiz.</p>
+  </div>
+
+  <div class="article">
+    <h2>5. Droit de rétractation</h2>
+    <p>Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques dont l'exécution a commencé avec l'accord du consommateur avant l'expiration du délai de rétractation.</p>
+    <div class="bloc-attention">
+      <p>En procédant au paiement et en accédant immédiatement au contenu numérique, l'acheteur reconnaît expressément renoncer à son droit de rétractation. <strong>Aucun remboursement ne sera accordé après accès au produit numérique.</strong></p>
+    </div>
+  </div>
+
+  <div class="article">
+    <h2>6. Propriété intellectuelle</h2>
+    <p>Les produits vendus sur streetbiz.io sont protégés par le droit d'auteur. L'acheteur dispose d'un droit d'usage personnel et non commercial.</p>
+    <p>Toute reproduction, revente ou diffusion est interdite.</p>
+  </div>
+
+  <div class="article">
+    <h2>7. Responsabilité</h2>
+    <p>Les produits StreetBiz sont des outils d'aide à la décision. Les résultats obtenus dépendent de l'utilisation que l'acheteur en fait. Manon Martin ne peut être tenue responsable des décisions prises sur la base des informations contenues dans ses produits.</p>
+  </div>
+
+  <div class="article">
+    <h2>8. Litiges</h2>
+    <p>En cas de litige, une solution amiable sera recherchée en priorité. À défaut, les tribunaux français seront compétents, conformément à la loi française.</p>
+  </div>
+
+  <div class="article">
+    <h2>9. Contact</h2>
+    <p><a href="mailto:contact@streetbiz.io">contact@streetbiz.io</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Street<span>Biz</span></div>
+  <nav class="footer-nav">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgv.html">CGV</a>
+    <a href="confidentialite.html">Politique de confidentialité</a>
+    <a href="mailto:contact@streetbiz.io">contact@streetbiz.io</a>
+  </nav>
+  <p class="footer-copy">© 2026 StreetBiz — Manon Martin</p>
+</footer>
+
+</body>
+</html>
