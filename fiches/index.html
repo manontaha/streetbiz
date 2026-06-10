@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Kit de validation StreetBiz — Tes 10 fiches interactives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7;min-height:100vh}
+.page{max-width:680px;margin:0 auto;padding:0 0 3rem}
+
+/* HEADER */
+header{background:var(--black);padding:2rem 1.5rem 1.75rem;border-bottom:4px solid var(--orange)}
+.brand{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(28px,7vw,42px);text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:8px}
+header h1 em{color:var(--orange);font-style:normal}
+.header-sub{font-size:13px;color:#a8a498;line-height:1.6}
+
+/* INTRO */
+.intro{padding:1.5rem;background:var(--white);border-bottom:1px solid var(--border)}
+.intro p{font-size:13px;color:var(--ink);line-height:1.7}
+.intro strong{color:var(--orange)}
+
+/* FICHES LIST */
+.fiches-list{padding:1.5rem;display:flex;flex-direction:column;gap:10px}
+
+.fiche-link{display:flex;align-items:stretch;background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);text-decoration:none;color:var(--ink);transition:border-left-color .15s,box-shadow .15s;overflow:hidden}
+.fiche-link:hover{border-left-color:var(--black);box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.fiche-link.olive{border-left-color:var(--olive)}
+.fiche-link.olive:hover{border-left-color:var(--black)}
+
+.fiche-num{width:44px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fiche-link.olive .fiche-num{background:var(--olive)}
+
+.fiche-body{flex:1;padding:12px 14px}
+.fiche-cp{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.fiche-title{font-family:'Archivo Black',sans-serif;font-size:14px;text-transform:uppercase;color:var(--black);margin-bottom:2px}
+.fiche-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+.fiche-arrow{display:flex;align-items:center;padding:0 14px;color:var(--muted);font-size:18px;flex-shrink:0}
+
+/* FOOTER */
+footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border)}
+footer p{font-size:11px;color:var(--muted)}
+footer strong{color:var(--orange)}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="brand">StreetBiz · Kit de validation</div>
+  <h1>Tes <em>10 fiches</em><br>interactives</h1>
+  <p class="header-sub">Clique sur une fiche pour commencer à la remplir depuis ton téléphone ou ordinateur.</p>
+</header>
+
+<div class="intro">
+  <p>Chaque fiche correspond à une étape de ton kit. Remplis-les <strong>dans l'ordre</strong> — chaque fiche prépare la suivante. Tu peux sauvegarder tes données en JSON et les recharger à tout moment.</p>
+</div>
+
+<div class="fiches-list">
+
+  <a class="fiche-link" href="fiche-concept.html">
+    <div class="fiche-num">1</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 1 · Mission 1</div>
+      <div class="fiche-title">Fiche-Concept</div>
+      <div class="fiche-desc">Définis ton offre principale — produits principaux et produits maison.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link olive" href="fiche-portion.html">
+    <div class="fiche-num">2</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 2 · Mission 1</div>
+      <div class="fiche-title">Fiche-Portion</div>
+      <div class="fiche-desc">Détaille chaque portion — ingrédients, quantités, emballages et coûts.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link" href="fiche-recette.html">
+    <div class="fiche-num">3</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 2 · Mission 2</div>
+      <div class="fiche-title">Fiche-Recette</div>
+      <div class="fiche-desc">Détaille chaque recette maison — ingrédients, rendement et coûts.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link olive" href="fiche-fournisseurs.html">
+    <div class="fiche-num">4</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 2 · Mission 3</div>
+      <div class="fiche-title">Fiche-Fournisseurs</div>
+      <div class="fiche-desc">Centralise tous tes produits, fournisseurs et tarifs TTC.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link" href="fiche-options-fournisseurs.html">
+    <div class="fiche-num">5</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 3 · Mission 1</div>
+      <div class="fiche-title">Fiche-Options fournisseurs</div>
+      <div class="fiche-desc">Choisis ta stratégie fournisseurs et identifie tes spécialistes.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link olive" href="fiche-prix-de-vente.html">
+    <div class="fiche-num">6</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 4 · Missions 1 &amp; 2</div>
+      <div class="fiche-title">Fiche-Prix de vente</div>
+      <div class="fiche-desc">Calcule le prix minimum conseillé et valide l'acceptabilité client.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link" href="fiche-revenu.html">
+    <div class="fiche-num">7</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 5 · Mission 1</div>
+      <div class="fiche-title">Fiche-Revenu</div>
+      <div class="fiche-desc">Fixe ton objectif de revenu et calcule ton CA minimum à réaliser.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link olive" href="fiche-panier-moyen.html">
+    <div class="fiche-num">8</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint 5 · Mission 2</div>
+      <div class="fiche-title">Fiche-Panier moyen</div>
+      <div class="fiche-desc">Imagine tes 10 premiers clients et calcule ton panier moyen.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link" href="fiche-produits-complementaires.html">
+    <div class="fiche-num">9</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint Bonus · Mission 1</div>
+      <div class="fiche-title">Fiche-Produits complémentaires</div>
+      <div class="fiche-desc">Liste tes produits complémentaires, leurs coûts et prix de vente.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+  <a class="fiche-link olive" href="fiche-carte-finale.html">
+    <div class="fiche-num">10</div>
+    <div class="fiche-body">
+      <div class="fiche-cp">Checkpoint Bonus · Missions 2 &amp; 3</div>
+      <div class="fiche-title">Fiche-Carte finale</div>
+      <div class="fiche-desc">Fixe tes prix définitifs et crée tes menus.</div>
+    </div>
+    <div class="fiche-arrow">→</div>
+  </a>
+
+</div>
+
+<footer>
+  <p><strong>StreetBiz</strong> · Kit de validation · © 2026 Manon Taha</p>
+</footer>
+
+</div>
+</body>
+</html>
