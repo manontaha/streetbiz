@@ -158,6 +158,7 @@ function setAccepte(i, val){
 }
 
 function render(){
+  setTimeout(_lsSave, 100);
   var list = document.getElementById('portionsList');
   list.innerHTML = '';
   portions.forEach(function(p, i){
@@ -246,6 +247,26 @@ document.getElementById('fileInput').addEventListener('change', function(e){
   reader.readAsText(file); e.target.value='';
 });
 
+render();
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_prix_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    if(typeof portions !== 'undefined') _d['portions'] = portions;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    if(_s['portions']) { portions = _s['portions']; }
+  }catch(e){}
+}
+// Charger au démarrage
+_lsLoad();
 render();
 </script>
 </body>

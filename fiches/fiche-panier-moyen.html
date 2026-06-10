@@ -279,6 +279,45 @@ document.getElementById('fileInput').addEventListener('change',function(e){
 
 renderProduits();
 renderCommandes();
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_panier_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    var _el_fTotal = document.getElementById('fTotal');
+    if(_el_fTotal) _d['fTotal'] = _el_fTotal.value;
+    var _el_fPanier = document.getElementById('fPanier');
+    if(_el_fPanier) _d['fPanier'] = _el_fPanier.value;
+    if(typeof produits !== 'undefined') _d['produits'] = produits;
+    if(typeof commandes !== 'undefined') _d['commandes'] = commandes;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    var _rel_fTotal = document.getElementById('fTotal');
+    if(_rel_fTotal && _s['fTotal']) _rel_fTotal.value = _s['fTotal'];
+    var _rel_fPanier = document.getElementById('fPanier');
+    if(_rel_fPanier && _s['fPanier']) _rel_fPanier.value = _s['fPanier'];
+    if(_s['produits']) { produits = _s['produits']; }
+    if(_s['commandes']) { commandes = _s['commandes']; }
+  }catch(e){}
+}
+// Attacher les listeners d'autosave aux inputs
+(function(){
+  var _ids = ["fTotal", "fPanier"];
+  _ids.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', _lsSave);
+  });
+})();
+// Charger au démarrage
+_lsLoad();
+renderProduits();
+  renderCommandes();
 </script>
 </body>
 </html>

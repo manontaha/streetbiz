@@ -217,7 +217,8 @@ function renderTabs() {
   bar.appendChild(add);
 }
 
-function render() { renderTabs(); renderPanels(); }
+function render() {
+  setTimeout(_lsSave, 100); renderTabs(); renderPanels(); }
 
 function renderPanels() {
   var c = document.getElementById('portionsContainer');
@@ -404,6 +405,28 @@ document.getElementById('fileInput').addEventListener('change', function(e){
   };
   reader.readAsText(file); e.target.value='';
 });
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_portion_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    if(typeof portions !== 'undefined') _d['portions'] = portions;
+    if(typeof activeIdx !== 'undefined') _d['activeIdx'] = activeIdx;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    if(_s['portions']) { portions = _s['portions']; }
+    if(_s['activeIdx']) { activeIdx = _s['activeIdx']; }
+  }catch(e){}
+}
+// Charger au démarrage
+_lsLoad();
+render();
 </script>
 </body>
 </html>

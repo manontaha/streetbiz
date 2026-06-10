@@ -257,6 +257,40 @@ document.getElementById('fileInput').addEventListener('change', function(e){
 });
 
 renderSpecialistes();
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_options_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    var _el_notesLibres = document.getElementById('notesLibres');
+    if(_el_notesLibres) _d['notesLibres'] = _el_notesLibres.value;
+    if(typeof specialistes !== 'undefined') _d['specialistes'] = specialistes;
+    if(typeof strategie !== 'undefined') _d['strategie'] = strategie;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    var _rel_notesLibres = document.getElementById('notesLibres');
+    if(_rel_notesLibres && _s['notesLibres']) _rel_notesLibres.value = _s['notesLibres'];
+    if(_s['specialistes']) { specialistes = _s['specialistes']; }
+    if(_s['strategie']) { strategie = _s['strategie']; }
+  }catch(e){}
+}
+// Attacher les listeners d'autosave aux inputs
+(function(){
+  var _ids = ["notesLibres"];
+  _ids.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', _lsSave);
+  });
+})();
+// Charger au démarrage
+_lsLoad();
+renderSpecialistes();
 </script>
 </body>
 </html>

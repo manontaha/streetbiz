@@ -51,6 +51,8 @@ main{padding:1.5rem}
 .actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem}
 .btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
 .btn-orange{background:var(--orange);color:var(--white)}
+.btn-black{background:var(--black);color:var(--white)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
 
 @media print{.consigne-block,.note,.tableur-banner,.note-box{display:none!important}
   .actions{display:none!important}
@@ -109,12 +111,17 @@ main{padding:1.5rem}
   <button class="btn-add" id="btnAddMaison" style="display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0">＋  Ajouter un produit maison</button>
 
   <div class="actions">
-    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
+    <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
+    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
+    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
   </div>
+  <input type="file" id="fileInput" accept=".json" style="display:none">
 </main>
 </div>
+<div class="toast" id="toast"></div>
 
 <script>
+function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
 var principaux = ['','',''];
 var maison = ['',''];
 
@@ -155,8 +162,64 @@ document.getElementById('btnAddMaison').addEventListener('click', function() {
 
 document.getElementById('btnPrint').addEventListener('click', function() { window.print(); });
 
+document.getElementById('btnSave').addEventListener('click', function(){
+  var data = JSON.stringify({
+    fiche:'concept', v:1, date:new Date().toISOString(),
+    concept: document.querySelector('.concept-input') ? document.querySelector('.concept-input').value : '',
+    principaux: principaux,
+    maison: maison
+  }, null, 2);
+  var a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(data);
+  a.download = 'streetbiz-fiche-concept.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  showToast('Données sauvegardées ✓');
+});
+
+document.getElementById('btnLoad').addEventListener('click', function(){
+  document.getElementById('fileInput').click();
+});
+
+document.getElementById('fileInput').addEventListener('change', function(e){
+  var file = e.target.files[0]; if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      var d = JSON.parse(ev.target.result);
+      if(d.concept){var ci=document.querySelector('.concept-input');if(ci)ci.value=d.concept;}
+      if(d.principaux){principaux=d.principaux;renderList(principaux,'principauxList','principal');}
+      if(d.maison){maison=d.maison;renderList(maison,'maisonList','maison');}
+      showToast('Données restaurées ✓');
+    } catch(err){showToast('Fichier invalide');}
+  };
+  reader.readAsText(file); e.target.value='';
+});
+
 renderList(principaux, 'principauxList', 'principal');
 renderList(maison, 'maisonList', 'maison');
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_concept_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    if(typeof principaux !== 'undefined') _d['principaux'] = principaux;
+    if(typeof maison !== 'undefined') _d['maison'] = maison;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    if(_s['principaux']) { principaux = _s['principaux']; }
+    if(_s['maison']) { maison = _s['maison']; }
+  }catch(e){}
+}
+// Charger au démarrage
+_lsLoad();
+renderList(principaux,'principauxList','principal');
+  renderList(maison,'maisonList','maison');
 </script>
 </body>
 </html>

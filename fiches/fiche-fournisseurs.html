@@ -188,6 +188,7 @@ function renderSection(data, containerId, type){
 }
 
 function render(){
+  setTimeout(_lsSave, 100);
   renderSection(ingredients, 'ingredientsList', 'ing');
   renderSection(emballages, 'emballagesList', 'emb');
 }
@@ -311,6 +312,28 @@ document.getElementById('fileInput').addEventListener('change', function(e){
   reader.readAsText(file); e.target.value = '';
 });
 
+render();
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_fourn_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    if(typeof ingredients !== 'undefined') _d['ingredients'] = ingredients;
+    if(typeof emballages !== 'undefined') _d['emballages'] = emballages;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    if(_s['ingredients']) { ingredients = _s['ingredients']; }
+    if(_s['emballages']) { emballages = _s['emballages']; }
+  }catch(e){}
+}
+// Charger au démarrage
+_lsLoad();
 render();
 </script>
 </body>

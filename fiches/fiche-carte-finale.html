@@ -267,6 +267,7 @@ function renderMenus(){
 }
 
 function render(){
+  setTimeout(_lsSave, 100);
   renderProduits(principaux, 'principauxList');
   renderProduits(complementaires, 'complementairesList');
   renderMenus();
@@ -298,6 +299,30 @@ document.getElementById('fileInput').addEventListener('change', function(e){
   reader.readAsText(file); e.target.value='';
 });
 
+render();
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_carte_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    if(typeof principaux !== 'undefined') _d['principaux'] = principaux;
+    if(typeof complementaires !== 'undefined') _d['complementaires'] = complementaires;
+    if(typeof menus !== 'undefined') _d['menus'] = menus;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    if(_s['principaux']) { principaux = _s['principaux']; }
+    if(_s['complementaires']) { complementaires = _s['complementaires']; }
+    if(_s['menus']) { menus = _s['menus']; }
+  }catch(e){}
+}
+// Charger au démarrage
+_lsLoad();
 render();
 </script>
 </body>

@@ -140,6 +140,7 @@ function newP(){return {nom:'',cond:'',ht:'',ttc:'',unitaire:'',prixMin:''};}
 function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
 
 function render(){
+  setTimeout(_lsSave, 100);
   var list = document.getElementById('produitsList');
   list.innerHTML = '';
   produits.forEach(function(p, i){
@@ -232,6 +233,26 @@ document.getElementById('fileInput').addEventListener('change', function(e){
   reader.readAsText(file); e.target.value='';
 });
 
+render();
+
+// ── AUTOSAVE localStorage ──
+var _LSKEY = 'sb_prodcomp_v2';
+function _lsSave(){
+  try{
+    var _d = {};
+    if(typeof produits !== 'undefined') _d['produits'] = produits;
+    localStorage.setItem(_LSKEY, JSON.stringify(_d));
+  }catch(e){}
+}
+function _lsLoad(){
+  try{
+    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
+    if(!_s) return;
+    if(_s['produits']) { produits = _s['produits']; }
+  }catch(e){}
+}
+// Charger au démarrage
+_lsLoad();
 render();
 </script>
 </body>

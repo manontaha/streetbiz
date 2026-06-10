@@ -168,10 +168,7 @@ main{padding:1.5rem}
 
   <div class="actions">
     <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
-    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
-    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
   </div>
-  <input type="file" id="fileInput" accept=".json" style="display:none">
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -179,9 +176,34 @@ main{padding:1.5rem}
 <script>
 function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
 
+// AUTO-SAVE
+var RKEY = 'sb_revenu_v1';
+function saveRevenu(){
+  var d = {};
+  ['f-revenu','f-revenu2','f-ca','f-ca2','f-panier','f-ventes'].forEach(function(id){
+    var el = document.getElementById(id); if(el) d[id]=el.value;
+  });
+  try{localStorage.setItem(RKEY, JSON.stringify(d));}catch(e){}
+}
+function loadRevenu(){
+  try{
+    var s = JSON.parse(localStorage.getItem(RKEY)||'null');
+    if(!s) return;
+    ['f-revenu','f-revenu2','f-ca','f-ca2','f-panier','f-ventes'].forEach(function(id){
+      var el = document.getElementById(id); if(el && s[id]) el.value=s[id];
+    });
+  }catch(e){}
+}
+['f-revenu','f-revenu2','f-ca','f-ca2','f-panier','f-ventes'].forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) el.addEventListener('input', saveRevenu);
+});
+loadRevenu();
+
 document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
 
-document.getElementById('btnSave').addEventListener('click',function(){
+// btnSave disabled - localStorage
+document.getElementById && false && (function(){
   var data = JSON.stringify({
     fiche:'revenu', v:2, date:new Date().toISOString(),
     revenu: document.getElementById('f-revenu').value,
