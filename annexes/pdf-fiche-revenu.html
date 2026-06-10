@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fiche-Revenu — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.6;padding:1.5cm}
+@page{size:A4;margin:1.5cm}
+@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+
+.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
+.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.cp{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:white;padding:2px 7px;margin-right:4px}
+.note{border-left:4px solid var(--orange);background:#fff5f0;padding:8px 14px;margin-bottom:1.5rem;font-size:9.5pt}
+.note strong{color:var(--orange)}
+
+.section-bar{background:var(--black);border-left:4px solid var(--orange);padding:8px 12px;margin-bottom:1rem;margin-top:1.5rem;font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
+
+.calcul-bloc{border:1px solid var(--border);margin-bottom:1.5rem}
+.calc-row{display:flex;align-items:center;min-height:52px;border-bottom:1px solid #eee;padding:0 16px;gap:12px}
+.calc-row:last-child{border-bottom:none}
+.calc-row.result-olive{background:rgba(109,122,47,.06)}
+.calc-row.result-orange{background:rgba(242,106,33,.06)}
+.calc-row.op-row{background:#f9f9f9;justify-content:center}
+.calc-lbl{flex:1;font-size:10pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.calc-lbl.olive{color:var(--olive)}
+.calc-lbl.orange{color:var(--orange)}
+.calc-field{border-bottom:2px solid var(--border);width:130px;height:36px;flex-shrink:0}
+.calc-field.olive{border-bottom-color:var(--olive)}
+.calc-field.orange{border-bottom-color:var(--orange)}
+.calc-unit{font-size:10pt;font-weight:700;color:var(--muted);white-space:nowrap}
+.calc-unit.olive{color:var(--olive)}
+.calc-unit.orange{color:var(--orange)}
+.calc-op{font-family:'Archivo Black',sans-serif;font-size:22pt;color:var(--orange)}
+
+.footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Revenu</em></h1>
+      <p class="header-sub">Calcule le chiffre d'affaires minimum pour te payer</p>
+    </div>
+    <div class="fiche-badge">Annexe 7 / 10</div>
+  </div>
+</header>
+
+<div class="consigne">
+  <div class="consigne-title">📋 Comment remplir cette fiche</div>
+  <span class="cp" style="background:var(--olive)">Checkpoint 5 · Mission 1 · Étape 2</span> Note ton objectif de revenu mensuel. <span class="cp" style="background:var(--orange)">Étape 3</span> Multiplie par <strong>3</strong> → CA minimum. <span class="cp" style="background:var(--black)">Mission 3 · Étape 2</span> Après ta fiche-panier-moyen : CA ÷ panier moyen → objectif de ventes.
+</div>
+<div class="note"><strong>Ne sous-estime pas tes besoins financiers.</strong> Combien aimerais-tu pouvoir te payer au minimum chaque mois ?</div>
+
+<div class="section-bar" style="margin-top:0">1 — Mon objectif de revenu mensuel</div>
+<div class="calcul-bloc">
+  <div class="calc-row result-olive">
+    <div class="calc-lbl olive">Mon objectif de revenu mensuel</div>
+    <div class="calc-field olive"></div>
+    <div class="calc-unit olive">€ / mois</div>
+  </div>
+</div>
+
+<div class="section-bar">2 — CA minimum à réaliser</div>
+<div class="calcul-bloc">
+  <div class="calc-row">
+    <div class="calc-lbl">Mon revenu souhaité</div>
+    <div class="calc-field"></div>
+    <div class="calc-unit">€ / mois</div>
+  </div>
+  <div class="calc-row op-row"><div class="calc-op">× 3</div></div>
+  <div class="calc-row result-orange">
+    <div class="calc-lbl orange">CA minimum à réaliser</div>
+    <div class="calc-field orange"></div>
+    <div class="calc-unit orange">€ / mois</div>
+  </div>
+</div>
+
+<div class="section-bar">3 — Objectif mensuel de ventes <span style="font-size:9pt;font-family:'Montserrat',sans-serif;font-weight:400">(après ta fiche-panier-moyen)</span></div>
+<div class="calcul-bloc">
+  <div class="calc-row">
+    <div class="calc-lbl">CA à réaliser</div>
+    <div class="calc-field"></div>
+    <div class="calc-unit">€ / mois</div>
+  </div>
+  <div class="calc-row">
+    <div class="calc-lbl">Mon panier moyen</div>
+    <div class="calc-field"></div>
+    <div class="calc-unit">€</div>
+  </div>
+  <div class="calc-row op-row"><div style="font-size:10pt;color:var(--muted)">CA ÷ panier moyen =</div></div>
+  <div class="calc-row result-olive">
+    <div class="calc-lbl olive">Objectif mensuel de ventes</div>
+    <div class="calc-field olive"></div>
+    <div class="calc-unit olive">ventes / mois</div>
+  </div>
+</div>
+
+<div class="footer">StreetBiz · Kit de validation</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fiche-Options Fournisseurs — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.6;padding:1.5cm}
+@page{size:A4;margin:1.5cm}
+@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar,.notes-head{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+
+.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1.5rem;font-size:9.5pt;line-height:1.6}
+.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+
+.section-bar{background:var(--black);border-left:4px solid var(--orange);padding:8px 12px;margin-bottom:1rem;margin-top:1.5rem;font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
+
+.strat-grid{display:flex;gap:16px;margin-bottom:1.5rem}
+.strat-card{flex:1;border:2px solid var(--border);padding:16px;position:relative}
+.strat-card-title{font-family:'Archivo Black',sans-serif;font-size:13pt;text-transform:uppercase;margin-bottom:8px}
+.strat-card-desc{font-size:10pt;color:var(--muted);line-height:1.5}
+.strat-check{position:absolute;top:12px;right:12px;width:24px;height:24px;border:2px solid var(--border)}
+
+.produit-line{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.produit-num{background:var(--orange);color:white;font-family:'Archivo Black',sans-serif;font-size:13pt;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.produit-cols{flex:1;display:flex;gap:10px}
+.produit-field{flex:1;border-bottom:2px solid var(--black);height:32px}
+.produit-sub{font-size:8pt;color:var(--muted);margin-top:2px;text-align:center}
+
+.notes-block{border:1px solid var(--border);margin-bottom:1rem}
+.notes-head{background:var(--black);border-left:4px solid var(--olive);padding:8px 14px;font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
+.notes-lines{padding:14px}
+.notes-line{border-bottom:1px solid #ddd;height:32px;margin-bottom:4px}
+
+.footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Options</em><br>fournisseurs</h1>
+      <p class="header-sub">Définis ta stratégie fournisseurs</p>
+    </div>
+    <div class="fiche-badge">Annexe 5 / 10</div>
+  </div>
+</header>
+
+<div class="consigne">
+  <div class="consigne-title">📋 Comment remplir cette fiche</div>
+  <strong>Étape 1</strong> — Coche ta stratégie. <strong>Étape 2</strong> — Liste les produits qui méritent un spécialiste. <strong>Étape 3</strong> — Note les fournisseurs identifiés.
+</div>
+
+<div class="section-bar" style="margin-top:0">1. Choisis ta stratégie fournisseurs</div>
+<div class="strat-grid">
+  <div class="strat-card">
+    <div class="strat-check"></div>
+    <div class="strat-card-title">Tout-en-un</div>
+    <div class="strat-card-desc">Tu centralises tout chez un grossiste (Metro, Promocash…). Gain de temps, livraisons simplifiées.</div>
+  </div>
+  <div class="strat-card">
+    <div class="strat-check"></div>
+    <div class="strat-card-title">Mixte</div>
+    <div class="strat-card-desc">Grossiste pour les bases + spécialiste local pour tes produits signature. Plus différenciant.</div>
+  </div>
+</div>
+
+<div class="section-bar">2. Produits qui méritent un spécialiste</div>
+<div style="display:flex;gap:8px;margin-bottom:6px"><div style="flex:1;font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding-left:44px">Produit</div><div style="flex:1;font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Spécialiste envisagé</div></div>
+<div class="produit-line"><div class="produit-num">1</div><div class="produit-cols"><div class="produit-field"></div><div class="produit-field"></div></div></div>
+<div class="produit-line"><div class="produit-num">2</div><div class="produit-cols"><div class="produit-field"></div><div class="produit-field"></div></div></div>
+<div class="produit-line"><div class="produit-num">3</div><div class="produit-cols"><div class="produit-field"></div><div class="produit-field"></div></div></div>
+<div class="produit-line"><div class="produit-num">4</div><div class="produit-cols"><div class="produit-field"></div><div class="produit-field"></div></div></div>
+<div class="produit-line"><div class="produit-num">5</div><div class="produit-cols"><div class="produit-field"></div><div class="produit-field"></div></div></div>
+
+<div class="section-bar">3. Notes libres — fournisseurs identifiés</div>
+<div class="notes-block">
+  <div class="notes-head">Coordonnées, questions à poser, préférences…</div>
+  <div class="notes-lines">
+    <div class="notes-line"></div><div class="notes-line"></div><div class="notes-line"></div>
+    <div class="notes-line"></div><div class="notes-line"></div><div class="notes-line"></div>
+    <div class="notes-line"></div><div class="notes-line"></div><div class="notes-line"></div>
+  </div>
+</div>
+
+<div class="footer">StreetBiz · Kit de validation</div>
+</body>
+</html>

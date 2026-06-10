@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annexes — Kit de validation StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7;min-height:100vh}
+.page{max-width:680px;margin:0 auto;padding:0 0 3rem}
+
+header{background:var(--black);padding:2rem 1.5rem 1.75rem;border-bottom:4px solid var(--orange)}
+.brand{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(28px,7vw,42px);text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:8px}
+header h1 em{color:var(--orange);font-style:normal}
+.header-sub{font-size:13px;color:#a8a498;line-height:1.6}
+
+.intro{padding:1.5rem;background:var(--white);border-bottom:1px solid var(--border)}
+.intro p{font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:.5rem}
+.intro p:last-child{margin-bottom:0}
+.intro strong{color:var(--orange)}
+
+.how-to{background:var(--black);border-left:4px solid var(--olive);padding:14px 1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.7}
+.how-to strong{color:#9ab846}
+
+.fiches-list{padding:1.5rem;display:flex;flex-direction:column;gap:10px}
+
+.fiche-link{display:flex;align-items:stretch;background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);text-decoration:none;color:var(--ink);overflow:hidden;transition:box-shadow .15s}
+.fiche-link:hover{box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.fiche-link.olive{border-left-color:var(--olive)}
+
+.fiche-num{width:44px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fiche-link.olive .fiche-num{background:var(--olive)}
+
+.fiche-body{flex:1;padding:12px 14px}
+.fiche-badge-sm{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.fiche-title{font-family:'Archivo Black',sans-serif;font-size:14px;text-transform:uppercase;color:var(--black);margin-bottom:2px}
+.fiche-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+.fiche-action{display:flex;align-items:center;padding:0 14px;gap:6px;flex-shrink:0;border-left:1px solid var(--border)}
+.fiche-action span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--orange)}
+.fiche-action .arr{font-size:16px;color:var(--muted)}
+
+footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border)}
+footer p{font-size:11px;color:var(--muted)}
+footer strong{color:var(--orange)}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="brand">StreetBiz · Kit de validation</div>
+  <h1>Tes <em>10 annexes</em><br>à imprimer</h1>
+  <p class="header-sub">Clique sur une fiche pour l'ouvrir, puis imprime-la depuis ton navigateur.</p>
+</header>
+
+<div class="intro">
+  <p>Ces fiches sont conçues pour être <strong>imprimées et remplies à la main</strong>.</p>
+  <p>Si tu as plusieurs portions ou recettes, <strong>imprime la fiche autant de fois que nécessaire</strong>.</p>
+</div>
+
+<div class="how-to">
+  <strong>Comment imprimer ?</strong> Clique sur la fiche → elle s'ouvre dans un nouvel onglet → fais <strong>Ctrl+P</strong> (PC) ou <strong>Cmd+P</strong> (Mac) → sélectionne ton imprimante ou "Enregistrer en PDF".
+</div>
+
+<div class="fiches-list">
+
+  <a class="fiche-link" href="pdf-fiche-concept.html" target="_blank">
+    <div class="fiche-num">1</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 1 / 10</div>
+      <div class="fiche-title">Fiche-Concept</div>
+      <div class="fiche-desc">Nom du concept · Produits principaux · Produits maison</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link olive" href="pdf-fiche-portion.html" target="_blank">
+    <div class="fiche-num">2</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 2 / 10 · Une fiche par portion</div>
+      <div class="fiche-title">Fiche-Portion</div>
+      <div class="fiche-desc">Ingrédients · Emballages · Coût total de la portion</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link" href="pdf-fiche-recette.html" target="_blank">
+    <div class="fiche-num">3</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 3 / 10 · Une fiche par recette</div>
+      <div class="fiche-title">Fiche-Recette</div>
+      <div class="fiche-desc">Rendement · Ingrédients · Coût total de la recette</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link olive" href="pdf-fiche-fournisseurs.html" target="_blank">
+    <div class="fiche-num">4</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 4 / 10</div>
+      <div class="fiche-title">Fiche-Fournisseurs</div>
+      <div class="fiche-desc">Ingrédients · Emballages · 3 fournisseurs par produit · Tarifs TTC</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link" href="pdf-fiche-options-fournisseurs.html" target="_blank">
+    <div class="fiche-num">5</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 5 / 10</div>
+      <div class="fiche-title">Fiche-Options fournisseurs</div>
+      <div class="fiche-desc">Stratégie fournisseurs · Produits spécialistes · Notes libres</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link olive" href="pdf-fiche-prix-de-vente.html" target="_blank">
+    <div class="fiche-num">6</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 6 / 10</div>
+      <div class="fiche-title">Fiche-Prix de vente</div>
+      <div class="fiche-desc">Coût de revient × 3 · Prix min. conseillé · Acceptabilité client</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link" href="pdf-fiche-revenu.html" target="_blank">
+    <div class="fiche-num">7</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 7 / 10</div>
+      <div class="fiche-title">Fiche-Revenu</div>
+      <div class="fiche-desc">Objectif de revenu · CA minimum à réaliser · Objectif de ventes</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link olive" href="pdf-fiche-panier-moyen.html" target="_blank">
+    <div class="fiche-num">8</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 8 / 10</div>
+      <div class="fiche-title">Fiche-Panier moyen</div>
+      <div class="fiche-desc">Produits & prix · 10 commandes imaginées · Calcul du panier moyen</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link" href="pdf-fiche-produits-complementaires.html" target="_blank">
+    <div class="fiche-num">9</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 9 / 10</div>
+      <div class="fiche-title">Fiche-Produits complémentaires</div>
+      <div class="fiche-desc">Conditionnement · Tarifs HT/TTC · Coût unitaire · Prix min. conseillé</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+  <a class="fiche-link olive" href="pdf-fiche-carte-finale.html" target="_blank">
+    <div class="fiche-num">10</div>
+    <div class="fiche-body">
+      <div class="fiche-badge-sm">Annexe 10 / 10</div>
+      <div class="fiche-title">Fiche-Carte finale</div>
+      <div class="fiche-desc">Prix définitifs · Produits principaux & complémentaires · Menus</div>
+    </div>
+    <div class="fiche-action"><span>Ouvrir</span><span class="arr">→</span></div>
+  </a>
+
+</div>
+
+<footer><p><strong>StreetBiz</strong> · Kit de validation · © 2026 Manon Taha</p></footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fiche-Carte Finale — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.6;padding:1.5cm}
+@page{size:A4;margin:1.5cm}
+@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar,.menu-head{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+
+.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
+.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.note{border-left:4px solid var(--olive);background:#f5f7ee;padding:8px 14px;margin-bottom:1.5rem;font-size:9.5pt}
+.note strong{color:var(--olive)}
+
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:1rem;margin-top:1.5rem;font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
+.section-bar.olive{border-left:4px solid var(--olive)}
+.section-bar.orange{border-left:4px solid var(--orange)}
+
+table{width:100%;border-collapse:collapse;margin-bottom:1.5rem}
+table th{font-size:9pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:8px 10px;border:1px solid #999;text-align:center;color:white}
+table th.dark{background:var(--black);text-align:left}
+table th.olive{background:var(--olive)}
+table th.orange{background:var(--orange)}
+table td{border:1px solid #ddd;height:36px;padding:0 10px}
+table td.n{text-align:center;font-weight:700;color:white;width:28px;font-size:10pt}
+table td.n.black{background:var(--black)}
+table td.n.orange{background:var(--orange)}
+
+.menu-block{border:1px solid var(--border);margin-bottom:1.25rem;page-break-inside:avoid}
+.menu-head{background:var(--black);padding:10px 14px;display:flex;align-items:center;gap:12px}
+.menu-num{background:var(--olive);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:14pt;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.menu-nom-label{color:#999;font-size:9pt;white-space:nowrap}
+.menu-nom-line{flex:1;border-bottom:1.5px solid #444;height:26px}
+.menu-body{display:grid;grid-template-columns:1fr 160px}
+.menu-compo{padding:14px 16px;border-right:1px solid var(--border)}
+.menu-compo-lbl{font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.menu-compo-line{border-bottom:1px solid #ddd;height:30px;margin-bottom:6px}
+.menu-prix{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;gap:8px}
+.menu-prix-lbl{font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--olive);text-align:center}
+.menu-prix-field{border-bottom:2px solid var(--olive);width:90px;height:36px;display:block}
+.menu-prix-unit{font-size:13pt;font-weight:700;color:var(--olive);text-align:center}
+
+.footer{margin-top:1rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Carte finale</em></h1>
+      <p class="header-sub">Fixe tes prix définitifs et crée tes menus</p>
+    </div>
+    <div class="fiche-badge">Annexe 10 / 10</div>
+  </div>
+</header>
+
+<div class="consigne">
+  <div class="consigne-title">📋 Comment remplir cette fiche</div>
+  Reporte le <strong>prix min. conseillé</strong> depuis tes fiches précédentes. Fixe le <strong>prix définitif</strong> — arrondi au chiffre supérieur. Crée tes <strong>menus</strong> avec un prix légèrement avantageux.
+</div>
+<div class="note"><strong>On arrondit toujours au chiffre supérieur — jamais au résultat exact d'une multiplication.</strong> Ex : prix min. 3,34 € → prix définitif : 3,50 € · 3,90 € · 4,00 € · 4,50 € ou 4,90 €.</div>
+
+<div class="section-bar olive" style="margin-top:0">1 — Produits principaux (3 max)</div>
+<table>
+  <tr><th class="dark" style="width:28px">#</th><th class="dark">Produit</th><th class="orange" style="width:140px">Prix min. conseillé</th><th class="olive" style="width:140px">Prix définitif</th></tr>
+  <tr><td class="n black">1</td><td></td><td></td><td></td></tr>
+  <tr><td class="n black">2</td><td></td><td></td><td></td></tr>
+  <tr><td class="n black">3</td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="section-bar orange">2 — Produits complémentaires (8 max)</div>
+<table>
+  <tr><th class="dark" style="width:28px">#</th><th class="dark">Produit</th><th class="orange" style="width:140px">Prix min. conseillé</th><th class="olive" style="width:140px">Prix définitif</th></tr>
+  <tr><td class="n orange">1</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">2</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">3</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">4</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">5</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">6</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">7</td><td></td><td></td><td></td></tr>
+  <tr><td class="n orange">8</td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="section-bar olive">3 — Menus (3 max)</div>
+<div class="menu-block">
+  <div class="menu-head"><div class="menu-num">1</div><div class="menu-nom-label">Nom du menu :</div><div class="menu-nom-line"></div></div>
+  <div class="menu-body"><div class="menu-compo"><div class="menu-compo-lbl">Composition</div><div class="menu-compo-line"></div><div class="menu-compo-line"></div></div><div class="menu-prix"><div class="menu-prix-lbl">Prix du menu</div><div class="menu-prix-field"></div><div class="menu-prix-unit">€</div></div></div>
+</div>
+<div class="menu-block">
+  <div class="menu-head"><div class="menu-num">2</div><div class="menu-nom-label">Nom du menu :</div><div class="menu-nom-line"></div></div>
+  <div class="menu-body"><div class="menu-compo"><div class="menu-compo-lbl">Composition</div><div class="menu-compo-line"></div><div class="menu-compo-line"></div></div><div class="menu-prix"><div class="menu-prix-lbl">Prix du menu</div><div class="menu-prix-field"></div><div class="menu-prix-unit">€</div></div></div>
+</div>
+<div class="menu-block">
+  <div class="menu-head"><div class="menu-num">3</div><div class="menu-nom-label">Nom du menu :</div><div class="menu-nom-line"></div></div>
+  <div class="menu-body"><div class="menu-compo"><div class="menu-compo-lbl">Composition</div><div class="menu-compo-line"></div><div class="menu-compo-line"></div></div><div class="menu-prix"><div class="menu-prix-lbl">Prix du menu</div><div class="menu-prix-field"></div><div class="menu-prix-unit">€</div></div></div>
+</div>
+
+<div class="footer">StreetBiz · Kit de validation</div>
+</body>
+</html>

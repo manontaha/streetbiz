@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fiche-Panier Moyen — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:9.5pt;line-height:1.5;padding:1.5cm}
+@page{size:A4;margin:1.5cm}
+@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar,.col-head,.cmd-head,.calcul-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+
+.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
+.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.note{border-left:4px solid var(--orange);background:#fff5f0;padding:8px 14px;margin-bottom:1.5rem;font-size:9.5pt}
+.note strong{color:var(--orange)}
+.section-bar{background:var(--black);border-left:4px solid var(--orange);padding:8px 12px;margin-bottom:1rem;margin-top:1.25rem;font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
+
+/* PRODUITS */
+.produits-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.5rem}
+.col-head{padding:7px 12px;font-family:'Archivo Black',sans-serif;font-size:10pt;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+.produit-line{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.produit-num{color:var(--white);font-family:'Archivo Black',sans-serif;font-size:12pt;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.produit-num.black{background:var(--black)}
+.produit-num.olive{background:var(--olive)}
+.produit-fields{flex:1;display:flex;gap:8px;align-items:flex-end}
+.produit-field{flex:1;border-bottom:2px solid var(--black);height:28px}
+.prix-field{width:52px;border-bottom:2px solid var(--orange);height:28px;flex-shrink:0}
+.prix-eu{font-size:10pt;font-weight:700;color:var(--orange)}
+
+/* COMMANDES */
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
+.cmd-block{border:1px solid var(--border)}
+.cmd-head{background:var(--black);padding:6px 10px;display:flex;align-items:center;gap:8px}
+.cmd-badge{background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:12pt;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cmd-lbl{font-family:'Archivo Black',sans-serif;font-size:10pt;color:var(--white);text-transform:uppercase}
+.cmd-rows{padding:4px}
+.cmd-row{display:grid;grid-template-columns:1fr 52px;border-bottom:1px solid #f0f0f0;height:24px}
+.cmd-row:last-child{border-bottom:none}
+.cmd-nom{border-right:1px solid #f0f0f0;padding:0 6px;font-size:9pt;display:flex;align-items:center}
+.cmd-mnt{padding:0 4px;font-size:9pt;display:flex;align-items:center;justify-content:flex-end;color:var(--muted)}
+.cmd-total-row{background:var(--black);padding:5px 10px;display:flex;justify-content:space-between;align-items:center}
+.cmd-total-lbl{font-size:7.5pt;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.5px}
+.cmd-total-field{border-bottom:1.5px solid var(--orange);width:60px;height:20px;display:inline-block}
+
+/* CALCUL FINAL */
+.calcul-bar{background:var(--black);padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.calc-lbl{font-size:9.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.5)}
+.calc-field{border-bottom:2px solid var(--orange);width:100px;height:28px;display:inline-block}
+.calc-field.olive{border-bottom-color:#9ab846}
+.calc-op{font-family:'Archivo Black',sans-serif;font-size:14pt;color:var(--muted)}
+.calc-result-lbl{font-size:9.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#9ab846}
+
+.footer{margin-top:1rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Panier moyen</em></h1>
+      <p class="header-sub">Estime le montant moyen dépensé à chaque passage en caisse</p>
+    </div>
+    <div class="fiche-badge">Annexe 8 / 10</div>
+  </div>
+</header>
+
+<div class="consigne">
+  <div class="consigne-title">📋 Comment remplir cette fiche</div>
+  Liste tes produits et leurs prix. Imagine tes 10 premiers clients — note ce que chacun commande et le total. Additionne les 10 totaux ÷ 10 = ton panier moyen.
+</div>
+<div class="note"><strong>Un passage en caisse ≠ une seule personne.</strong> Un client peut acheter pour toute sa famille.</div>
+
+<div class="section-bar" style="margin-top:0">1 — Liste tes produits et leurs prix</div>
+<div class="produits-grid">
+  <div>
+    <div class="col-head" style="background:var(--black)">Produits principaux (3 max)</div>
+    <div class="produit-line"><div class="produit-num black">1</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num black">2</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num black">3</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+  </div>
+  <div>
+    <div class="col-head" style="background:var(--olive)">Produits complémentaires (8 max)</div>
+    <div class="produit-line"><div class="produit-num olive">1</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">2</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">3</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">4</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">5</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">6</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">7</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+    <div class="produit-line"><div class="produit-num olive">8</div><div class="produit-fields"><div class="produit-field"></div><div class="prix-field"></div><span class="prix-eu">€</span></div></div>
+  </div>
+</div>
+
+<div class="section-bar">2 — Imagine tes 10 premiers clients</div>
+<div class="cmd-grid">
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">1</div><div class="cmd-lbl">Commande 1</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">2</div><div class="cmd-lbl">Commande 2</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">3</div><div class="cmd-lbl">Commande 3</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">4</div><div class="cmd-lbl">Commande 4</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">5</div><div class="cmd-lbl">Commande 5</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">6</div><div class="cmd-lbl">Commande 6</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">7</div><div class="cmd-lbl">Commande 7</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">8</div><div class="cmd-lbl">Commande 8</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">9</div><div class="cmd-lbl">Commande 9</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+  <div class="cmd-block"><div class="cmd-head"><div class="cmd-badge">10</div><div class="cmd-lbl">Commande 10</div></div><div class="cmd-rows"><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div><div class="cmd-row"><div class="cmd-nom"></div><div class="cmd-mnt">€</div></div></div><div class="cmd-total-row"><span class="cmd-total-lbl">Total</span><div class="cmd-total-field"></div></div></div>
+</div>
+
+<div class="section-bar">3 — Calcule ton panier moyen</div>
+<div class="calcul-bar">
+  <span class="calc-lbl">Total des 10 commandes</span>
+  <div class="calc-field"></div>
+  <span style="color:var(--orange);font-weight:700">€</span>
+  <span class="calc-op">÷ 10 =</span>
+  <span class="calc-result-lbl">Mon panier moyen</span>
+  <div class="calc-field olive"></div>
+  <span style="color:#9ab846;font-weight:700">€</span>
+</div>
+
+<div class="footer">StreetBiz · Kit de validation</div>
+</body>
+</html>

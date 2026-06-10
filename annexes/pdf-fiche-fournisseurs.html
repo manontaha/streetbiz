@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fiche-Fournisseurs — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.5;padding:1.5cm}
+@page{size:A4;margin:1.5cm}
+@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar,.produit-head{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+
+.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
+.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.note{border-left:4px solid var(--olive);background:#f5f7ee;padding:8px 12px;margin-bottom:1.5rem;font-size:9.5pt;color:var(--ink)}
+.note strong{color:var(--olive)}
+
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:1rem;margin-top:1.5rem;font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
+.section-bar.olive{border-left:4px solid var(--olive)}
+.section-bar.orange{border-left:4px solid var(--orange)}
+
+.produit-block{border:1px solid var(--border);margin-bottom:1rem;page-break-inside:avoid}
+.produit-head{background:var(--black);padding:8px 12px;display:flex;align-items:center;gap:10px}
+.produit-num{color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13pt;width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.produit-num.olive{background:var(--olive)}
+.produit-num.orange{background:var(--orange)}
+.produit-label{color:#999;font-size:9pt;white-space:nowrap}
+.produit-name-line{flex:1;border-bottom:1.5px solid #444;height:24px}
+
+table{width:100%;border-collapse:collapse;font-size:10pt}
+table th{font-size:8.5pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:7px 10px;border:1px solid #999;text-align:center;color:white}
+table th.dark{background:var(--black);text-align:left}
+table th.orange{background:var(--orange)}
+table th.olive{background:var(--olive)}
+table td{border:1px solid #ddd;height:32px;padding:0 10px}
+table td.n{text-align:center;font-weight:700;color:#bbb;width:26px;background:#f9f9f9;font-size:9.5pt}
+.tva{font-size:9pt;font-style:italic;padding:6px 12px;border-top:1px solid var(--border)}
+
+.footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Fournisseurs</em></h1>
+      <p class="header-sub">À imprimer autant de fois que nécessaire</p>
+    </div>
+    <div class="fiche-badge">Annexe 4 / 10</div>
+  </div>
+</header>
+
+<div class="consigne">
+  <div class="consigne-title">📋 Comment remplir cette fiche</div>
+  Pour chaque produit, compare jusqu'à <strong>3 fournisseurs</strong>. Calcule le TTC : <strong>ingrédient → HT × 1,055</strong> · <strong>emballage → HT × 1,20</strong>.
+</div>
+<div class="note"><strong>Rappel TVA :</strong> Ingrédients alimentaires → HT × 1,055 = TTC &nbsp;·&nbsp; Emballages & accessoires → HT × 1,20 = TTC</div>
+
+<div class="section-bar olive" style="margin-top:0">🥗 Ingrédients</div>
+
+<div class="produit-block">
+  <div class="produit-head"><div class="produit-num olive">1</div><div class="produit-label">Produit :</div><div class="produit-name-line"></div></div>
+  <table><tr><th class="dark">Fournisseur</th><th class="orange" style="width:100px">Tarif HT</th><th class="orange" style="width:130px">Conditionnement</th><th class="olive" style="width:100px">Tarif TTC</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr></table>
+  <div class="tva" style="background:#f5f7ee;color:var(--olive)">HT × 1,055 = TTC</div>
+</div>
+
+<div class="produit-block">
+  <div class="produit-head"><div class="produit-num olive">2</div><div class="produit-label">Produit :</div><div class="produit-name-line"></div></div>
+  <table><tr><th class="dark">Fournisseur</th><th class="orange" style="width:100px">Tarif HT</th><th class="orange" style="width:130px">Conditionnement</th><th class="olive" style="width:100px">Tarif TTC</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr></table>
+  <div class="tva" style="background:#f5f7ee;color:var(--olive)">HT × 1,055 = TTC</div>
+</div>
+
+<div class="produit-block">
+  <div class="produit-head"><div class="produit-num olive">3</div><div class="produit-label">Produit :</div><div class="produit-name-line"></div></div>
+  <table><tr><th class="dark">Fournisseur</th><th class="orange" style="width:100px">Tarif HT</th><th class="orange" style="width:130px">Conditionnement</th><th class="olive" style="width:100px">Tarif TTC</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr></table>
+  <div class="tva" style="background:#f5f7ee;color:var(--olive)">HT × 1,055 = TTC</div>
+</div>
+
+<div class="produit-block">
+  <div class="produit-head"><div class="produit-num olive">4</div><div class="produit-label">Produit :</div><div class="produit-name-line"></div></div>
+  <table><tr><th class="dark">Fournisseur</th><th class="orange" style="width:100px">Tarif HT</th><th class="orange" style="width:130px">Conditionnement</th><th class="olive" style="width:100px">Tarif TTC</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr></table>
+  <div class="tva" style="background:#f5f7ee;color:var(--olive)">HT × 1,055 = TTC</div>
+</div>
+
+<div class="section-bar orange">📦 Emballages & accessoires</div>
+
+<div class="produit-block">
+  <div class="produit-head"><div class="produit-num orange">1</div><div class="produit-label">Produit :</div><div class="produit-name-line"></div></div>
+  <table><tr><th class="dark">Fournisseur</th><th class="orange" style="width:100px">Tarif HT</th><th class="orange" style="width:130px">Conditionnement</th><th class="olive" style="width:100px">Tarif TTC</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr></table>
+  <div class="tva" style="background:#fff5f0;color:var(--orange)">HT × 1,20 = TTC</div>
+</div>
+
+<div class="produit-block">
+  <div class="produit-head"><div class="produit-num orange">2</div><div class="produit-label">Produit :</div><div class="produit-name-line"></div></div>
+  <table><tr><th class="dark">Fournisseur</th><th class="orange" style="width:100px">Tarif HT</th><th class="orange" style="width:130px">Conditionnement</th><th class="olive" style="width:100px">Tarif TTC</th></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr></table>
+  <div class="tva" style="background:#fff5f0;color:var(--orange)">HT × 1,20 = TTC</div>
+</div>
+
+<div class="footer">StreetBiz · Kit de validation</div>
+</body>
+</html>
