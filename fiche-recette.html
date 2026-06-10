@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fiche-Recette — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+.page{max-width:700px;margin:0 auto}
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange)}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+main{padding:1.5rem}
+
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.consigne-body{display:flex;flex-direction:column;gap:10px}
+.consigne-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+
+.tableur-banner{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;line-height:1.6;color:var(--ink)}
+.tableur-banner strong{color:var(--olive)}
+
+/* TABS */
+.tabs-bar{display:flex;align-items:center;gap:0;border-bottom:2px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1.5rem}
+.tab{padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;border:none;background:transparent;color:var(--muted);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;min-height:44px;-webkit-appearance:none}
+.tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+.tab-add{padding:10px 14px;font-size:20px;cursor:pointer;border:none;background:transparent;color:var(--orange);border-bottom:3px solid transparent;margin-bottom:-2px;min-height:44px;-webkit-appearance:none}
+
+.recette-panel{display:none}
+.recette-panel.active{display:block}
+
+/* NOM RECETTE */
+.recette-name-wrap{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);padding:12px 14px;margin-bottom:1rem;display:flex;align-items:center;gap:12px}
+.recette-name-input{flex:1;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;color:var(--black);padding:4px 0;outline:none;-webkit-appearance:none;min-height:44px}
+.recette-name-input:focus{border-bottom-color:var(--orange)}
+.recette-name-input::placeholder{color:#c8c4bc;font-size:14px;font-weight:400;text-transform:none;font-family:'Montserrat',sans-serif}
+.btn-del-recette{background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* RENDEMENT */
+.rendement-block{background:var(--black);padding:12px 14px;margin-bottom:1rem}
+.rendement-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.rendement-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rendement-txt{font-size:11px;color:var(--muted);white-space:nowrap}
+.rendement-input{border:none;border-bottom:2px solid var(--orange);background:transparent;font-family:'Archivo Black',sans-serif;font-size:18px;color:var(--orange);width:90px;text-align:center;outline:none;-webkit-appearance:none;padding:2px;min-height:40px}
+.rendement-input::placeholder{color:#7a5030;font-size:12px;font-weight:400}
+.rendement-select{border:none;border-bottom:2px solid var(--muted);background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--muted);padding:0 6px;outline:none;-webkit-appearance:none;min-height:40px;cursor:pointer}
+.rendement-desc{width:100%;border:none;border-bottom:1px solid rgba(255,255,255,.15);background:transparent;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(250,249,244,.7);padding:4px 0;outline:none;-webkit-appearance:none;margin-top:4px}
+.rendement-desc::placeholder{color:rgba(255,255,255,.25);font-size:11px}
+
+/* SECTION BAR */
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:.75rem;display:flex;align-items:center}
+.section-bar-text{font-family:'Archivo Black',sans-serif;font-size:11px;text-transform:uppercase;color:var(--white)}
+
+/* ING CARD */
+.ing-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--olive);margin-bottom:8px;overflow:hidden}
+.ing-card-head{display:flex;align-items:center;background:var(--black)}
+.ing-num{width:36px;height:44px;background:var(--olive);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ing-name{flex:1;border:none;background:transparent;font-family:'Archivo Black',sans-serif;font-size:13px;text-transform:uppercase;color:var(--white);padding:10px 12px;outline:none;-webkit-appearance:none;min-height:44px}
+.ing-name::placeholder{color:#5a5a4a;font-weight:400;font-family:'Montserrat',sans-serif;font-size:12px;text-transform:none}
+.btn-del-ing{background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:14px;min-width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+.ing-row{display:flex;align-items:center;min-height:44px;border-top:1px solid var(--border)}
+.ing-row-lbl{padding:0 10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;border-right:1px solid var(--border);min-width:90px}
+.ing-row.olive{background:rgba(109,122,47,.06)}
+.ing-row.olive .ing-row-lbl{color:var(--olive)}
+.ing-row.orange-bg{background:rgba(242,106,33,.07)}
+.ing-row.orange-bg .ing-row-lbl{color:var(--orange)}
+.ing-row.dark{background:rgba(31,31,31,.06)}
+.ing-row.dark .ing-row-lbl{color:var(--black)}
+.ing-input{border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--black);padding:10px 10px;outline:none;-webkit-appearance:none;flex:1;min-height:44px}
+.ing-input::placeholder{color:#c8c4bc;font-style:italic;font-size:11.5px}
+.ing-select{border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--muted);padding:0 8px;outline:none;-webkit-appearance:none;height:44px;border-left:1px solid var(--border);min-width:60px;cursor:pointer}
+.ing-formula{font-size:10px;color:var(--muted);font-style:italic;padding:0 10px;flex:1;line-height:1.4}
+
+/* COÛT TOTAL */
+.cout-total{background:var(--black);padding:12px 14px;margin-top:.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cout-total-label{font-family:'Archivo Black',sans-serif;font-size:12px;text-transform:uppercase;color:var(--white)}
+.cout-total-right{display:flex;align-items:center;gap:8px}
+.cout-total-input{border:none;border-bottom:2px solid var(--orange);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;color:var(--orange);width:120px;text-align:right;outline:none;-webkit-appearance:none;padding:4px}
+.cout-total-input::placeholder{color:#7a5030;font-size:13px;font-weight:400}
+.cout-total-unit{font-size:11px;font-weight:700;color:var(--orange)}
+
+/* ADD BTN */
+.btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1rem;-webkit-appearance:none;border-radius:0}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-black{background:var(--black);color:var(--white)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
+.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
+.toast.show{transform:translateY(0);opacity:1}
+@media print{.consigne-block,.note,.tableur-banner,.note-box{display:none!important}.recette-panel{display:block!important;page-break-after:always}
+  .actions,.tabs-bar,.btn-add,.btn-del-ing,.btn-del-recette{display:none!important}
+  .recette-panel{display:block!important;page-break-after:always}
+  header,.ing-card-head,.ing-num,.rendement-block,.section-bar,.cout-total{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+}
+
+/* CONSIGNE */
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.consigne-body{display:flex;flex-direction:column;gap:12px}
+.consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.consigne-text{color:var(--ink)}
+.consigne-text div{margin-top:2px}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Recette</em></h1>
+    </div>
+    <div class="fiche-badge">Fiche 3 / 10</div>
+  </div>
+  <p class="header-sub">Détaille chaque recette maison — ingrédients, quantités et coûts</p>
+</header>
+<main>
+  <div class="consigne-block">
+    <div class="consigne-label">📋 Comment remplir cette fiche</div>
+    <div class="consigne-body">
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 2 · Mission 2</span>
+        <div>
+          <div>Pour chaque recette, précise le <strong>rendement</strong> (quantité produite).</div>
+          <div>Liste tous les <strong>ingrédients</strong> avec leurs <strong>quantités</strong>.</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 3 · Mission 3 · Étape 1</span>
+        <div>
+          <div>Reporte le <strong>fournisseur retenu</strong> pour chaque ingrédient.</div>
+          <div>Reporte le <strong>prix TTC</strong> et le <strong>conditionnement</strong>.</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--black)">Checkpoint 3 · Mission 3 · Étape 2</span>
+        <div>
+          <div>Calcule le <strong>coût réel</strong> de chaque ingrédient :</div>
+          <div>→ Quantité demandée par la recette × Prix TTC fournisseur ÷ Conditionnement fournisseur</div>
+          <div>Additionne → <strong>coût total de la recette</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tableur-banner">💡 <strong>Tu utilises le tableur StreetBiz ?</strong> Saisis tes données directement dedans — tout est connecté et les calculs se font automatiquement. Tu peux quand même remplir cette fiche pour obtenir une <strong>version PDF</strong> de ton travail.</div>
+
+  <div class="tabs-bar" id="tabsBar"></div>
+  <div id="recettesContainer"></div>
+
+  <div class="actions">
+    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
+    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
+    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
+  </div>
+  <input type="file" id="fileInput" accept=".json" style="display:none">
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var UNITES = ['g','ml','unités'];
+var recettes = [];
+var activeIdx = 0;
+
+function newIng() {
+  return {nom:'', qte:'', unite:'g', fournisseur:'', prixTTC:'', cond:'', uniteC:'g', cout:''};
+}
+function newRecette() {
+  return {nom:'', rendement:'', uniteRend:'g', desc:'', ingredients:[newIng(), newIng(), newIng()], coutTotal:''};
+}
+
+function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
+
+function renderTabs() {
+  var bar = document.getElementById('tabsBar');
+  bar.innerHTML = '';
+  recettes.forEach(function(r, i) {
+    var btn = document.createElement('button');
+    btn.className = 'tab' + (i === activeIdx ? ' active' : '');
+    btn.textContent = r.nom || 'Recette ' + (i+1);
+    btn.type = 'button';
+    btn.addEventListener('click', function(idx){return function(){activeIdx=idx;render();};}(i));
+    bar.appendChild(btn);
+  });
+  var add = document.createElement('button');
+  add.className = 'tab-add'; add.type = 'button'; add.textContent = '＋';
+  add.addEventListener('click', function(){recettes.push(newRecette());activeIdx=recettes.length-1;render();});
+  bar.appendChild(add);
+}
+
+function render() { renderTabs(); renderPanels(); }
+
+function renderPanels() {
+  var c = document.getElementById('recettesContainer');
+  c.innerHTML = '';
+  recettes.forEach(function(r, ri) {
+    var div = document.createElement('div');
+    div.className = 'recette-panel' + (ri === activeIdx ? ' active' : '');
+
+    // Nom
+    var nameWrap = document.createElement('div'); nameWrap.className = 'recette-name-wrap';
+    var nameInp = document.createElement('input');
+    nameInp.className = 'recette-name-input'; nameInp.type = 'text';
+    nameInp.placeholder = 'Ex : FALAFELS MAISON'; nameInp.value = r.nom; nameInp.autocomplete = 'off';
+    nameInp.addEventListener('input', function(idx){return function(){recettes[idx].nom=this.value;renderTabs();};}(ri));
+    var delBtn = document.createElement('button'); delBtn.className = 'btn-del-recette'; delBtn.type = 'button'; delBtn.textContent = '✕';
+    delBtn.addEventListener('click', function(idx){return function(){
+      if(recettes.length<=1){showToast('Il faut au moins une recette');return;}
+      if(!confirm('Supprimer cette recette ?'))return;
+      recettes.splice(idx,1);if(activeIdx>=recettes.length)activeIdx=recettes.length-1;render();
+    };}(ri));
+    nameWrap.appendChild(nameInp); nameWrap.appendChild(delBtn);
+    div.appendChild(nameWrap);
+
+    // Rendement
+    var rendBlock = document.createElement('div'); rendBlock.className = 'rendement-block';
+    var rendLabel = document.createElement('div'); rendLabel.className = 'rendement-label'; rendLabel.textContent = 'Rendement de la recette';
+    var rendRow = document.createElement('div'); rendRow.className = 'rendement-row';
+
+    var rTxt1 = document.createElement('div'); rTxt1.className = 'rendement-txt'; rTxt1.textContent = 'Cette recette produit';
+    var rInp = document.createElement('input'); rInp.className = 'rendement-input'; rInp.type = 'number'; rInp.inputMode = 'decimal'; rInp.min = '0'; rInp.step = 'any'; rInp.placeholder = 'Ex: 500'; rInp.value = r.rendement;
+    rInp.addEventListener('input', function(idx){return function(){recettes[idx].rendement=this.value;};}(ri));
+    var rSel = document.createElement('select'); rSel.className = 'rendement-select';
+    UNITES.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;if((r.uniteRend||'g')===u)o.selected=true;rSel.appendChild(o);});
+    rSel.addEventListener('change', function(idx){return function(){recettes[idx].uniteRend=this.value;};}(ri));
+    rendRow.appendChild(rTxt1); rendRow.appendChild(rInp); rendRow.appendChild(rSel);
+    rendBlock.appendChild(rendLabel); rendBlock.appendChild(rendRow);
+    var rHelp = document.createElement('div');
+    rHelp.style.cssText = 'font-size:10px;color:rgba(255,255,255,.4);margin-top:6px;line-height:1.5;font-style:italic';
+    rHelp.textContent = "Important : choisis l’unité qui correspond à ce que tu vas mettre dans ta fiche-portion. Exemple : si dans ta portion tu mets ‘3 falafels’, ton rendement doit être en unités (ex : cette recette produit 30 falafels). Si dans ta portion tu mets ‘30g de falafel’, ton rendement doit être en grammes (ex : 900g). Les deux unités doivent correspondre.";
+    rendBlock.appendChild(rHelp);
+    div.appendChild(rendBlock);
+
+    // Section ingrédients
+    var secBar = document.createElement('div'); secBar.className = 'section-bar';
+    var secTxt = document.createElement('div'); secTxt.className = 'section-bar-text'; secTxt.textContent = '🥗 Ingrédients de la recette';
+    secBar.appendChild(secTxt); div.appendChild(secBar);
+
+    r.ingredients.forEach(function(ing, ii) {
+      div.appendChild(buildIngCard(ri, ii, ing));
+    });
+
+    var addBtn = document.createElement('button'); addBtn.type = 'button'; addBtn.className = 'btn-add';
+    addBtn.textContent = '＋  Ajouter un ingrédient';
+    addBtn.addEventListener('click', function(idx){return function(){recettes[idx].ingredients.push(newIng());render();};}(ri));
+    div.appendChild(addBtn);
+
+    // Coût total EN BAS
+    var coutTotal = document.createElement('div'); coutTotal.className = 'cout-total';
+    var cLabel = document.createElement('div'); cLabel.className = 'cout-total-label'; cLabel.textContent = 'Coût total de la recette';
+    var cRight = document.createElement('div'); cRight.className = 'cout-total-right';
+    var cInp = document.createElement('input'); cInp.className = 'cout-total-input'; cInp.type = 'number'; cInp.inputMode = 'decimal'; cInp.min = '0'; cInp.step = '.001'; cInp.placeholder = '0.000'; cInp.value = r.coutTotal;
+    cInp.addEventListener('input', function(idx){return function(){recettes[idx].coutTotal=this.value;};}(ri));
+    var cUnit = document.createElement('div'); cUnit.className = 'cout-total-unit'; cUnit.textContent = '€';
+    cRight.appendChild(cInp); cRight.appendChild(cUnit);
+    coutTotal.appendChild(cLabel); coutTotal.appendChild(cRight);
+    div.appendChild(coutTotal);
+
+    c.appendChild(div);
+  });
+}
+
+function buildIngCard(ri, ii, ing) {
+  var card = document.createElement('div'); card.className = 'ing-card';
+
+  // Header
+  var head = document.createElement('div'); head.className = 'ing-card-head';
+  var num = document.createElement('div'); num.className = 'ing-num'; num.textContent = ii+1;
+  var name = document.createElement('input'); name.className = 'ing-name'; name.type = 'text';
+  name.placeholder = 'Ex : Pois chiches, Farine, Ail…'; name.value = ing.nom; name.autocomplete = 'off';
+  name.addEventListener('input', function(r2,i2){return function(){recettes[r2].ingredients[i2].nom=this.value;};}(ri,ii));
+  var del = document.createElement('button'); del.className = 'btn-del-ing'; del.type = 'button'; del.textContent = '✕';
+  del.addEventListener('click', function(r2,i2){return function(){
+    if(recettes[r2].ingredients.length<=1){showToast('Il faut au moins un ingrédient');return;}
+    recettes[r2].ingredients.splice(i2,1);render();
+  };}(ri,ii));
+  head.appendChild(num); head.appendChild(name); head.appendChild(del);
+  card.appendChild(head);
+
+  // Ligne quantité (verte)
+  var rowQ = document.createElement('div'); rowQ.className = 'ing-row olive';
+  var lQ = document.createElement('div'); lQ.className = 'ing-row-lbl'; lQ.textContent = 'Quantité';
+  var iQ = document.createElement('input'); iQ.className = 'ing-input'; iQ.type = 'number'; iQ.inputMode = 'decimal'; iQ.min = '0'; iQ.step = 'any'; iQ.placeholder = '0'; iQ.value = ing.qte;
+  iQ.addEventListener('input', function(r2,i2){return function(){recettes[r2].ingredients[i2].qte=this.value;};}(ri,ii));
+  var selU = document.createElement('select'); selU.className = 'ing-select';
+  UNITES.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;if((ing.unite||'g')===u)o.selected=true;selU.appendChild(o);});
+  selU.addEventListener('change', function(r2,i2){return function(){recettes[r2].ingredients[i2].unite=this.value;};}(ri,ii));
+  rowQ.appendChild(lQ); rowQ.appendChild(iQ); rowQ.appendChild(selU);
+  card.appendChild(rowQ);
+
+  // Ligne fournisseur (orange)
+  var rowF = document.createElement('div'); rowF.className = 'ing-row orange-bg';
+  var lF = document.createElement('div'); lF.className = 'ing-row-lbl'; lF.textContent = 'Fournisseur';
+  var iF = document.createElement('input'); iF.className = 'ing-input'; iF.type = 'text'; iF.placeholder = 'Nom du fournisseur…'; iF.value = ing.fournisseur; iF.autocomplete = 'off';
+  iF.addEventListener('input', function(r2,i2){return function(){recettes[r2].ingredients[i2].fournisseur=this.value;};}(ri,ii));
+  rowF.appendChild(lF); rowF.appendChild(iF);
+  card.appendChild(rowF);
+
+  // Ligne prix TTC + conditionnement (orange)
+  var rowP = document.createElement('div'); rowP.className = 'ing-row orange-bg';
+  var lP = document.createElement('div'); lP.className = 'ing-row-lbl'; lP.textContent = 'Prix TTC';
+  var iP = document.createElement('input'); iP.className = 'ing-input'; iP.type = 'number'; iP.inputMode = 'decimal'; iP.min = '0'; iP.step = '.001'; iP.placeholder = '0.000 €'; iP.value = ing.prixTTC; iP.style.maxWidth = '90px';
+  iP.addEventListener('input', function(r2,i2){return function(){recettes[r2].ingredients[i2].prixTTC=this.value;};}(ri,ii));
+  var lC = document.createElement('div'); lC.className = 'ing-row-lbl'; lC.textContent = 'Cond.';
+  var iC = document.createElement('input'); iC.className = 'ing-input'; iC.type = 'number'; iC.inputMode = 'decimal'; iC.min = '0'; iC.step = 'any'; iC.placeholder = '0'; iC.value = ing.cond; iC.style.maxWidth = '70px';
+  iC.addEventListener('input', function(r2,i2){return function(){recettes[r2].ingredients[i2].cond=this.value;};}(ri,ii));
+  var selC = document.createElement('select'); selC.className = 'ing-select';
+  UNITES.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;if((ing.uniteC||'g')===u)o.selected=true;selC.appendChild(o);});
+  selC.addEventListener('change', function(r2,i2){return function(){recettes[r2].ingredients[i2].uniteC=this.value;};}(ri,ii));
+  rowP.appendChild(lP); rowP.appendChild(iP); rowP.appendChild(lC); rowP.appendChild(iC); rowP.appendChild(selC);
+  card.appendChild(rowP);
+
+  // Ligne coût réel (sombre)
+  var rowC = document.createElement('div'); rowC.className = 'ing-row dark';
+  var lC2 = document.createElement('div'); lC2.className = 'ing-row-lbl'; lC2.textContent = 'Coût réel';
+  var formula = document.createElement('div'); formula.className = 'ing-formula'; formula.textContent = 'Quantité demandée par la recette × Prix TTC fournisseur ÷ Conditionnement fournisseur =';
+  var iCout = document.createElement('input'); iCout.className = 'ing-input'; iCout.type = 'number'; iCout.inputMode = 'decimal'; iCout.min = '0'; iCout.step = '.001'; iCout.placeholder = '0.000 €'; iCout.value = ing.cout; iCout.style.maxWidth = '100px'; iCout.style.fontWeight = '700'; iCout.style.color = 'var(--olive)';
+  iCout.addEventListener('input', function(r2,i2){return function(){recettes[r2].ingredients[i2].cout=this.value;};}(ri,ii));
+  rowC.appendChild(lC2); rowC.appendChild(formula); rowC.appendChild(iCout);
+  card.appendChild(rowC);
+
+  return card;
+}
+
+// Init
+recettes.push(newRecette());
+recettes.push(newRecette());
+render();
+
+document.getElementById('btnPrint').addEventListener('click', function(){window.print();});
+document.getElementById('btnSave').addEventListener('click', function(){
+  var data = JSON.stringify({fiche:'recette',v:1,date:new Date().toISOString(),recettes:recettes,activeIdx:activeIdx},null,2);
+  var a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(data); a.download = 'streetbiz-fiche-recette.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  showToast('Données sauvegardées ✓');
+});
+document.getElementById('btnLoad').addEventListener('click', function(){document.getElementById('fileInput').click();});
+document.getElementById('fileInput').addEventListener('change', function(e){
+  var file = e.target.files[0]; if(!file)return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{var d=JSON.parse(ev.target.result);if(d.recettes){recettes=d.recettes;activeIdx=d.activeIdx||0;render();showToast('Données restaurées ✓');}}
+    catch(err){showToast('Fichier invalide');}
+  };
+  reader.readAsText(file); e.target.value='';
+});
+</script>
+</body>
+</html>

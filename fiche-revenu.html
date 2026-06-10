@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fiche-Revenu — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+.page{max-width:700px;margin:0 auto}
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange)}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+main{padding:1.5rem}
+
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.consigne-body{display:flex;flex-direction:column;gap:12px}
+.consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.consigne-text{color:var(--ink)}
+.consigne-text div{margin-top:2px}
+
+/* SECTION */
+.section-bar{background:var(--black);padding:10px 14px;margin-bottom:1rem;border-left:4px solid var(--orange);margin-top:1.75rem}
+.section-bar:first-of-type{margin-top:0}
+.section-bar-title{font-family:'Archivo Black',sans-serif;font-size:12px;text-transform:uppercase;color:var(--white)}
+
+.note{background:var(--black);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:1rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
+.note strong{color:var(--orange)}
+
+/* CALCUL LIGNE */
+.calcul-bloc{background:var(--white);border:1px solid var(--border);overflow:hidden;margin-bottom:1.5rem}
+
+.calcul-line{display:flex;align-items:center;padding:14px 16px;gap:10px;border-bottom:1px solid var(--border)}
+.calcul-line:last-child{border-bottom:none}
+.calc-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);flex:1;line-height:1.4}
+.calc-inp{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;color:var(--black);width:110px;text-align:right;outline:none;-webkit-appearance:none;padding:4px}
+.calc-inp:focus{border-bottom-color:var(--orange)}
+.calc-inp.olive{color:var(--olive);border-bottom-color:var(--olive)}
+.calc-inp.orange{color:var(--orange);border-bottom-color:var(--orange)}
+.calc-inp::placeholder{color:#c8c4bc;font-size:13px;font-weight:400;font-family:'Montserrat',sans-serif}
+.calc-unit{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}
+.calc-unit.olive{color:var(--olive)}
+.calc-unit.orange{color:var(--orange)}
+.calc-op{font-family:'Archivo Black',sans-serif;font-size:18px;color:var(--muted);flex-shrink:0;padding:0 4px}
+.calc-fixed{font-family:'Archivo Black',sans-serif;font-size:22px;color:var(--orange);flex-shrink:0}
+
+/* résultats colorés */
+.calcul-line.result-olive{background:rgba(109,122,47,.06)}
+.calcul-line.result-orange{background:rgba(242,106,33,.06)}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-black{background:var(--black);color:var(--white)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
+
+.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media print{
+  .consigne-block,.note,.actions{display:none!important}
+  header,.section-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Revenu</em></h1>
+    </div>
+    <div class="fiche-badge">Fiche 7 / 10</div>
+  </div>
+  <p class="header-sub">Calcule le chiffre d'affaires minimum pour te payer</p>
+</header>
+<main>
+  <div class="consigne-block">
+    <div class="consigne-label">📋 Comment remplir cette fiche</div>
+    <div class="consigne-body">
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 5 · Mission 1 · Étape 2</span>
+        <div class="consigne-text">
+          <div>Note ton <strong>objectif de revenu mensuel</strong>.</div>
+          <div>Ne sous-estime pas tes besoins : pense à ton loyer, tes charges et tes extras.</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 5 · Mission 1 · Étape 3</span>
+        <div class="consigne-text">
+          <div>Multiplie ton revenu par <strong>3</strong> et note le <strong>CA minimum à réaliser</strong>.</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--black)">Checkpoint 5 · Mission 3 · Étape 2</span>
+        <div class="consigne-text">
+          <div>Reviens ici après la fiche-panier-moyen.</div>
+          <div>Divise ton CA par ton panier moyen → <strong>objectif mensuel de ventes</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 -->
+  <div class="section-bar"><div class="section-bar-title">1 — Fixe ton objectif de revenu mensuel</div></div>
+  <div class="note"><strong>Ne sous-estime pas tes besoins financiers.</strong> Combien aimerais-tu pouvoir te payer au minimum chaque mois ? Pense à ton loyer, tes charges personnelles, tes extras.</div>
+  <div class="calcul-bloc">
+    <div class="calcul-line result-olive">
+      <div class="calc-lbl">Mon objectif de revenu mensuel</div>
+      <input class="calc-inp olive" id="f-revenu" type="number" inputmode="decimal" min="0" step="1" placeholder="ex : 1500">
+      <div class="calc-unit olive">€ / mois</div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 2 -->
+  <div class="section-bar"><div class="section-bar-title">2 — Calcule le CA minimum à réaliser</div></div>
+  <div class="calcul-bloc">
+    <div class="calcul-line">
+      <div class="calc-lbl">Mon revenu souhaité</div>
+      <input class="calc-inp" id="f-revenu2" type="number" inputmode="decimal" min="0" step="1" placeholder="reporte l'étape 1">
+      <div class="calc-unit">€ / mois</div>
+    </div>
+    <div class="calcul-line" style="background:rgba(0,0,0,.03);padding:8px 16px">
+      <div class="calc-lbl" style="font-size:10px;color:var(--orange)">× 3</div>
+      <div class="calc-fixed">× 3</div>
+    </div>
+    <div class="calcul-line result-orange">
+      <div class="calc-lbl" style="color:var(--orange)">CA minimum à réaliser</div>
+      <input class="calc-inp orange" id="f-ca" type="number" inputmode="decimal" min="0" step="1" placeholder="résultat">
+      <div class="calc-unit orange">€ / mois</div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 3 -->
+  <div class="section-bar"><div class="section-bar-title">3 — Calcule ton objectif mensuel de ventes</div></div>
+  <div class="note" style="border-left-color:var(--muted)">À remplir <strong>après</strong> ta fiche-panier-moyen. Divise ton CA par ton panier moyen — arrondis au chiffre supérieur.</div>
+  <div class="calcul-bloc">
+    <div class="calcul-line">
+      <div class="calc-lbl">CA à réaliser</div>
+      <input class="calc-inp" id="f-ca2" type="number" inputmode="decimal" min="0" step="1" placeholder="reporte l'étape 2">
+      <div class="calc-unit">€ / mois</div>
+    </div>
+    <div class="calcul-line">
+      <div class="calc-lbl">Panier moyen</div>
+      <input class="calc-inp" id="f-panier" type="number" inputmode="decimal" min="0" step=".01" placeholder="fiche-panier-moyen">
+      <div class="calc-unit">€</div>
+    </div>
+    <div class="calcul-line" style="background:rgba(0,0,0,.03);padding:8px 16px">
+      <div class="calc-lbl" style="font-size:10px;color:var(--muted)">CA ÷ panier moyen =</div>
+    </div>
+    <div class="calcul-line result-olive">
+      <div class="calc-lbl" style="color:var(--olive)">Objectif mensuel de ventes</div>
+      <input class="calc-inp olive" id="f-ventes" type="number" inputmode="decimal" min="0" step="1" placeholder="résultat">
+      <div class="calc-unit olive">ventes / mois</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
+    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
+    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
+  </div>
+  <input type="file" id="fileInput" accept=".json" style="display:none">
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
+
+document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
+
+document.getElementById('btnSave').addEventListener('click',function(){
+  var data = JSON.stringify({
+    fiche:'revenu', v:2, date:new Date().toISOString(),
+    revenu: document.getElementById('f-revenu').value,
+    revenu2: document.getElementById('f-revenu2').value,
+    ca: document.getElementById('f-ca').value,
+    ca2: document.getElementById('f-ca2').value,
+    panier: document.getElementById('f-panier').value,
+    ventes: document.getElementById('f-ventes').value
+  }, null, 2);
+  var a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(data);
+  a.download = 'streetbiz-fiche-revenu.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  showToast('Données sauvegardées ✓');
+});
+
+document.getElementById('btnLoad').addEventListener('click',function(){document.getElementById('fileInput').click();});
+document.getElementById('fileInput').addEventListener('change',function(e){
+  var file = e.target.files[0]; if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      var d = JSON.parse(ev.target.result);
+      if(d.revenu) document.getElementById('f-revenu').value = d.revenu;
+      if(d.revenu2) document.getElementById('f-revenu2').value = d.revenu2;
+      if(d.ca) document.getElementById('f-ca').value = d.ca;
+      if(d.ca2) document.getElementById('f-ca2').value = d.ca2;
+      if(d.panier) document.getElementById('f-panier').value = d.panier;
+      if(d.ventes) document.getElementById('f-ventes').value = d.ventes;
+      showToast('Données restaurées ✓');
+    } catch(err){showToast('Fichier invalide');}
+  };
+  reader.readAsText(file); e.target.value='';
+});
+</script>
+</body>
+</html>

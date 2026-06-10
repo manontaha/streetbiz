@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fiche-Prix de vente — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a;--red:#c0392b}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+.page{max-width:700px;margin:0 auto}
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange)}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+main{padding:1.5rem}
+
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.consigne-body{display:flex;flex-direction:column;gap:12px}
+.consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.consigne-text{color:var(--ink)}
+.consigne-text div{margin-top:2px}
+
+/* TABLE HEADER */
+.table-header{display:grid;grid-template-columns:1fr 130px 50px 130px 36px;background:var(--black);padding:0;margin-bottom:0}
+.th{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 10px;color:rgba(255,255,255,.55);border-right:1px solid rgba(255,255,255,.08);text-align:center}
+.th:first-child{text-align:left}
+.th.orange{color:var(--orange)}
+.th:last-child{border-right:none}
+
+/* PORTION ROW */
+#portionsList{margin-bottom:.75rem}
+.portion-wrap{margin-bottom:16px;border:1px solid var(--border)}
+.portion-wrap:last-child{margin-bottom:0}
+
+.portion-row{display:grid;grid-template-columns:1fr 130px 50px 130px 36px;align-items:stretch;background:var(--white)}
+.pc{display:flex;align-items:center;border-right:1px solid var(--border)}
+.pc:last-child{border-right:none;justify-content:center}
+.pc input{width:100%;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:12px 10px;outline:none;-webkit-appearance:none;min-height:48px}
+.pc input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
+.pc input.num{font-family:'Archivo Black',sans-serif;font-size:15px;text-align:right;padding:12px 8px;color:var(--muted)}
+.pc input.result{font-family:'Archivo Black',sans-serif;font-size:15px;text-align:right;padding:12px 8px;color:var(--olive)}
+.pc.result-bg{background:rgba(109,122,47,.06)}
+.pc-x{display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:16px;color:var(--orange);border-right:1px solid var(--border);padding:0 4px}
+.pc-del button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;min-width:36px;min-height:48px;display:flex;align-items:center;justify-content:center;width:100%}
+
+/* ACCEPTABILITÉ */
+.accept-block{background:#eeeade;border:1px solid var(--border);border-left:3px solid var(--olive);border-top:none;display:flex;align-items:stretch;overflow:hidden}
+.accept-prix-wrap{flex:1;border-right:1px solid var(--border);padding:10px 12px;display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
+.accept-prix-label{font-size:11px;color:var(--muted);line-height:1.4;flex:1;min-width:120px}
+.accept-prix-input{border:none;border-bottom:2px solid var(--olive);background:transparent;font-family:'Archivo Black',sans-serif;font-size:18px;color:var(--olive);width:80px;text-align:right;outline:none;-webkit-appearance:none;padding:2px 4px;min-height:40px;flex-shrink:0}
+.accept-prix-input::placeholder{color:#c0bdb5;font-size:11px;font-weight:400}
+.accept-prix-euro{font-size:12px;font-weight:700;color:var(--olive);flex-shrink:0}
+.accept-oui-non{display:flex;flex-shrink:0}
+.accept-btn{padding:0 14px;min-height:52px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;border:none;background:transparent;color:var(--muted);border-left:1px solid var(--border);-webkit-appearance:none;min-width:52px}
+.accept-btn.sel-oui{background:var(--olive);color:var(--white)}
+.accept-btn.sel-non{background:var(--red);color:var(--white)}
+
+.btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0}
+
+.note-rappel{background:var(--black);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
+.note-rappel strong{color:var(--orange)}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:.5rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-black{background:var(--black);color:var(--white)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
+
+.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media print{
+  .consigne-block,.note-rappel,.pc-del,.actions,.btn-add{display:none!important}
+  header,.table-header,.accept-head{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+  .portion-wrap{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Prix de vente</em></h1>
+    </div>
+    <div class="fiche-badge">Fiche 6 / 10</div>
+  </div>
+  <p class="header-sub">Calcule le prix de vente minimum conseillé pour chaque portion</p>
+</header>
+<main>
+  <div class="consigne-block">
+    <div class="consigne-label">📋 Comment remplir cette fiche</div>
+    <div class="consigne-body">
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 4 · Mission 1 · Étape 1</span>
+        <div class="consigne-text">
+          <div>Reporte le <strong>nom de chaque portion</strong> et son <strong>coût de revient</strong> (coût total × 1,10 depuis ta fiche-portion).</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 4 · Mission 1 · Étape 2</span>
+        <div class="consigne-text">
+          <div>Multiplie le coût de revient par <strong>3</strong> pour obtenir le <strong>prix de vente minimum conseillé</strong>.</div>
+
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--black)">Checkpoint 4 · Mission 2</span>
+        <div class="consigne-text">
+          <div>Note le <strong>prix que ton client accepterait de payer</strong>.</div>
+          <div>Le prix minimum est-il acceptable ?</div><div><strong>OUI →</strong> on continue.</div><div><strong>NON →</strong> revois tes coûts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-rappel"><strong>C'est un plancher, pas un plafond.</strong><br>Tu es libre de vendre plus cher — et c'est même conseillé.</div>
+
+  <!-- TABLE -->
+  <div class="table-header">
+    <div class="th">Portion</div>
+    <div class="th">Coût de revient</div>
+    <div class="th orange">× 3</div>
+    <div class="th orange">Prix min. conseillé</div>
+    <div class="th"></div>
+  </div>
+  <div id="portionsList"></div>
+  <button class="btn-add" id="btnAdd">＋  Ajouter une portion</button>
+
+  <div class="actions">
+    <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
+    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
+    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
+  </div>
+  <input type="file" id="fileInput" accept=".json" style="display:none">
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var portions = [{nom:'', cout:'', prixMin:'', prixClient:'', accepte:''}];
+
+function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
+
+function setAccepte(i, val){
+  portions[i].accepte = portions[i].accepte === val ? '' : val;
+  render();
+}
+
+function render(){
+  var list = document.getElementById('portionsList');
+  list.innerHTML = '';
+  portions.forEach(function(p, i){
+    var wrap = document.createElement('div'); wrap.className = 'portion-wrap';
+
+    // Ligne principale
+    var row = document.createElement('div'); row.className = 'portion-row';
+
+    var c1 = document.createElement('div'); c1.className = 'pc';
+    var i1 = document.createElement('input'); i1.type = 'text'; i1.placeholder = 'Nom de la portion…'; i1.value = p.nom; i1.autocomplete = 'off';
+    i1.style.cssText = 'width:100%;border:none;background:transparent;font-family:Montserrat,sans-serif;font-size:13px;color:var(--ink);padding:12px 10px;outline:none;-webkit-appearance:none;min-height:48px';
+    i1.addEventListener('input', function(idx){return function(){portions[idx].nom=this.value;};}(i));
+    c1.appendChild(i1);
+
+    var c2 = document.createElement('div'); c2.className = 'pc';
+    var i2 = document.createElement('input'); i2.type = 'number'; i2.inputMode = 'decimal'; i2.min = '0'; i2.step = '.001'; i2.placeholder = '0.000 €'; i2.value = p.cout; i2.className = 'num';
+    i2.style.cssText = 'width:100%;border:none;background:transparent;font-family:"Archivo Black",sans-serif;font-size:15px;text-align:right;padding:12px 8px;outline:none;-webkit-appearance:none;min-height:48px;color:var(--muted)';
+    i2.addEventListener('input', function(idx){return function(){portions[idx].cout=this.value;};}(i));
+    c2.appendChild(i2);
+
+    var cx = document.createElement('div'); cx.className = 'pc-x'; cx.textContent = '× 3';
+
+    var c3 = document.createElement('div'); c3.className = 'pc result-bg';
+    var i3 = document.createElement('input'); i3.type = 'number'; i3.inputMode = 'decimal'; i3.min = '0'; i3.step = '.01'; i3.placeholder = '0.00 €'; i3.value = p.prixMin;
+    i3.style.cssText = 'width:100%;border:none;background:transparent;font-family:"Archivo Black",sans-serif;font-size:15px;text-align:right;padding:12px 8px;outline:none;-webkit-appearance:none;min-height:48px;color:var(--olive)';
+    i3.addEventListener('input', function(idx){return function(){portions[idx].prixMin=this.value;};}(i));
+    c3.appendChild(i3);
+
+    var c4 = document.createElement('div'); c4.className = 'pc'; c4.style.justifyContent='center';
+    var db = document.createElement('button'); db.type = 'button'; db.textContent = '✕';
+    db.style.cssText = 'background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;min-width:36px;min-height:48px;display:flex;align-items:center;justify-content:center;width:100%';
+    db.addEventListener('click', function(idx){return function(){
+      if(portions.length<=1){showToast('Il faut au moins une portion');return;}
+      portions.splice(idx,1);render();
+    };}(i));
+    c4.appendChild(db);
+
+    row.appendChild(c1); row.appendChild(c2); row.appendChild(cx); row.appendChild(c3); row.appendChild(c4);
+    wrap.appendChild(row);
+
+    // Acceptabilité
+    var ab = document.createElement('div'); ab.className = 'accept-block';
+    var apw = document.createElement('div'); apw.className = 'accept-prix-wrap';
+    var aplbl = document.createElement('div'); aplbl.className = 'accept-prix-label'; aplbl.innerHTML = 'Prix maximum que ton client<br>accepterait de payer pour cette portion :';
+    var api = document.createElement('input'); api.className = 'accept-prix-input'; api.type = 'number'; api.inputMode = 'decimal'; api.min = '0'; api.step = '.01'; api.placeholder = '0.00'; api.value = p.prixClient;
+    api.addEventListener('input', function(idx){return function(){portions[idx].prixClient=this.value;};}(i));
+    var apeu = document.createElement('div'); apeu.className = 'accept-prix-euro'; apeu.textContent = '€';
+    apw.appendChild(aplbl); apw.appendChild(api); apw.appendChild(apeu);
+
+    var aon = document.createElement('div'); aon.className = 'accept-oui-non';
+    aon.style.cssText = 'display:flex;flex-direction:column;align-items:stretch;flex-shrink:0;min-width:120px';
+    var aon_label = document.createElement('div');
+    aon_label.style.cssText = 'font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center;padding:5px 8px;border-bottom:1px solid var(--border);border-left:1px solid var(--border);background:rgba(0,0,0,.03);white-space:nowrap';
+    aon_label.textContent = 'Acceptable ?';
+    var aon_btns = document.createElement('div'); aon_btns.style.cssText = 'display:flex;flex:1';
+    var boui = document.createElement('button'); boui.type = 'button'; boui.className = 'accept-btn' + (p.accepte==='oui'?' sel-oui':''); boui.textContent = '✓ OUI';
+    boui.addEventListener('click', function(idx){return function(){setAccepte(idx,'oui');};}(i));
+    var bnon = document.createElement('button'); bnon.type = 'button'; bnon.className = 'accept-btn' + (p.accepte==='non'?' sel-non':''); bnon.textContent = '✗ NON';
+    bnon.addEventListener('click', function(idx){return function(){setAccepte(idx,'non');};}(i));
+    aon_btns.appendChild(boui); aon_btns.appendChild(bnon);
+    aon.appendChild(aon_label); aon.appendChild(aon_btns);
+
+    ab.appendChild(apw); ab.appendChild(aon);
+    wrap.appendChild(ab);
+
+    list.appendChild(wrap);
+  });
+}
+
+document.getElementById('btnAdd').addEventListener('click', function(){portions.push({nom:'',cout:'',prixMin:'',prixClient:'',accepte:''});render();});
+document.getElementById('btnPrint').addEventListener('click', function(){window.print();});
+document.getElementById('btnSave').addEventListener('click', function(){
+  var data = JSON.stringify({fiche:'prix-de-vente',v:2,date:new Date().toISOString(),portions:portions},null,2);
+  var a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(data); a.download = 'streetbiz-fiche-prix-de-vente.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  showToast('Données sauvegardées ✓');
+});
+document.getElementById('btnLoad').addEventListener('click', function(){document.getElementById('fileInput').click();});
+document.getElementById('fileInput').addEventListener('change', function(e){
+  var file = e.target.files[0]; if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{var d=JSON.parse(ev.target.result);if(d.portions){portions=d.portions;render();showToast('Données restaurées ✓');}}
+    catch(err){showToast('Fichier invalide');}
+  };
+  reader.readAsText(file); e.target.value='';
+});
+
+render();
+</script>
+</body>
+</html>

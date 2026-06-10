@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fiche-Portion — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a;--red:#c0392b}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+.page{max-width:700px;margin:0 auto}
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange)}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+main{padding:1.5rem}
+
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.consigne-body{display:flex;flex-direction:column;gap:8px}
+.consigne-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+
+.tableur-banner{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;line-height:1.6;color:var(--ink)}
+.tableur-banner strong{color:var(--olive)}
+
+/* TABS */
+.tabs-bar{display:flex;align-items:center;gap:0;border-bottom:2px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1.5rem}
+.tab{padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;border:none;background:transparent;color:var(--muted);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;min-height:44px;-webkit-appearance:none}
+.tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+.tab-add{padding:10px 14px;font-size:20px;cursor:pointer;border:none;background:transparent;color:var(--orange);border-bottom:3px solid transparent;margin-bottom:-2px;min-height:44px;-webkit-appearance:none}
+
+/* PORTION PANEL */
+.portion-panel{display:none}
+.portion-panel.active{display:block}
+
+/* NOM PORTION */
+.portion-name-wrap{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);padding:12px 14px;margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.portion-name-input{flex:1;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;color:var(--black);padding:4px 0;outline:none;-webkit-appearance:none;min-height:44px}
+.portion-name-input:focus{border-bottom-color:var(--orange)}
+.portion-name-input::placeholder{color:#c8c4bc;font-size:14px;font-weight:400;text-transform:none;font-family:'Montserrat',sans-serif}
+.btn-del-portion{background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-appearance:none}
+
+/* SECTION TITLE */
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.section-bar-text{font-family:'Archivo Black',sans-serif;font-size:12px;text-transform:uppercase;color:var(--white)}
+
+/* ING CARD */
+.ing-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--olive);margin-bottom:8px;overflow:hidden}
+.ing-card.emb{border-left-color:var(--orange)}
+.ing-card-head{display:flex;align-items:center;background:var(--black)}
+.ing-card-num{width:38px;height:44px;background:var(--olive);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ing-card.emb .ing-card-num{background:var(--orange)}
+.ing-card-name{flex:1;border:none;background:transparent;font-family:'Archivo Black',sans-serif;font-size:13px;text-transform:uppercase;color:var(--white);padding:10px 12px;outline:none;-webkit-appearance:none;min-height:44px}
+.ing-card-name::placeholder{color:#5a5a4a;font-weight:400;font-family:'Montserrat',sans-serif;font-size:12px;text-transform:none}
+
+/* Toggle */
+.ing-toggle{display:flex;flex-shrink:0;border-left:1px solid rgba(255,255,255,.1)}
+.ing-toggle-btn{padding:0 10px;height:44px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.35);-webkit-appearance:none;min-width:60px}
+.ing-toggle-btn.active-a{background:var(--olive);color:var(--white)}
+.ing-toggle-btn.active-m{background:var(--orange);color:var(--white)}
+.btn-del-ing{background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:14px;min-width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-appearance:none}
+
+/* Lignes de données */
+.ing-row{display:flex;align-items:center;min-height:44px;border-top:1px solid var(--border)}
+.ing-row-lbl{padding:0 10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;border-right:1px solid var(--border);color:var(--muted);min-width:100px}
+.ing-row.olive{background:rgba(109,122,47,.06)}
+.ing-row.olive .ing-row-lbl{color:var(--olive)}
+.ing-row.orange-bg{background:rgba(242,106,33,.07)}
+.ing-row.orange-bg .ing-row-lbl{color:var(--orange)}
+.ing-row.dark{background:rgba(31,31,31,.06)}
+.ing-row.dark .ing-row-lbl{color:var(--black)}
+.ing-input{border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--black);padding:10px 10px;outline:none;-webkit-appearance:none;flex:1;min-height:44px}
+.ing-input::placeholder{color:#c8c4bc;font-style:italic;font-size:11.5px}
+.ing-select{border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--muted);padding:0 8px;outline:none;-webkit-appearance:none;height:44px;border-left:1px solid var(--border);min-width:60px;cursor:pointer}
+.ing-formula{font-size:10px;color:var(--muted);font-style:italic;padding:0 10px;flex:1}
+
+/* TOTAL */
+.total-block{background:var(--black);padding:14px 16px;margin-top:.5rem;margin-bottom:1.5rem}
+.total-label{font-family:'Archivo Black',sans-serif;font-size:12px;text-transform:uppercase;color:var(--white);margin-bottom:10px}
+.total-row{display:flex;align-items:center;gap:10px}
+.total-input{border:none;border-bottom:2px solid var(--orange);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;color:var(--orange);width:120px;text-align:right;outline:none;-webkit-appearance:none;padding:4px}
+.total-input::placeholder{color:#7a5030;font-size:13px;font-weight:400}
+.total-op{font-family:'Archivo Black',sans-serif;font-size:16px;color:var(--muted)}
+.total-result{border:none;border-bottom:2px solid var(--white);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;color:var(--white);width:120px;text-align:right;outline:none;-webkit-appearance:none;padding:4px}
+.total-result::placeholder{color:#5a5a4a;font-size:13px;font-weight:400}
+.total-unit{font-size:11px;font-weight:700;color:var(--muted)}
+
+/* ADD BTN */
+.btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1rem;-webkit-appearance:none;border-radius:0}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-black{background:var(--black);color:var(--white)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
+.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
+.toast.show{transform:translateY(0);opacity:1}
+@media print{.consigne-block,.note,.tableur-banner,.note-box{display:none!important}.portion-panel{display:block!important;page-break-after:always}
+  .actions,.tabs-bar,.btn-add,.btn-del-ing,.btn-del-portion,.ing-toggle{display:none!important}
+  .portion-panel{display:block!important;page-break-after:always}
+  header,.ing-card-head,.ing-card-num,.total-block,.section-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+}
+
+/* CONSIGNE */
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.consigne-body{display:flex;flex-direction:column;gap:12px}
+.consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.consigne-text{color:var(--ink)}
+.consigne-text div{margin-top:2px}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Portion</em></h1>
+    </div>
+    <div class="fiche-badge">Fiche 2 / 10</div>
+  </div>
+  <p class="header-sub">Détaille chaque portion que tu vas vendre</p>
+</header>
+<main>
+  <div class="consigne-block">
+    <div class="consigne-label">📋 Comment remplir cette fiche</div>
+    <div class="consigne-body">
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 2 · Mission 1</span>
+        <div>
+          <div>Note le <strong>nom de chaque portion</strong>.</div>
+          <div>Liste ses <strong>ingrédients</strong> et leurs <strong>quantités</strong>.</div>
+          <div>Indique aussi les <strong>emballages &amp; accessoires</strong>.</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 3 · Mission 3 · Étape 3</span>
+        <div>
+          <div>Pour chaque ingrédient <strong>fait maison</strong> :</div>
+          <div>→ reporte le <strong>nom de la recette</strong>, son <strong>coût total</strong> et son <strong>rendement</strong>.</div>
+          <div>→ calcule le coût réel : qté dans la portion × coût total ÷ rendement</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 3 · Mission 3 · Étape 4</span>
+        <div>
+          <div>Pour chaque ingrédient <strong>acheté</strong> :</div>
+          <div>→ reporte le <strong>fournisseur</strong>, le <strong>prix TTC</strong> et le <strong>conditionnement</strong>.</div>
+          <div>→ calcule le coût réel : qté dans la portion × prix TTC ÷ conditionnement</div>
+        </div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--black)">Checkpoint 3 · Mission 3 · Étape 5</span>
+        <div>
+          <div><strong>1.</strong> Additionne tous les coûts réels → <strong>coût total de la portion</strong>.</div>
+          <div><strong>2.</strong> Multiplie par <strong>1,10</strong> → marge de perte de 10%.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tableur-banner">💡 <strong>Tu utilises le tableur StreetBiz ?</strong> Saisis tes données directement dedans — tout est connecté et les calculs se font automatiquement. Tu peux quand même remplir cette fiche pour obtenir une <strong>version PDF</strong> de ton travail.</div>
+
+  <div class="tabs-bar" id="tabsBar"></div>
+  <div id="portionsContainer"></div>
+
+  <div class="actions">
+    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
+    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
+    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
+  </div>
+  <input type="file" id="fileInput" accept=".json" style="display:none">
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var UNITES = ['g','ml','unités'];
+var portions = [];
+var activeIdx = 0;
+
+function newIng(type) {
+  return {nom:'',qte:'',unite: (type==='emballage' ? 'unités' : 'g'),mode:'achete',
+    fournisseur:'',prixTTC:'',cond:'',uniteC:(type==='emballage' ? 'unités' : 'g'),
+    recette:'',coutR:'',rendement:'',uniteRend:'g',
+    cout:'', type: type || 'ingredient'};
+}
+function newPortion(name) {
+  return {name: name||'', ingredients:[newIng(),newIng()], emballages:[newIng('emballage')], coutTotal:'', coutAvecPerte:''};
+}
+
+function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
+
+function renderTabs() {
+  var bar = document.getElementById('tabsBar');
+  bar.innerHTML = '';
+  portions.forEach(function(p, i) {
+    var btn = document.createElement('button');
+    btn.className = 'tab' + (i === activeIdx ? ' active' : '');
+    btn.textContent = p.name || 'Portion ' + (i+1);
+    btn.type = 'button';
+    btn.addEventListener('click', function(idx){return function(){activeIdx=idx;render();};}(i));
+    bar.appendChild(btn);
+  });
+  var add = document.createElement('button');
+  add.className = 'tab-add'; add.type = 'button'; add.textContent = '＋';
+  add.title = 'Nouvelle portion';
+  add.addEventListener('click', function(){portions.push(newPortion());activeIdx=portions.length-1;render();});
+  bar.appendChild(add);
+}
+
+function render() { renderTabs(); renderPanels(); }
+
+function renderPanels() {
+  var c = document.getElementById('portionsContainer');
+  c.innerHTML = '';
+  portions.forEach(function(p, pi) {
+    var div = document.createElement('div');
+    div.className = 'portion-panel' + (pi === activeIdx ? ' active' : '');
+
+    // Nom
+    var nameWrap = document.createElement('div'); nameWrap.className = 'portion-name-wrap';
+    var nameInp = document.createElement('input');
+    nameInp.className = 'portion-name-input'; nameInp.type = 'text';
+    nameInp.placeholder = 'Ex : WRAP FALAFEL'; nameInp.value = p.name; nameInp.autocomplete = 'off';
+    nameInp.addEventListener('input', function(idx){return function(){portions[idx].name=this.value;renderTabs();};}(pi));
+    var delBtn = document.createElement('button'); delBtn.className = 'btn-del-portion'; delBtn.type = 'button'; delBtn.textContent = '✕';
+    delBtn.addEventListener('click', function(idx){return function(){
+      if(portions.length<=1){showToast('Il faut au moins une portion');return;}
+      if(!confirm('Supprimer cette portion ?'))return;
+      portions.splice(idx,1);if(activeIdx>=portions.length)activeIdx=portions.length-1;render();
+    };}(pi));
+    nameWrap.appendChild(nameInp); nameWrap.appendChild(delBtn);
+    div.appendChild(nameWrap);
+
+    // Ingrédients
+    div.appendChild(buildSection(pi, 'ingredients', '🥗 Ingrédients', false));
+    // Emballages
+    div.appendChild(buildSection(pi, 'emballages', '📦 Emballages, accessoires & serviettes', true));
+
+    // Total — EN BAS
+    var totalBlock = document.createElement('div'); totalBlock.className = 'total-block';
+    var totalLbl = document.createElement('div'); totalLbl.className = 'total-label'; totalLbl.textContent = 'Coût total de la portion';
+    var totalRow = document.createElement('div'); totalRow.className = 'total-row';
+    var t1 = document.createElement('input'); t1.className = 'total-input'; t1.type = 'number'; t1.inputMode = 'decimal'; t1.min = '0'; t1.step = '.001'; t1.placeholder = '0.000 €'; t1.value = p.coutTotal;
+    t1.addEventListener('input', function(idx){return function(){portions[idx].coutTotal=this.value;};}(pi));
+    var op = document.createElement('div'); op.className = 'total-op'; op.textContent = '× 1,10 =';
+    var t2 = document.createElement('input'); t2.className = 'total-result'; t2.type = 'number'; t2.inputMode = 'decimal'; t2.min = '0'; t2.step = '.001'; t2.placeholder = 'avec pertes'; t2.value = p.coutAvecPerte;
+    t2.addEventListener('input', function(idx){return function(){portions[idx].coutAvecPerte=this.value;};}(pi));
+    var unit = document.createElement('div'); unit.className = 'total-unit'; unit.textContent = '€';
+    totalRow.appendChild(t1); totalRow.appendChild(op); totalRow.appendChild(t2); totalRow.appendChild(unit);
+    totalBlock.appendChild(totalLbl); totalBlock.appendChild(totalRow);
+    div.appendChild(totalBlock);
+
+    c.appendChild(div);
+  });
+}
+
+function buildSection(pi, field, title, isEmb) {
+  var wrap = document.createElement('div');
+  var bar = document.createElement('div'); bar.className = 'section-bar';
+  var bt = document.createElement('div'); bt.className = 'section-bar-text'; bt.textContent = title;
+  bar.appendChild(bt); wrap.appendChild(bar);
+
+  portions[pi][field].forEach(function(ing, ii) {
+    wrap.appendChild(buildIngCard(pi, field, ii, ing, isEmb));
+  });
+
+  var addBtn = document.createElement('button');
+  addBtn.className = 'btn'; addBtn.type = 'button';
+  addBtn.style.cssText = 'display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1rem;-webkit-appearance:none;border-radius:0';
+  addBtn.textContent = '＋  Ajouter ' + (isEmb ? 'un emballage' : 'un ingrédient');
+  addBtn.addEventListener('click', function(p2, f2){return function(){portions[p2][f2].push(newIng(isEmb?'emballage':'ingredient'));render();};}(pi, field));
+  wrap.appendChild(addBtn);
+  return wrap;
+}
+
+function buildIngCard(pi, field, ii, ing, isEmb) {
+  var card = document.createElement('div');
+  card.className = 'ing-card' + (isEmb ? ' emb' : '');
+
+  // Header
+  var head = document.createElement('div'); head.className = 'ing-card-head';
+  var num = document.createElement('div'); num.className = 'ing-card-num'; num.textContent = ii+1;
+  var name = document.createElement('input'); name.className = 'ing-card-name'; name.type = 'text';
+  name.placeholder = isEmb ? 'Ex : Sachet, Serviette…' : 'Ex : Pois chiches, Falafel maison…';
+  name.value = ing.nom; name.autocomplete = 'off';
+  name.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].nom=this.value;};}(pi,field,ii));
+
+  head.appendChild(num); head.appendChild(name);
+
+  if (!isEmb) {
+    var toggle = document.createElement('div'); toggle.className = 'ing-toggle';
+    var btnA = document.createElement('button'); btnA.type = 'button'; btnA.className = 'ing-toggle-btn' + (ing.mode==='achete'?' active-a':''); btnA.textContent = 'Acheté';
+    btnA.addEventListener('click', function(p2,f2,i2){return function(){portions[p2][f2][i2].mode='achete';render();};}(pi,field,ii));
+    var btnM = document.createElement('button'); btnM.type = 'button'; btnM.className = 'ing-toggle-btn' + (ing.mode==='maison'?' active-m':''); btnM.textContent = 'Maison';
+    btnM.addEventListener('click', function(p2,f2,i2){return function(){portions[p2][f2][i2].mode='maison';render();};}(pi,field,ii));
+    toggle.appendChild(btnA); toggle.appendChild(btnM); head.appendChild(toggle);
+  }
+
+  var delIng = document.createElement('button'); delIng.className = 'btn-del-ing'; delIng.type = 'button'; delIng.textContent = '✕';
+  delIng.addEventListener('click', function(p2,f2,i2){return function(){
+    if(portions[p2][f2].length<=1){showToast('Il faut au moins un élément');return;}
+    portions[p2][f2].splice(i2,1);render();
+  };}(pi,field,ii));
+  head.appendChild(delIng);
+  card.appendChild(head);
+
+  // Ligne quantité
+  var rowQ = document.createElement('div'); rowQ.className = 'ing-row olive';
+  var lQ = document.createElement('div'); lQ.className = 'ing-row-lbl'; lQ.textContent = 'Quantité';
+  var iQ = document.createElement('input'); iQ.className = 'ing-input'; iQ.type = 'number'; iQ.inputMode = 'decimal'; iQ.min = '0'; iQ.step = 'any'; iQ.placeholder = '0'; iQ.value = ing.qte;
+  iQ.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].qte=this.value;};}(pi,field,ii));
+  var selU = document.createElement('select'); selU.className = 'ing-select';
+  var unites = isEmb ? ['unités','g','ml'] : UNITES;
+  unites.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;if(ing.unite===u)o.selected=true;selU.appendChild(o);});
+  selU.addEventListener('change', function(p2,f2,i2){return function(){portions[p2][f2][i2].unite=this.value;};}(pi,field,ii));
+  rowQ.appendChild(lQ); rowQ.appendChild(iQ); rowQ.appendChild(selU);
+  card.appendChild(rowQ);
+
+  // Lignes selon mode
+  var modeAchete = ing.mode === 'achete' || isEmb;
+  if (modeAchete) {
+    // Fournisseur
+    var rowF = document.createElement('div'); rowF.className = 'ing-row orange-bg';
+    var lF = document.createElement('div'); lF.className = 'ing-row-lbl'; lF.textContent = 'Fournisseur';
+    var iF = document.createElement('input'); iF.className = 'ing-input'; iF.type = 'text'; iF.placeholder = 'Nom du fournisseur…'; iF.value = ing.fournisseur; iF.autocomplete = 'off';
+    iF.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].fournisseur=this.value;};}(pi,field,ii));
+    rowF.appendChild(lF); rowF.appendChild(iF); card.appendChild(rowF);
+
+    var rowP = document.createElement('div'); rowP.className = 'ing-row orange-bg';
+    var lP = document.createElement('div'); lP.className = 'ing-row-lbl'; lP.textContent = 'Prix TTC';
+    var iP = document.createElement('input'); iP.className = 'ing-input'; iP.type = 'number'; iP.inputMode = 'decimal'; iP.min = '0'; iP.step = '.001'; iP.placeholder = '0.000 €'; iP.value = ing.prixTTC;
+    iP.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].prixTTC=this.value;};}(pi,field,ii));
+    var iC = document.createElement('input'); iC.className = 'ing-input'; iC.type = 'number'; iC.inputMode = 'decimal'; iC.min = '0'; iC.step = 'any'; iC.placeholder = 'Cond.'; iC.value = ing.cond; iC.style.maxWidth = '80px';
+    iC.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].cond=this.value;};}(pi,field,ii));
+    var selC = document.createElement('select'); selC.className = 'ing-select';
+    UNITES.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;var defC=isEmb?'unités':'g';if((ing.uniteC||(isEmb?'unités':'g'))===u)o.selected=true;selC.appendChild(o);});
+    selC.addEventListener('change', function(p2,f2,i2){return function(){portions[p2][f2][i2].uniteC=this.value;};}(pi,field,ii));
+    rowP.appendChild(lP); rowP.appendChild(iP); rowP.appendChild(iC); rowP.appendChild(selC);
+    card.appendChild(rowP);
+  } else {
+    // Recette maison
+    var rowR = document.createElement('div'); rowR.className = 'ing-row orange-bg';
+    var lR = document.createElement('div'); lR.className = 'ing-row-lbl'; lR.textContent = 'Recette';
+    var iR = document.createElement('input'); iR.className = 'ing-input'; iR.type = 'text'; iR.placeholder = 'Nom de la recette…'; iR.value = ing.recette; iR.autocomplete = 'off';
+    iR.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].recette=this.value;};}(pi,field,ii));
+    rowR.appendChild(lR); rowR.appendChild(iR); card.appendChild(rowR);
+
+    var rowCR = document.createElement('div'); rowCR.className = 'ing-row orange-bg';
+    var lCR = document.createElement('div'); lCR.className = 'ing-row-lbl'; lCR.textContent = 'Coût total';
+    var iCR = document.createElement('input'); iCR.className = 'ing-input'; iCR.type = 'number'; iCR.inputMode = 'decimal'; iCR.min = '0'; iCR.step = '.001'; iCR.placeholder = '0.000 €'; iCR.value = ing.coutR;
+    iCR.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].coutR=this.value;};}(pi,field,ii));
+    var iRend = document.createElement('input'); iRend.className = 'ing-input'; iRend.type = 'number'; iRend.inputMode = 'decimal'; iRend.min = '0'; iRend.step = 'any'; iRend.placeholder = 'Rendement'; iRend.value = ing.rendement; iRend.style.maxWidth = '90px';
+    iRend.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].rendement=this.value;};}(pi,field,ii));
+    var selRend = document.createElement('select'); selRend.className = 'ing-select';
+    UNITES.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;if((ing.uniteRend||'g')===u)o.selected=true;selRend.appendChild(o);});
+    selRend.addEventListener('change', function(p2,f2,i2){return function(){portions[p2][f2][i2].uniteRend=this.value;};}(pi,field,ii));
+    rowCR.appendChild(lCR); rowCR.appendChild(iCR); rowCR.appendChild(iRend); rowCR.appendChild(selRend);
+    card.appendChild(rowCR);
+  }
+
+  // Coût réel
+  var rowCout = document.createElement('div'); rowCout.className = 'ing-row dark';
+  var lCout = document.createElement('div'); lCout.className = 'ing-row-lbl'; lCout.textContent = 'Coût réel';
+  var formula = document.createElement('div'); formula.className = 'ing-formula';
+  formula.textContent = modeAchete ? 'Qté dans la portion × Prix TTC fournisseur ÷ Conditionnement fournisseur =' : 'Qté dans la portion × Coût total de la recette ÷ Rendement de la recette =';
+  var iCout = document.createElement('input'); iCout.className = 'ing-input'; iCout.type = 'number'; iCout.inputMode = 'decimal'; iCout.min = '0'; iCout.step = '.001'; iCout.placeholder = '0.000 €'; iCout.value = ing.cout; iCout.style.maxWidth = '100px'; iCout.style.fontWeight = '700'; iCout.style.color = 'var(--olive)';
+  iCout.addEventListener('input', function(p2,f2,i2){return function(){portions[p2][f2][i2].cout=this.value;};}(pi,field,ii));
+  rowCout.appendChild(lCout); rowCout.appendChild(formula); rowCout.appendChild(iCout);
+  card.appendChild(rowCout);
+
+  return card;
+}
+
+// Init
+portions.push(newPortion());
+portions.push(newPortion());
+render();
+
+// Boutons
+document.getElementById('btnPrint').addEventListener('click', function(){window.print();});
+document.getElementById('btnSave').addEventListener('click', function(){
+  var data = JSON.stringify({fiche:'portion',v:1,date:new Date().toISOString(),portions:portions,activeIdx:activeIdx},null,2);
+  var a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(data); a.download = 'streetbiz-fiche-portion.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  showToast('Données sauvegardées ✓');
+});
+document.getElementById('btnLoad').addEventListener('click', function(){document.getElementById('fileInput').click();});
+document.getElementById('fileInput').addEventListener('change', function(e){
+  var file = e.target.files[0]; if(!file)return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{var d=JSON.parse(ev.target.result);if(d.portions){portions=d.portions;activeIdx=d.activeIdx||0;render();showToast('Données restaurées ✓');}}
+    catch(err){showToast('Fichier invalide');}
+  };
+  reader.readAsText(file); e.target.value='';
+});
+</script>
+</body>
+</html>

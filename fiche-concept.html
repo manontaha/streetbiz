@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fiche-Concept — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+.page{max-width:700px;margin:0 auto}
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange)}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+main{padding:1.5rem}
+
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.consigne-body{display:flex;flex-direction:column;gap:8px}
+.consigne-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+
+.section-title{display:flex;align-items:center;gap:10px;margin:1.75rem 0 1rem}
+.section-num{width:30px;height:30px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title h2{font-family:'Archivo Black',sans-serif;font-size:12pt;text-transform:uppercase;color:var(--black)}
+
+/* CHAMP CONCEPT */
+.concept-block{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);padding:16px;margin-bottom:1.5rem}
+.field-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.concept-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:var(--black);padding:4px 0;outline:none;-webkit-appearance:none;min-height:48px}
+.concept-input:focus{border-bottom-color:var(--orange)}
+.concept-input::placeholder{color:#c8c4bc;font-size:16px;font-weight:400;text-transform:none;font-family:'Montserrat',sans-serif}
+
+/* LISTE PRODUITS */
+.produit-item{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);display:flex;align-items:center;gap:0;margin-bottom:8px;overflow:hidden}
+.produit-item.maison{border-left-color:var(--olive)}
+.item-num{width:38px;height:48px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.produit-item.maison .item-num{background:var(--olive)}
+.item-input{flex:1;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:13px 12px;outline:none;-webkit-appearance:none;min-height:48px}
+.item-input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
+
+.note{background:var(--black);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
+.note strong{color:#9ab846}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+
+@media print{.consigne-block,.note,.tableur-banner,.note-box{display:none!important}
+  .actions{display:none!important}
+  header,.item-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+}
+
+/* CONSIGNE */
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.consigne-body{display:flex;flex-direction:column;gap:12px}
+.consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
+.consigne-text{color:var(--ink)}
+.consigne-text div{margin-top:2px}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Concept</em></h1>
+    </div>
+    <div class="fiche-badge">Fiche 1 / 10</div>
+  </div>
+  <p class="header-sub">Définis ton offre principale</p>
+</header>
+<main>
+  <div class="consigne-block">
+    <div class="consigne-label">📋 Comment remplir cette fiche</div>
+    <div class="consigne-body">
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Étape 1</span><div class="consigne-text"><span>Note le <strong>nom de ton concept</strong>.</span></div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Étape 2</span><div class="consigne-text"><span>Liste tes <strong>produits principaux</strong> — ceux que tu veux vendre (1 à 5 max).</span></div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--black)">Étape 3</span><div class="consigne-text"><span>Liste les <strong>desserts, boissons ou snacks</strong> que tu veux faire maison.</span></div></div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : Nom du concept -->
+  <div class="section-title"><div class="section-num">1</div><h2>Nom de ton concept</h2></div>
+  <div class="concept-block">
+    <div class="field-label">Mon concept s'appelle</div>
+    <input class="concept-input" type="text" placeholder="Ex : Les Falafels de Manon" autocomplete="off">
+  </div>
+
+  <!-- ÉTAPE 2 : Produits principaux -->
+  <div class="section-title"><div class="section-num">2</div><h2>Mes produits principaux</h2></div>
+  <div id="principauxList"></div>
+  <button class="btn-add" id="btnAddPrincipal" style="display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0">＋  Ajouter un produit principal</button>
+
+  <!-- ÉTAPE 3 : Produits maison -->
+  <div class="section-title"><div class="section-num">3</div><h2>Mes produits faits maison</h2></div>
+  <div class="note"><strong>Produits faits maison :</strong> desserts, boissons, sauces, snacks… tout ce que tu prépares toi-même et qui fait partie de ton offre.</div>
+  <div id="maisonList"></div>
+  <button class="btn-add" id="btnAddMaison" style="display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0">＋  Ajouter un produit maison</button>
+
+  <div class="actions">
+    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
+  </div>
+</main>
+</div>
+
+<script>
+var principaux = ['','',''];
+var maison = ['',''];
+
+function renderList(data, containerId, type) {
+  var el = document.getElementById(containerId);
+  el.innerHTML = '';
+  data.forEach(function(val, i) {
+    var div = document.createElement('div');
+    div.className = 'produit-item' + (type === 'maison' ? ' maison' : '');
+    var num = document.createElement('div');
+    num.className = 'item-num';
+    num.textContent = i + 1;
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.className = 'item-input';
+    inp.placeholder = type === 'maison' ? 'Ex : Brownie maison, Limonade maison…' : 'Ex : Wrap falafel, Barquette…';
+    inp.value = val;
+    inp.autocomplete = 'off';
+    inp.style.webkitAppearance = 'none';
+    inp.addEventListener('input', function(arr, idx) {
+      return function() { arr[idx] = this.value; };
+    }(data, i));
+    div.appendChild(num);
+    div.appendChild(inp);
+    el.appendChild(div);
+  });
+}
+
+document.getElementById('btnAddPrincipal').addEventListener('click', function() {
+  principaux.push('');
+  renderList(principaux, 'principauxList', 'principal');
+});
+
+document.getElementById('btnAddMaison').addEventListener('click', function() {
+  maison.push('');
+  renderList(maison, 'maisonList', 'maison');
+});
+
+document.getElementById('btnPrint').addEventListener('click', function() { window.print(); });
+
+renderList(principaux, 'principauxList', 'principal');
+renderList(maison, 'maisonList', 'maison');
+</script>
+</body>
+</html>
