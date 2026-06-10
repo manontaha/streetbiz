@@ -19,55 +19,37 @@ header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
 main{padding:1.5rem}
-
-.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
-.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
-.consigne-body{display:flex;flex-direction:column;gap:8px}
-.consigne-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6}
-.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
-
-.section-title{display:flex;align-items:center;gap:10px;margin:1.75rem 0 1rem}
-.section-num{width:30px;height:30px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.section-title h2{font-family:'Archivo Black',sans-serif;font-size:12pt;text-transform:uppercase;color:var(--black)}
-
-/* CHAMP CONCEPT */
-.concept-block{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);padding:16px;margin-bottom:1.5rem}
-.field-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.concept-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:var(--black);padding:4px 0;outline:none;-webkit-appearance:none;min-height:48px}
-.concept-input:focus{border-bottom-color:var(--orange)}
-.concept-input::placeholder{color:#c8c4bc;font-size:16px;font-weight:400;text-transform:none;font-family:'Montserrat',sans-serif}
-
-/* LISTE PRODUITS */
-.produit-item{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);display:flex;align-items:center;gap:0;margin-bottom:8px;overflow:hidden}
-.produit-item.maison{border-left-color:var(--olive)}
-.item-num{width:38px;height:48px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.produit-item.maison .item-num{background:var(--olive)}
-.item-input{flex:1;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:13px 12px;outline:none;-webkit-appearance:none;min-height:48px}
-.item-input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
-
-.note{background:var(--black);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
-.note strong{color:#9ab846}
-
-.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem}
-.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
-.btn-orange{background:var(--orange);color:var(--white)}
-.btn-black{background:var(--black);color:var(--white)}
-.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
-
-@media print{.consigne-block,.note,.tableur-banner,.note-box{display:none!important}
-  .actions{display:none!important}
-  header,.item-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-  body{background:white}
-}
-
-/* CONSIGNE */
 .consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
 .consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .consigne-body{display:flex;flex-direction:column;gap:12px}
 .consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
 .consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
 .consigne-text{color:var(--ink)}
-.consigne-text div{margin-top:2px}
+.section-title{display:flex;align-items:center;gap:10px;margin:1.75rem 0 1rem}
+.section-num{width:30px;height:30px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title h2{font-family:'Archivo Black',sans-serif;font-size:12pt;text-transform:uppercase;color:var(--black)}
+.concept-block{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);padding:16px;margin-bottom:1.5rem}
+.field-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.concept-input{width:100%;border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:var(--black);padding:4px 0;outline:none;-webkit-appearance:none;min-height:48px}
+.concept-input:focus{border-bottom-color:var(--orange)}
+.concept-input::placeholder{color:#c8c4bc;font-size:16px;font-weight:400;text-transform:none;font-family:'Montserrat',sans-serif}
+.produit-item{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);display:flex;align-items:center;margin-bottom:8px;overflow:hidden}
+.produit-item.maison{border-left-color:var(--olive)}
+.item-num{width:38px;height:48px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.produit-item.maison .item-num{background:var(--olive)}
+.item-input{flex:1;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:13px 12px;outline:none;-webkit-appearance:none;min-height:48px}
+.item-input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
+.note{background:var(--black);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
+.note strong{color:#9ab846}
+.btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+@media print{
+  .actions,.btn-add{display:none!important}
+  header,.item-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+}
 </style>
 </head>
 <body>
@@ -86,44 +68,69 @@ main{padding:1.5rem}
   <div class="consigne-block">
     <div class="consigne-label">📋 Comment remplir cette fiche</div>
     <div class="consigne-body">
-      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Étape 1</span><div class="consigne-text"><span>Note le <strong>nom de ton concept</strong>.</span></div></div>
-      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Étape 2</span><div class="consigne-text"><span>Liste tes <strong>produits principaux</strong> — ceux que tu veux vendre (1 à 5 max).</span></div></div>
-      <div class="consigne-row"><span class="consigne-cp" style="background:var(--black)">Étape 3</span><div class="consigne-text"><span>Liste les <strong>desserts, boissons ou snacks</strong> que tu veux faire maison.</span></div></div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 1 · Mission 1</span>
+        <div class="consigne-text">Note le <strong>nom de ton concept</strong>.</div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--orange)">Étape 2</span>
+        <div class="consigne-text">Liste tes <strong>produits principaux</strong> — ceux que tu veux vendre (1 à 5 max).</div>
+      </div>
+      <div class="consigne-row">
+        <span class="consigne-cp" style="background:var(--black)">Étape 3</span>
+        <div class="consigne-text">Liste les <strong>desserts, boissons ou snacks</strong> que tu veux faire maison.</div>
+      </div>
     </div>
   </div>
 
-  <!-- ÉTAPE 1 : Nom du concept -->
   <div class="section-title"><div class="section-num">1</div><h2>Nom de ton concept</h2></div>
   <div class="concept-block">
     <div class="field-label">Mon concept s'appelle</div>
-    <input class="concept-input" type="text" placeholder="Ex : Les Falafels de Manon" autocomplete="off" oninput="_lsSave()">
+    <input class="concept-input" id="conceptNom" type="text" placeholder="Ex : Les Falafels de Manon" autocomplete="off">
   </div>
 
-  <!-- ÉTAPE 2 : Produits principaux -->
   <div class="section-title"><div class="section-num">2</div><h2>Mes produits principaux</h2></div>
   <div id="principauxList"></div>
-  <button class="btn-add" id="btnAddPrincipal" style="display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0">＋  Ajouter un produit principal</button>
+  <button class="btn-add" id="btnAddP">＋  Ajouter un produit principal</button>
 
-  <!-- ÉTAPE 3 : Produits maison -->
   <div class="section-title"><div class="section-num">3</div><h2>Mes produits faits maison</h2></div>
-  <div class="note"><strong>Produits faits maison :</strong> desserts, boissons, sauces, snacks… tout ce que tu prépares toi-même et qui fait partie de ton offre.</div>
+  <div class="note"><strong>Produits faits maison :</strong> desserts, boissons, sauces, snacks… tout ce que tu prépares toi-même.</div>
   <div id="maisonList"></div>
-  <button class="btn-add" id="btnAddMaison" style="display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0">＋  Ajouter un produit maison</button>
+  <button class="btn-add" id="btnAddM">＋  Ajouter un produit maison</button>
 
   <div class="actions">
     <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
   </div>
 </main>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
-var principaux = ['','',''];
-var maison = ['',''];
+var KEY = 'sb_concept_v3';
+var principaux = ['', '', ''];
+var maison = ['', ''];
+
+function save() {
+  try {
+    var d = {
+      concept: document.getElementById('conceptNom').value,
+      principaux: principaux,
+      maison: maison
+    };
+    localStorage.setItem(KEY, JSON.stringify(d));
+  } catch(e) {}
+}
+
+function load() {
+  try {
+    var s = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (!s) return;
+    if (s.concept) document.getElementById('conceptNom').value = s.concept;
+    if (s.principaux && s.principaux.length) principaux = s.principaux;
+    if (s.maison && s.maison.length) maison = s.maison;
+  } catch(e) {}
+}
 
 function renderList(data, containerId, type) {
-  setTimeout(_lsSave, 50);
   var el = document.getElementById(containerId);
   el.innerHTML = '';
   data.forEach(function(val, i) {
@@ -138,9 +145,8 @@ function renderList(data, containerId, type) {
     inp.placeholder = type === 'maison' ? 'Ex : Brownie maison, Limonade maison…' : 'Ex : Wrap falafel, Barquette…';
     inp.value = val;
     inp.autocomplete = 'off';
-    inp.style.webkitAppearance = 'none';
     inp.addEventListener('input', function(arr, idx) {
-      return function() { arr[idx] = this.value; };
+      return function() { arr[idx] = this.value; save(); };
     }(data, i));
     div.appendChild(num);
     div.appendChild(inp);
@@ -148,58 +154,25 @@ function renderList(data, containerId, type) {
   });
 }
 
-document.getElementById('btnAddPrincipal').addEventListener('click', function() {
+document.getElementById('conceptNom').addEventListener('input', save);
+
+document.getElementById('btnAddP').addEventListener('click', function() {
   principaux.push('');
   renderList(principaux, 'principauxList', 'principal');
+  save();
 });
 
-document.getElementById('btnAddMaison').addEventListener('click', function() {
+document.getElementById('btnAddM').addEventListener('click', function() {
   maison.push('');
   renderList(maison, 'maisonList', 'maison');
+  save();
 });
 
 document.getElementById('btnPrint').addEventListener('click', function() { window.print(); });
 
-
-  var a = document.createElement('a');
-  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(data);
-  a.download = 'streetbiz-fiche-concept.json';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  showToast('Données sauvegardées ✓');
-});
-
-
-});
-
-
+load();
 renderList(principaux, 'principauxList', 'principal');
 renderList(maison, 'maisonList', 'maison');
-
-// ── AUTOSAVE localStorage ──
-var _LSKEY = 'sb_concept_v2';
-function _lsSave(){
-  try{
-    var _d = {};
-    var _ci = document.querySelector('.concept-input');
-    if(_ci) _d['concept'] = _ci.value;
-    if(typeof principaux !== 'undefined') _d['principaux'] = principaux;
-    if(typeof maison !== 'undefined') _d['maison'] = maison;
-    localStorage.setItem(_LSKEY, JSON.stringify(_d));
-  }catch(e){}
-}
-function _lsLoad(){
-  try{
-    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
-    if(!_s) return;
-    if(_s['concept']) { var _ci = document.querySelector('.concept-input'); if(_ci) _ci.value = _s['concept']; }
-    if(_s['principaux']) { principaux = _s['principaux']; }
-    if(_s['maison']) { maison = _s['maison']; }
-  }catch(e){}
-}
-// Charger au démarrage
-_lsLoad();
-renderList(principaux,'principauxList','principal');
-  renderList(maison,'maisonList','maison');
 </script>
 </body>
 </html>
