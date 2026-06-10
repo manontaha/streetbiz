@@ -18,8 +18,9 @@ header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);
 header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+.save-bar{background:var(--white);border-bottom:1px solid var(--border);padding:6px 1.5rem;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;flex-shrink:0}
 main{padding:1.5rem}
-
 .consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
 .consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .consigne-body{display:flex;flex-direction:column;gap:12px}
@@ -27,18 +28,12 @@ main{padding:1.5rem}
 .consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
 .consigne-text{color:var(--ink)}
 .consigne-text div{margin-top:2px}
-
-/* SECTION */
 .section-bar{background:var(--black);padding:10px 14px;margin-bottom:1rem;border-left:4px solid var(--orange);margin-top:1.75rem}
 .section-bar:first-of-type{margin-top:0}
 .section-bar-title{font-family:'Archivo Black',sans-serif;font-size:12px;text-transform:uppercase;color:var(--white)}
-
 .note{background:var(--black);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:1rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
 .note strong{color:var(--orange)}
-
-/* CALCUL LIGNE */
 .calcul-bloc{background:var(--white);border:1px solid var(--border);overflow:hidden;margin-bottom:1.5rem}
-
 .calcul-line{display:flex;align-items:center;padding:14px 16px;gap:10px;border-bottom:1px solid var(--border)}
 .calcul-line:last-child{border-bottom:none}
 .calc-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);flex:1;line-height:1.4}
@@ -50,24 +45,14 @@ main{padding:1.5rem}
 .calc-unit{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}
 .calc-unit.olive{color:var(--olive)}
 .calc-unit.orange{color:var(--orange)}
-.calc-op{font-family:'Archivo Black',sans-serif;font-size:18px;color:var(--muted);flex-shrink:0;padding:0 4px}
 .calc-fixed{font-family:'Archivo Black',sans-serif;font-size:22px;color:var(--orange);flex-shrink:0}
-
-/* résultats colorés */
-.calcul-line.result-olive{background:rgba(109,122,47,.06)}
-.calcul-line.result-orange{background:rgba(242,106,33,.06)}
-
+.result-olive{background:rgba(109,122,47,.06)}
+.result-orange{background:rgba(242,106,33,.06)}
 .actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
 .btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
 .btn-orange{background:var(--orange);color:var(--white)}
-.btn-black{background:var(--black);color:var(--white)}
-.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
-
-.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
-.toast.show{transform:translateY(0);opacity:1}
-
 @media print{
-  .consigne-block,.note,.actions{display:none!important}
+  .consigne-block,.note,.save-bar,.actions,[id="btnPrint"]{display:none!important}
   header,.section-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   body{background:white}
 }
@@ -85,50 +70,32 @@ main{padding:1.5rem}
   </div>
   <p class="header-sub">Calcule le chiffre d'affaires minimum pour te payer</p>
 </header>
+<div class="save-bar"><span class="save-dot"></span><span id="saveLabel">Sauvegarde automatique</span></div>
 <main>
   <div class="consigne-block">
     <div class="consigne-label">📋 Comment remplir cette fiche</div>
     <div class="consigne-body">
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 5 · Mission 1 · Étape 2</span>
-        <div class="consigne-text">
-          <div>Note ton <strong>objectif de revenu mensuel</strong>.</div>
-          <div>Ne sous-estime pas tes besoins : pense à ton loyer, tes charges et tes extras.</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 5 · Mission 1 · Étape 3</span>
-        <div class="consigne-text">
-          <div>Multiplie ton revenu par <strong>3</strong> et note le <strong>CA minimum à réaliser</strong>.</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--black)">Checkpoint 5 · Mission 3 · Étape 2</span>
-        <div class="consigne-text">
-          <div>Reviens ici après la fiche-panier-moyen.</div>
-          <div>Divise ton CA par ton panier moyen → <strong>objectif mensuel de ventes</strong>.</div>
-        </div>
-      </div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Checkpoint 5 · Mission 1 · Étape 2</span><div class="consigne-text"><div>Note ton <strong>objectif de revenu mensuel</strong>.</div><div>Ne sous-estime pas tes besoins : loyer, charges, extras.</div></div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Checkpoint 5 · Mission 1 · Étape 3</span><div class="consigne-text">Multiplie ton revenu par <strong>3</strong> → <strong>CA minimum à réaliser</strong>.</div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--black)">Checkpoint 5 · Mission 3 · Étape 2</span><div class="consigne-text"><div>Reviens ici après ta fiche-panier-moyen.</div><div>Divise ton CA par ton panier moyen → <strong>objectif mensuel de ventes</strong>.</div></div></div>
     </div>
   </div>
 
-  <!-- ÉTAPE 1 -->
   <div class="section-bar"><div class="section-bar-title">1 — Fixe ton objectif de revenu mensuel</div></div>
-  <div class="note"><strong>Ne sous-estime pas tes besoins financiers.</strong> Combien aimerais-tu pouvoir te payer au minimum chaque mois ? Pense à ton loyer, tes charges personnelles, tes extras.</div>
+  <div class="note"><strong>Ne sous-estime pas tes besoins financiers.</strong> Combien aimerais-tu pouvoir te payer au minimum chaque mois ?</div>
   <div class="calcul-bloc">
     <div class="calcul-line result-olive">
       <div class="calc-lbl">Mon objectif de revenu mensuel</div>
-      <input class="calc-inp olive" id="f-revenu" type="number" inputmode="decimal" min="0" step="1" placeholder="ex : 1500">
+      <input class="calc-inp olive" id="fRevenu" type="number" inputmode="decimal" min="0" step="1" placeholder="ex : 1500">
       <div class="calc-unit olive">€ / mois</div>
     </div>
   </div>
 
-  <!-- ÉTAPE 2 -->
   <div class="section-bar"><div class="section-bar-title">2 — Calcule le CA minimum à réaliser</div></div>
   <div class="calcul-bloc">
     <div class="calcul-line">
       <div class="calc-lbl">Mon revenu souhaité</div>
-      <input class="calc-inp" id="f-revenu2" type="number" inputmode="decimal" min="0" step="1" placeholder="reporte l'étape 1">
+      <input class="calc-inp" id="fRevenu2" type="number" inputmode="decimal" min="0" step="1" placeholder="reporte l'étape 1">
       <div class="calc-unit">€ / mois</div>
     </div>
     <div class="calcul-line" style="background:rgba(0,0,0,.03);padding:8px 16px">
@@ -137,23 +104,22 @@ main{padding:1.5rem}
     </div>
     <div class="calcul-line result-orange">
       <div class="calc-lbl" style="color:var(--orange)">CA minimum à réaliser</div>
-      <input class="calc-inp orange" id="f-ca" type="number" inputmode="decimal" min="0" step="1" placeholder="résultat">
+      <input class="calc-inp orange" id="fCa" type="number" inputmode="decimal" min="0" step="1" placeholder="résultat">
       <div class="calc-unit orange">€ / mois</div>
     </div>
   </div>
 
-  <!-- ÉTAPE 3 -->
   <div class="section-bar"><div class="section-bar-title">3 — Calcule ton objectif mensuel de ventes</div></div>
-  <div class="note" style="border-left-color:var(--muted)">À remplir <strong>après</strong> ta fiche-panier-moyen. Divise ton CA par ton panier moyen — arrondis au chiffre supérieur.</div>
+  <div class="note" style="border-left-color:var(--muted)">À remplir <strong>après</strong> ta fiche-panier-moyen.</div>
   <div class="calcul-bloc">
     <div class="calcul-line">
       <div class="calc-lbl">CA à réaliser</div>
-      <input class="calc-inp" id="f-ca2" type="number" inputmode="decimal" min="0" step="1" placeholder="reporte l'étape 2">
+      <input class="calc-inp" id="fCa2" type="number" inputmode="decimal" min="0" step="1" placeholder="reporte l'étape 2">
       <div class="calc-unit">€ / mois</div>
     </div>
     <div class="calcul-line">
       <div class="calc-lbl">Panier moyen</div>
-      <input class="calc-inp" id="f-panier" type="number" inputmode="decimal" min="0" step=".01" placeholder="fiche-panier-moyen">
+      <input class="calc-inp" id="fPanier" type="number" inputmode="decimal" min="0" step=".01" placeholder="fiche-panier-moyen">
       <div class="calc-unit">€</div>
     </div>
     <div class="calcul-line" style="background:rgba(0,0,0,.03);padding:8px 16px">
@@ -161,83 +127,38 @@ main{padding:1.5rem}
     </div>
     <div class="calcul-line result-olive">
       <div class="calc-lbl" style="color:var(--olive)">Objectif mensuel de ventes</div>
-      <input class="calc-inp olive" id="f-ventes" type="number" inputmode="decimal" min="0" step="1" placeholder="résultat">
+      <input class="calc-inp olive" id="fVentes" type="number" inputmode="decimal" min="0" step="1" placeholder="résultat">
       <div class="calc-unit olive">ventes / mois</div>
     </div>
   </div>
 
-  <div class="actions">
-    <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
-  </div>
+  <div class="actions"><button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button></div>
 </main>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
+var KEY = 'sb_revenu_v3';
+var IDS = ['fRevenu','fRevenu2','fCa','fCa2','fPanier','fVentes'];
 
-// AUTO-SAVE
-var RKEY = 'sb_revenu_v1';
-function saveRevenu(){
-  var d = {};
-  ['f-revenu','f-revenu2','f-ca','f-ca2','f-panier','f-ventes'].forEach(function(id){
-    var el = document.getElementById(id); if(el) d[id]=el.value;
-  });
-  try{localStorage.setItem(RKEY, JSON.stringify(d));}catch(e){}
-}
-function loadRevenu(){
+function save(){
   try{
-    var s = JSON.parse(localStorage.getItem(RKEY)||'null');
-    if(!s) return;
-    ['f-revenu','f-revenu2','f-ca','f-ca2','f-panier','f-ventes'].forEach(function(id){
-      var el = document.getElementById(id); if(el && s[id]) el.value=s[id];
-    });
+    var d={};
+    IDS.forEach(function(id){var el=document.getElementById(id);if(el)d[id]=el.value;});
+    localStorage.setItem(KEY,JSON.stringify(d));
+    var l=document.getElementById('saveLabel');if(l){l.textContent='Sauvegardé ✓';setTimeout(function(){var x=document.getElementById('saveLabel');if(x)x.textContent='Sauvegarde automatique';},1500);}
   }catch(e){}
 }
-['f-revenu','f-revenu2','f-ca','f-ca2','f-panier','f-ventes'].forEach(function(id){
-  var el = document.getElementById(id);
-  if(el) el.addEventListener('input', saveRevenu);
-});
-loadRevenu();
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY);if(!raw)return;
+    var s=JSON.parse(raw);
+    IDS.forEach(function(id){var el=document.getElementById(id);if(el&&s[id])el.value=s[id];});
+  }catch(e){}
+}
 
+load();
+IDS.forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',save);});
 document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
-
-// btnSave disabled - localStorage
-document.getElementById && false && (function(){
-  var data = JSON.stringify({
-    fiche:'revenu', v:2, date:new Date().toISOString(),
-    revenu: document.getElementById('f-revenu').value,
-    revenu2: document.getElementById('f-revenu2').value,
-    ca: document.getElementById('f-ca').value,
-    ca2: document.getElementById('f-ca2').value,
-    panier: document.getElementById('f-panier').value,
-    ventes: document.getElementById('f-ventes').value
-  }, null, 2);
-  var a = document.createElement('a');
-  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(data);
-  a.download = 'streetbiz-fiche-revenu.json';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  showToast('Données sauvegardées ✓');
-});
-
-document.getElementById('btnLoad').addEventListener('click',function(){document.getElementById('fileInput').click();});
-document.getElementById('fileInput').addEventListener('change',function(e){
-  var file = e.target.files[0]; if(!file) return;
-  var reader = new FileReader();
-  reader.onload = function(ev){
-    try{
-      var d = JSON.parse(ev.target.result);
-      if(d.revenu) document.getElementById('f-revenu').value = d.revenu;
-      if(d.revenu2) document.getElementById('f-revenu2').value = d.revenu2;
-      if(d.ca) document.getElementById('f-ca').value = d.ca;
-      if(d.ca2) document.getElementById('f-ca2').value = d.ca2;
-      if(d.panier) document.getElementById('f-panier').value = d.panier;
-      if(d.ventes) document.getElementById('f-ventes').value = d.ventes;
-      showToast('Données restaurées ✓');
-    } catch(err){showToast('Fichier invalide');}
-  };
-  reader.readAsText(file); e.target.value='';
-});
 </script>
 </body>
 </html>

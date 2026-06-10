@@ -18,31 +18,24 @@ header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);
 header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+.save-bar{background:var(--white);border-bottom:1px solid var(--border);padding:6px 1.5rem;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;flex-shrink:0}
 main{padding:1.5rem}
-
-/* CONSIGNE */
 .consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
 .consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .consigne-body{display:flex;flex-direction:column;gap:12px}
 .consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
 .consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
 .consigne-text{color:var(--ink)}
-.consigne-text div{margin-top:2px}
-
 .note{background:var(--black);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
 .note strong{color:#9ab846}
-
-/* SECTION TITLE */
-.section-bar{background:var(--black);padding:10px 14px;margin-bottom:.75rem;display:flex;align-items:center;gap:10px}
+.section-bar{background:var(--black);padding:10px 14px;margin-bottom:.75rem}
 .section-bar.olive{border-left:4px solid var(--olive)}
 .section-bar.orange{border-left:4px solid var(--orange)}
 .section-bar-title{font-family:'Archivo Black',sans-serif;font-size:12px;text-transform:uppercase;color:var(--white)}
-
-/* PRODUIT CARD */
-.produit-card{background:var(--white);border:1px solid var(--border);margin-bottom:10px;overflow:hidden}
+.produit-card{background:var(--white);border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
 .produit-card.ing{border-left:3px solid var(--olive)}
 .produit-card.emb{border-left:3px solid var(--orange)}
-
 .card-head{display:flex;align-items:center;background:var(--black)}
 .card-num{width:36px;height:44px;color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .produit-card.ing .card-num{background:var(--olive)}
@@ -50,54 +43,33 @@ main{padding:1.5rem}
 .card-name{flex:1;border:none;background:transparent;font-family:'Archivo Black',sans-serif;font-size:13px;text-transform:uppercase;color:var(--white);padding:10px 12px;outline:none;-webkit-appearance:none;min-height:44px}
 .card-name::placeholder{color:#5a5a4a;font-weight:400;font-family:'Montserrat',sans-serif;font-size:12px;text-transform:none}
 .btn-del-card{background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:14px;min-width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-
-/* TABLE FOURNISSEURS */
 .fourn-head{display:grid;grid-template-columns:1fr 75px 95px 75px 36px;background:rgba(0,0,0,.05);border-bottom:1px solid var(--border)}
 .fh{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:6px 8px;border-right:1px solid var(--border);text-align:center}
 .fh:first-child{text-align:left}
 .fh:last-child{border-right:none}
-
 .fourn-row{display:grid;grid-template-columns:1fr 75px 95px 75px 36px;border-bottom:1px solid var(--border)}
 .fourn-row:last-child{border-bottom:none}
 .fc{display:flex;align-items:center;border-right:1px solid var(--border)}
 .fc:last-child{border-right:none;justify-content:center}
 .fc input{width:100%;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:12px;color:var(--ink);padding:10px 8px;outline:none;-webkit-appearance:none;min-height:44px;text-align:center}
-.fc:first-child input{text-align:left;font-size:12.5px}
-.fc input::placeholder{color:#c8c4bc;font-style:italic;font-size:11px}
+.fc:first-child input{text-align:left}
 .fc-ttc{background:rgba(109,122,47,.06)}
-.fc-ttc input{color:var(--olive);font-family:'Archivo Black',sans-serif;font-size:13px;border-bottom:2px solid var(--olive) !important}
 .produit-card.emb .fc-ttc{background:rgba(242,106,33,.06)}
-.produit-card.emb .fc-ttc input{color:var(--orange);border-bottom-color:var(--orange) !important}
 .cond-wrap{display:flex;align-items:center;width:100%}
 .cond-wrap input{flex:1;border:none;background:transparent;font-family:'Archivo Black',sans-serif;font-size:12px;color:var(--ink);padding:10px 4px;outline:none;-webkit-appearance:none;min-height:44px;text-align:center;min-width:0}
 .cond-wrap select{border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--muted);padding:0 2px;outline:none;-webkit-appearance:none;min-height:44px;cursor:pointer;flex-shrink:0}
-.fc-del button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;min-width:36px;min-height:44px;display:flex;align-items:center;justify-content:center;width:100%}
-
-/* TVA */
 .tva-line{padding:5px 10px;font-size:10px;font-style:italic;border-top:1px solid var(--border)}
 .produit-card.ing .tva-line{background:rgba(109,122,47,.05);color:var(--olive)}
 .produit-card.emb .tva-line{background:rgba(242,106,33,.05);color:var(--orange)}
-
 .btn-add-fourn{display:flex;align-items:center;gap:6px;background:none;border:none;border-top:1px solid var(--border);padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:44px;-webkit-appearance:none}
-
-/* ADD BTN */
-.btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0}
-.btn-add.olive{background:var(--olive);color:var(--white);border:none;font-size:13px;padding:14px}
-.btn-add.olive:hover{opacity:.9}
-.btn-add.orange-btn{background:var(--orange);color:var(--white);border:none;font-size:13px;padding:14px}
-.btn-add.orange-btn:hover{opacity:.9}
-
+.btn-add{display:flex;align-items:center;gap:8px;border:none;padding:13px 16px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0;color:var(--white)}
+.btn-add.olive{background:var(--olive)}
+.btn-add.orange-btn{background:var(--orange)}
 .actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:.5rem}
 .btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
 .btn-orange{background:var(--orange);color:var(--white)}
-.btn-black{background:var(--black);color:var(--white)}
-.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
-
-.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
-.toast.show{transform:translateY(0);opacity:1}
-
-@media print{.consigne-block,.note,.tableur-banner,.note-box{display:none!important}
-  .actions,.btn-add,.btn-add-fourn,.btn-del-card,.fc-del{display:none!important}
+@media print{
+  .consigne-block,.note,.save-bar,.btn-add,.btn-add-fourn,.btn-del-card,.fc:last-child,.actions,[id="btnPrint"]{display:none!important}
   header,.card-head,.card-num,.fourn-head,.section-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   body{background:white}
   .produit-card{page-break-inside:avoid}
@@ -116,225 +88,124 @@ main{padding:1.5rem}
   </div>
   <p class="header-sub">Centralise tous tes produits et leurs tarifs fournisseurs</p>
 </header>
+<div class="save-bar"><span class="save-dot"></span><span id="saveLabel">Sauvegarde automatique</span></div>
 <main>
   <div class="consigne-block">
     <div class="consigne-label">📋 Comment remplir cette fiche</div>
     <div class="consigne-body">
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 2 · Mission 3</span>
-        <div class="consigne-text">
-          <div>Centralise ici <strong>tous les produits</strong> dont tu as besoin.</div>
-          <div>Reprends tes fiches-portion et fiches-recette pour n'en oublier aucun.</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 3 · Mission 2</span>
-        <div class="consigne-text">
-          <div>Pour chaque produit, renseigne le ou les <strong>fournisseur(s)</strong>, le <strong>prix HT</strong> et le <strong>conditionnement</strong>.</div>
-          <div>Calcule le <strong>tarif TTC</strong> : ingrédient → HT × 1,055 · emballage → HT × 1,20.</div>
-        </div>
-      </div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Checkpoint 2 · Mission 3</span><div class="consigne-text"><div>Centralise ici <strong>tous les produits</strong> dont tu as besoin.</div><div>Reprends tes fiches-portion et fiches-recette.</div></div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Checkpoint 3 · Mission 2</span><div class="consigne-text"><div>Renseigne le ou les <strong>fournisseur(s)</strong>, le <strong>prix HT</strong> et le <strong>conditionnement</strong>.</div><div>Calcule le <strong>tarif TTC</strong> : ingrédient → HT × 1,055 · emballage → HT × 1,20.</div></div></div>
     </div>
   </div>
-
-  <div class="note"><strong>Rappel TVA :</strong> Ingrédients alimentaires → HT × 1,055 · Emballages & accessoires → HT × 1,20</div>
-
-  <!-- SECTION INGRÉDIENTS -->
-  <div class="section-bar olive">
-    <div class="section-bar-title">🥗 Ingrédients</div>
-  </div>
+  <div class="note"><strong>Rappel TVA :</strong> Ingrédients alimentaires → HT × 1,055 · Emballages → HT × 1,20</div>
+  <div class="section-bar olive"><div class="section-bar-title">🥗 Ingrédients</div></div>
   <div id="ingredientsList"></div>
   <button class="btn-add olive" id="btnAddIng">＋  Ajouter un ingrédient</button>
-
-  <!-- SECTION EMBALLAGES -->
-  <div class="section-bar orange">
-    <div class="section-bar-title">📦 Emballages & accessoires</div>
-  </div>
+  <div class="section-bar orange"><div class="section-bar-title">📦 Emballages & accessoires</div></div>
   <div id="emballagesList"></div>
-  <button class="btn-add orange-btn" id="btnAddEmb">＋  Ajouter un emballage / accessoire</button>
-
-  <div class="actions">
-    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
-    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
-    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
-  </div>
-  <input type="file" id="fileInput" accept=".json" style="display:none">
+  <button class="btn-add orange-btn" id="btnAddEmb">＋  Ajouter un emballage</button>
+  <div class="actions"><button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button></div>
 </main>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
+var KEY = 'sb_fourn_v3';
 var UNITES = ['g','ml','unités'];
-
-var ingredients = [
-  {nom:'', fournisseurs:[{nom:'',ht:'',cond:'',unite:'g',ttc:''}]},
-];
-var emballages = [
-  {nom:'', fournisseurs:[{nom:'',ht:'',cond:'',unite:'unités',ttc:''}]},
-];
+var ingredients = [{nom:'',fournisseurs:[{nom:'',ht:'',cond:'',unite:'g',ttc:''}]}];
+var emballages = [{nom:'',fournisseurs:[{nom:'',ht:'',cond:'',unite:'unités',ttc:''}]}];
 
 function newFourn(type){return {nom:'',ht:'',cond:'',unite:type==='emb'?'unités':'g',ttc:''};}
 function newProduit(){return {nom:'',fournisseurs:[newFourn('ing')]};}
 function newEmb(){return {nom:'',fournisseurs:[newFourn('emb')]};}
 
-function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
-
-function renderSection(data, containerId, type){
-  var list = document.getElementById(containerId);
-  list.innerHTML = '';
-  data.forEach(function(p, pi){
-    list.appendChild(buildCard(data, pi, type));
-  });
+function save(){
+  try{
+    localStorage.setItem(KEY,JSON.stringify({ingredients:ingredients,emballages:emballages}));
+    var l=document.getElementById('saveLabel');if(l){l.textContent='Sauvegardé ✓';setTimeout(function(){var x=document.getElementById('saveLabel');if(x)x.textContent='Sauvegarde automatique';},1500);}
+  }catch(e){}
+}
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY);if(!raw)return;
+    var s=JSON.parse(raw);
+    if(s.ingredients&&s.ingredients.length)ingredients=s.ingredients;
+    if(s.emballages&&s.emballages.length)emballages=s.emballages;
+  }catch(e){}
 }
 
-function render(){
-  setTimeout(_lsSave, 100);
-  renderSection(ingredients, 'ingredientsList', 'ing');
-  renderSection(emballages, 'emballagesList', 'emb');
+function renderSection(data,containerId,type){
+  var list=document.getElementById(containerId);list.innerHTML='';
+  data.forEach(function(p,pi){list.appendChild(buildCard(data,pi,type));});
 }
+function render(){renderSection(ingredients,'ingredientsList','ing');renderSection(emballages,'emballagesList','emb');}
 
-function buildCard(data, pi, type){
-  var isEmb = type === 'emb';
-  var card = document.createElement('div');
-  card.className = 'produit-card ' + type;
+function buildCard(data,pi,type){
+  var isEmb=type==='emb';
+  var card=document.createElement('div');card.className='produit-card '+(isEmb?'emb':'ing');
+  var head=document.createElement('div');head.className='card-head';
+  var num=document.createElement('div');num.className='card-num';num.textContent=pi+1;
+  var name=document.createElement('input');name.className='card-name';name.type='text';
+  name.placeholder=isEmb?'Ex : Sachet wrap, Serviette…':'Ex : Pois chiches, Galette de blé…';
+  name.value=data[pi].nom;name.autocomplete='off';
+  name.addEventListener('input',function(d,i){return function(){d[i].nom=this.value;save();};}(data,pi));
+  var del=document.createElement('button');del.className='btn-del-card';del.type='button';del.textContent='✕';
+  del.addEventListener('click',function(d,i){return function(){if(d.length<=1)return;d.splice(i,1);save();render();};}(data,pi));
+  head.appendChild(num);head.appendChild(name);head.appendChild(del);card.appendChild(head);
 
-  // Header
-  var head = document.createElement('div'); head.className = 'card-head';
-  var num = document.createElement('div'); num.className = 'card-num'; num.textContent = pi+1;
-  var name = document.createElement('input'); name.className = 'card-name'; name.type = 'text';
-  name.placeholder = isEmb ? 'Ex : Sachet wrap, Serviette, Boîte…' : 'Ex : Pois chiches, Galette de blé, Huile…';
-  name.value = data[pi].nom; name.autocomplete = 'off';
-  name.addEventListener('input', function(d,i){return function(){d[i].nom=this.value;};}(data,pi));
-  var del = document.createElement('button'); del.className = 'btn-del-card'; del.type = 'button'; del.textContent = '✕';
-  del.addEventListener('click', function(d,i){return function(){
-    if(d.length<=1){showToast('Il faut au moins un élément');return;}
-    d.splice(i,1);render();
-  };}(data,pi));
-  head.appendChild(num); head.appendChild(name); head.appendChild(del);
-  card.appendChild(head);
-
-  // Header colonnes
-  var fh = document.createElement('div'); fh.className = 'fourn-head';
-  fh.innerHTML = '<div class="fh">Fournisseur</div><div class="fh">HT</div><div class="fh">Conditionnement</div><div class="fh">TTC</div><div class="fh"></div>';
+  var fh=document.createElement('div');fh.className='fourn-head';
+  fh.innerHTML='<div class="fh">Fournisseur</div><div class="fh">HT</div><div class="fh">Conditionnement</div><div class="fh">TTC</div><div class="fh"></div>';
   card.appendChild(fh);
+  data[pi].fournisseurs.forEach(function(f,fi){card.appendChild(buildFournRow(data,pi,fi,f,type));});
 
-  // Lignes fournisseurs
-  data[pi].fournisseurs.forEach(function(f,fi){
-    card.appendChild(buildFournRow(data, pi, fi, f, type));
-  });
-
-  // TVA rappel
-  var tva = document.createElement('div'); tva.className = 'tva-line';
-  tva.textContent = isEmb ? 'Emballage → HT × 1,20 = TTC' : 'Alimentaire → HT × 1,055 = TTC';
+  var tva=document.createElement('div');tva.className='tva-line';
+  tva.textContent=isEmb?'Emballage → HT × 1,20 = TTC':'Alimentaire → HT × 1,055 = TTC';
   card.appendChild(tva);
 
-  // Ajouter fournisseur
-  var ab = document.createElement('button'); ab.type = 'button'; ab.className = 'btn-add-fourn';
-  ab.textContent = '＋  Ajouter un fournisseur';
-  ab.addEventListener('click', function(d,i,t){return function(){d[i].fournisseurs.push(newFourn(t));render();};}(data,pi,type));
+  var ab=document.createElement('button');ab.type='button';ab.className='btn-add-fourn';ab.textContent='＋  Ajouter un fournisseur';
+  ab.addEventListener('click',function(d,i,t){return function(){d[i].fournisseurs.push(newFourn(t));save();render();};}(data,pi,type));
   card.appendChild(ab);
-
   return card;
 }
 
-function buildFournRow(data, pi, fi, f, type){
-  var isEmb = type === 'emb';
-  var row = document.createElement('div'); row.className = 'fourn-row';
-
-  // Nom
-  var c1 = document.createElement('div'); c1.className = 'fc';
-  var i1 = document.createElement('input'); i1.type = 'text'; i1.placeholder = 'Ex : Metro, Raja…'; i1.value = f.nom; i1.autocomplete = 'off';
-  i1.style.cssText = 'width:100%;border:none;background:transparent;font-family:Montserrat,sans-serif;font-size:12.5px;color:var(--ink);padding:10px 8px;outline:none;-webkit-appearance:none;min-height:44px;text-align:left';
-  i1.addEventListener('input', function(d,p,fi2){return function(){d[p].fournisseurs[fi2].nom=this.value;};}(data,pi,fi));
+function buildFournRow(data,pi,fi,f,type){
+  var isEmb=type==='emb';
+  var row=document.createElement('div');row.className='fourn-row';
+  var c1=document.createElement('div');c1.className='fc';
+  var i1=document.createElement('input');i1.type='text';i1.placeholder='Ex : Metro, Raja…';i1.value=f.nom;i1.autocomplete='off';
+  i1.style.cssText='width:100%;border:none;background:transparent;font-family:Montserrat,sans-serif;font-size:12.5px;color:var(--ink);padding:10px 8px;outline:none;-webkit-appearance:none;min-height:44px;text-align:left';
+  i1.addEventListener('input',function(d,p,fi2){return function(){d[p].fournisseurs[fi2].nom=this.value;save();};}(data,pi,fi));
   c1.appendChild(i1);
-
-  // HT
-  var c2 = document.createElement('div'); c2.className = 'fc';
-  var i2 = document.createElement('input'); i2.type = 'number'; i2.inputMode = 'decimal'; i2.min = '0'; i2.step = '.001'; i2.placeholder = '0.000'; i2.value = f.ht;
-  i2.style.cssText = 'width:100%;border:none;background:transparent;font-family:"Archivo Black",sans-serif;font-size:13px;color:var(--ink);padding:10px 6px;outline:none;-webkit-appearance:none;min-height:44px;text-align:center';
-  i2.addEventListener('input', function(d,p,fi2){return function(){d[p].fournisseurs[fi2].ht=this.value;};}(data,pi,fi));
+  var c2=document.createElement('div');c2.className='fc';
+  var i2=document.createElement('input');i2.type='number';i2.inputMode='decimal';i2.min='0';i2.step='.001';i2.placeholder='0.000';i2.value=f.ht;
+  i2.style.cssText='width:100%;border:none;background:transparent;font-family:"Archivo Black",sans-serif;font-size:13px;color:var(--ink);padding:10px 6px;outline:none;-webkit-appearance:none;min-height:44px;text-align:center';
+  i2.addEventListener('input',function(d,p,fi2){return function(){d[p].fournisseurs[fi2].ht=this.value;save();};}(data,pi,fi));
   c2.appendChild(i2);
-
-  // Conditionnement
-  var c3 = document.createElement('div'); c3.className = 'fc';
-  var cw = document.createElement('div'); cw.className = 'cond-wrap';
-  var i3 = document.createElement('input'); i3.type = 'number'; i3.inputMode = 'decimal'; i3.min = '0'; i3.step = 'any'; i3.placeholder = '0'; i3.value = f.cond;
-  i3.addEventListener('input', function(d,p,fi2){return function(){d[p].fournisseurs[fi2].cond=this.value;};}(data,pi,fi));
-  var sel = document.createElement('select');
+  var c3=document.createElement('div');c3.className='fc';
+  var cw=document.createElement('div');cw.className='cond-wrap';
+  var i3=document.createElement('input');i3.type='number';i3.inputMode='decimal';i3.min='0';i3.step='any';i3.placeholder='0';i3.value=f.cond;
+  i3.addEventListener('input',function(d,p,fi2){return function(){d[p].fournisseurs[fi2].cond=this.value;save();};}(data,pi,fi));
+  var sel=document.createElement('select');
   UNITES.forEach(function(u){var o=document.createElement('option');o.value=u;o.textContent=u;if((f.unite||(isEmb?'unités':'g'))===u)o.selected=true;sel.appendChild(o);});
-  sel.addEventListener('change', function(d,p,fi2){return function(){d[p].fournisseurs[fi2].unite=this.value;};}(data,pi,fi));
-  cw.appendChild(i3); cw.appendChild(sel);
-  c3.appendChild(cw);
-
-  // TTC
-  var c4 = document.createElement('div'); c4.className = 'fc fc-ttc';
-  var i4 = document.createElement('input'); i4.type = 'number'; i4.inputMode = 'decimal'; i4.min = '0'; i4.step = '.001'; i4.placeholder = '0.000'; i4.value = f.ttc;
-  i4.style.cssText = 'width:100%;border:none;border-bottom:2px solid var(--olive);background:transparent;font-family:"Archivo Black",sans-serif;font-size:13px;color:var(--olive);padding:10px 6px;outline:none;-webkit-appearance:none;min-height:44px;text-align:center';
-  if(isEmb) i4.style.color = 'var(--orange)';
-  i4.addEventListener('input', function(d,p,fi2){return function(){d[p].fournisseurs[fi2].ttc=this.value;};}(data,pi,fi));
+  sel.addEventListener('change',function(d,p,fi2){return function(){d[p].fournisseurs[fi2].unite=this.value;save();};}(data,pi,fi));
+  cw.appendChild(i3);cw.appendChild(sel);c3.appendChild(cw);
+  var c4=document.createElement('div');c4.className='fc fc-ttc';
+  var i4=document.createElement('input');i4.type='number';i4.inputMode='decimal';i4.min='0';i4.step='.001';i4.placeholder='0.000';i4.value=f.ttc;
+  i4.style.cssText='width:100%;border:none;border-bottom:2px solid '+(isEmb?'var(--orange)':'var(--olive)')+';background:transparent;font-family:"Archivo Black",sans-serif;font-size:13px;color:'+(isEmb?'var(--orange)':'var(--olive)')+';padding:10px 6px;outline:none;-webkit-appearance:none;min-height:44px;text-align:center';
+  i4.addEventListener('input',function(d,p,fi2){return function(){d[p].fournisseurs[fi2].ttc=this.value;save();};}(data,pi,fi));
   c4.appendChild(i4);
-
-  // Del
-  var c5 = document.createElement('div'); c5.className = 'fc fc-del';
-  var db = document.createElement('button'); db.type = 'button'; db.textContent = '✕';
-  db.style.cssText = 'background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;min-width:36px;min-height:44px;display:flex;align-items:center;justify-content:center;width:100%';
-  db.addEventListener('click', function(d,p,fi2){return function(){
-    if(d[p].fournisseurs.length<=1){showToast('Il faut au moins un fournisseur');return;}
-    d[p].fournisseurs.splice(fi2,1);render();
-  };}(data,pi,fi));
+  var c5=document.createElement('div');c5.className='fc';
+  var db=document.createElement('button');db.type='button';db.textContent='✕';
+  db.style.cssText='background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;min-width:36px;min-height:44px;display:flex;align-items:center;justify-content:center;width:100%';
+  db.addEventListener('click',function(d,p,fi2){return function(){if(d[p].fournisseurs.length<=1)return;d[p].fournisseurs.splice(fi2,1);save();render();};}(data,pi,fi));
   c5.appendChild(db);
-
-  row.appendChild(c1); row.appendChild(c2); row.appendChild(c3); row.appendChild(c4); row.appendChild(c5);
+  row.appendChild(c1);row.appendChild(c2);row.appendChild(c3);row.appendChild(c4);row.appendChild(c5);
   return row;
 }
 
-document.getElementById('btnAddIng').addEventListener('click', function(){ingredients.push(newProduit());render();});
-document.getElementById('btnAddEmb').addEventListener('click', function(){emballages.push(newEmb());render();});
-document.getElementById('btnPrint').addEventListener('click', function(){window.print();});
-document.getElementById('btnSave').addEventListener('click', function(){
-  var data = JSON.stringify({fiche:'fournisseurs',v:2,date:new Date().toISOString(),ingredients:ingredients,emballages:emballages},null,2);
-  var a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(data); a.download = 'streetbiz-fiche-fournisseurs.json';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  showToast('Données sauvegardées ✓');
-});
-document.getElementById('btnLoad').addEventListener('click', function(){document.getElementById('fileInput').click();});
-document.getElementById('fileInput').addEventListener('change', function(e){
-  var file = e.target.files[0]; if(!file) return;
-  var reader = new FileReader();
-  reader.onload = function(ev){
-    try{
-      var d = JSON.parse(ev.target.result);
-      if(d.ingredients) ingredients = d.ingredients;
-      if(d.emballages) emballages = d.emballages;
-      render(); showToast('Données restaurées ✓');
-    } catch(err){showToast('Fichier invalide');}
-  };
-  reader.readAsText(file); e.target.value = '';
-});
-
-render();
-
-// ── AUTOSAVE localStorage ──
-var _LSKEY = 'sb_fourn_v2';
-function _lsSave(){
-  try{
-    var _d = {};
-    if(typeof ingredients !== 'undefined') _d['ingredients'] = ingredients;
-    if(typeof emballages !== 'undefined') _d['emballages'] = emballages;
-    localStorage.setItem(_LSKEY, JSON.stringify(_d));
-  }catch(e){}
-}
-function _lsLoad(){
-  try{
-    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
-    if(!_s) return;
-    if(_s['ingredients']) { ingredients = _s['ingredients']; }
-    if(_s['emballages']) { emballages = _s['emballages']; }
-  }catch(e){}
-}
-// Charger au démarrage
-_lsLoad();
-render();
+load();render();
+document.getElementById('btnAddIng').addEventListener('click',function(){ingredients.push(newProduit());save();render();});
+document.getElementById('btnAddEmb').addEventListener('click',function(){emballages.push(newEmb());save();render();});
+document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
 </script>
 </body>
 </html>

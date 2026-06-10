@@ -18,35 +18,28 @@ header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(20px,4vw,30px);
 header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+.save-bar{background:var(--white);border-bottom:1px solid var(--border);padding:6px 1.5rem;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;flex-shrink:0}
 main{padding:1.5rem}
-
 .consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
 .consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .consigne-body{display:flex;flex-direction:column;gap:12px}
 .consigne-row{display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.6}
 .consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
 .consigne-text{color:var(--ink)}
-.consigne-text div{margin-top:2px}
-
-/* STRATÉGIE */
-.section-title{font-family:'Archivo Black',sans-serif;font-size:12pt;text-transform:uppercase;color:var(--black);margin-bottom:1rem;margin-top:1.75rem}
-
+.section-bar{background:var(--black);padding:10px 14px;margin-bottom:1rem;border-left:4px solid var(--orange)}
+.section-bar-title{font-family:'Archivo Black',sans-serif;font-size:11px;text-transform:uppercase;color:var(--white)}
 .strat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
-.strat-card{border:2px solid var(--border);padding:12px;cursor:pointer;transition:border-color .15s,background .15s;position:relative}
-.strat-card.selected-tout{border-color:var(--black);background:rgba(31,31,31,.04)}
-.strat-card.selected-mixte{border-color:var(--orange);background:rgba(242,106,33,.05)}
+.strat-card{border:2px solid var(--border);padding:12px;cursor:pointer;position:relative}
+.strat-card.sel-tout{border-color:var(--black);background:rgba(31,31,31,.04)}
+.strat-card.sel-mixte{border-color:var(--orange);background:rgba(242,106,33,.05)}
 .strat-card-title{font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--black);margin-bottom:6px}
-.strat-card.selected-mixte .strat-card-title{color:var(--orange)}
+.strat-card.sel-mixte .strat-card-title{color:var(--orange)}
 .strat-card-desc{font-size:11px;color:var(--muted);line-height:1.5}
 .strat-check{position:absolute;top:10px;right:10px;width:20px;height:20px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--white)}
-.strat-card.selected-tout .strat-check{background:var(--black);border-color:var(--black)}
-.strat-card.selected-mixte .strat-check{background:var(--orange);border-color:var(--orange)}
-
-/* PRODUITS SPÉCIALISTES */
-.section-bar{background:var(--black);padding:8px 14px;margin-bottom:.75rem;border-left:4px solid var(--orange)}
-.section-bar-title{font-family:'Archivo Black',sans-serif;font-size:11px;text-transform:uppercase;color:var(--white)}
-
-.specialiste-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);display:flex;align-items:stretch;margin-bottom:8px;overflow:hidden}
+.strat-card.sel-tout .strat-check{background:var(--black);border-color:var(--black)}
+.strat-card.sel-mixte .strat-check{background:var(--orange);border-color:var(--orange)}
+.sp-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);display:flex;align-items:stretch;margin-bottom:8px;overflow:hidden}
 .sp-num{width:36px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sp-body{flex:1;display:flex;flex-direction:column}
 .sp-row{display:flex;align-items:center;border-bottom:1px solid var(--border)}
@@ -54,29 +47,19 @@ main{padding:1.5rem}
 .sp-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:0 10px;min-width:100px;border-right:1px solid var(--border);flex-shrink:0}
 .sp-input{flex:1;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:11px 12px;outline:none;-webkit-appearance:none;min-height:44px}
 .sp-input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
-.sp-del{background:none;border:none;border-left:1px solid var(--border);cursor:pointer;color:var(--muted);font-size:14px;min-width:44px;display:flex;align-items:center;justify-content:center;-webkit-appearance:none}
-
-/* NOTES */
+.sp-del{background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:14px;min-width:44px;display:flex;align-items:center;justify-content:center;-webkit-appearance:none}
 .notes-block{background:var(--white);border:1px solid var(--border);overflow:hidden;margin-bottom:1.5rem}
 .notes-header{background:var(--black);padding:8px 14px;border-left:4px solid var(--olive)}
 .notes-header span{font-family:'Archivo Black',sans-serif;font-size:11px;text-transform:uppercase;color:var(--white)}
 .notes-textarea{width:100%;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:14px;outline:none;resize:vertical;min-height:120px;-webkit-appearance:none;line-height:1.6}
 .notes-textarea::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
-
 .btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0}
-
-.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:.5rem}
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem}
 .btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
 .btn-orange{background:var(--orange);color:var(--white)}
-.btn-black{background:var(--black);color:var(--white)}
-.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
-
-.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
-.toast.show{transform:translateY(0);opacity:1}
-
 @media print{
-  .consigne-block,.actions,.btn-add,.sp-del{display:none!important}
-  header,.section-bar,.notes-header,.sp-num,.strat-card.selected-tout,.strat-card.selected-mixte{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .consigne-block,.save-bar,.btn-add,.sp-del,.actions,[id="btnPrint"]{display:none!important}
+  header,.section-bar,.notes-header,.sp-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   body{background:white}
 }
 </style>
@@ -91,205 +74,99 @@ main{padding:1.5rem}
     </div>
     <div class="fiche-badge">Fiche 5 / 10</div>
   </div>
-  <p class="header-sub">Définis ta stratégie fournisseurs avant de relever les tarifs</p>
+  <p class="header-sub">Définis ta stratégie fournisseurs</p>
 </header>
+<div class="save-bar"><span class="save-dot"></span><span id="saveLabel">Sauvegarde automatique</span></div>
 <main>
   <div class="consigne-block">
     <div class="consigne-label">📋 Comment remplir cette fiche</div>
     <div class="consigne-body">
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--olive)">Checkpoint 3 · Mission 1 · Étape 1</span>
-        <div class="consigne-text">
-          <div>Choisis ta <strong>stratégie fournisseurs</strong> : tout-en-un ou mixte.</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--orange)">Checkpoint 3 · Mission 1 · Étape 2</span>
-        <div class="consigne-text">
-          <div>Liste les <strong>produits qui méritent un spécialiste</strong> et le fournisseur envisagé.</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--black)">Checkpoint 3 · Mission 1 · Étape 3</span>
-        <div class="consigne-text">
-          <div>Note tes <strong>fournisseurs identifiés</strong> et toutes les infos utiles dans la zone de notes.</div>
-        </div>
-      </div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Checkpoint 3 · Mission 1 · Étape 1</span><div class="consigne-text">Choisis ta <strong>stratégie fournisseurs</strong> : tout-en-un ou mixte.</div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Étape 2</span><div class="consigne-text">Liste les <strong>produits qui méritent un spécialiste</strong> et le fournisseur envisagé.</div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--black)">Étape 3</span><div class="consigne-text">Note tes <strong>fournisseurs identifiés</strong> dans la zone de notes.</div></div>
     </div>
   </div>
-
-  <!-- ÉTAPE 1 : Stratégie -->
-  <div class="section-bar">
-    <div class="section-bar-title">1. Choisis ta stratégie fournisseurs</div>
-  </div>
+  <div class="section-bar"><div class="section-bar-title">1. Choisis ta stratégie fournisseurs</div></div>
   <div class="strat-grid">
-    <div class="strat-card" id="cardTout">
-      <div class="strat-check" id="checkTout"></div>
-      <div class="strat-card-title">Tout-en-un</div>
-      <div class="strat-card-desc">Tu centralises tout chez un grossiste (Metro, Promocash…). Gain de temps, livraisons simplifiées.</div>
-    </div>
-    <div class="strat-card" id="cardMixte">
-      <div class="strat-check" id="checkMixte"></div>
-      <div class="strat-card-title">Mixte</div>
-      <div class="strat-card-desc">Grossiste pour les bases + spécialiste local pour tes produits signature. Plus différenciant.</div>
-    </div>
+    <div class="strat-card" id="cardTout"><div class="strat-check" id="checkTout"></div><div class="strat-card-title">Tout-en-un</div><div class="strat-card-desc">Tu centralises tout chez un grossiste (Metro, Promocash…). Gain de temps, livraisons simplifiées.</div></div>
+    <div class="strat-card" id="cardMixte"><div class="strat-check" id="checkMixte"></div><div class="strat-card-title">Mixte</div><div class="strat-card-desc">Grossiste pour les bases + spécialiste local pour tes produits signature. Plus différenciant.</div></div>
   </div>
-
-  <!-- ÉTAPE 2 : Produits spécialistes -->
-  <div class="section-bar">
-    <div class="section-bar-title">2. Produits qui méritent un spécialiste</div>
-  </div>
+  <div class="section-bar"><div class="section-bar-title">2. Produits qui méritent un spécialiste</div></div>
   <div id="specialistesList"></div>
   <button class="btn-add" id="btnAddSp">＋  Ajouter un produit</button>
-
-  <!-- ÉTAPE 3 : Notes libres -->
   <div class="notes-block">
     <div class="notes-header"><span>3. Notes libres — fournisseurs identifiés</span></div>
-    <textarea class="notes-textarea" id="notesLibres" placeholder="Note ici les fournisseurs que tu as identifiés, leurs coordonnées, tes préférences, les questions à poser…"></textarea>
+    <textarea class="notes-textarea" id="notesLibres" placeholder="Note ici les fournisseurs identifiés, leurs coordonnées, tes questions…"></textarea>
   </div>
-
-  <div class="actions">
-    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
-    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
-    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
-  </div>
-  <input type="file" id="fileInput" accept=".json" style="display:none">
+  <div class="actions"><button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button></div>
 </main>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-var strategie = ''; // 'tout' ou 'mixte'
-var specialistes = [{produit:'', fournisseur:''}];
+var KEY = 'sb_options_v3';
+var strategie = '';
+var specialistes = [{produit:'',fournisseur:''}];
 var notes = '';
 
-function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
-
-// Stratégie
-function setStrat(val){
-  strategie = val;
-  var cardT = document.getElementById('cardTout');
-  var cardM = document.getElementById('cardMixte');
-  var chT = document.getElementById('checkTout');
-  var chM = document.getElementById('checkMixte');
-  cardT.className = 'strat-card' + (val==='tout' ? ' selected-tout' : '');
-  cardM.className = 'strat-card' + (val==='mixte' ? ' selected-mixte' : '');
-  chT.textContent = val==='tout' ? '✓' : '';
-  chM.textContent = val==='mixte' ? '✓' : '';
+function save(){
+  try{
+    localStorage.setItem(KEY,JSON.stringify({strategie:strategie,specialistes:specialistes,notes:document.getElementById('notesLibres').value}));
+    var l=document.getElementById('saveLabel');if(l){l.textContent='Sauvegardé ✓';setTimeout(function(){var x=document.getElementById('saveLabel');if(x)x.textContent='Sauvegarde automatique';},1500);}
+  }catch(e){}
 }
-document.getElementById('cardTout').addEventListener('click', function(){setStrat('tout');});
-document.getElementById('cardMixte').addEventListener('click', function(){setStrat('mixte');});
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY);if(!raw)return;
+    var s=JSON.parse(raw);
+    if(s.strategie)setStrat(s.strategie);
+    if(s.specialistes&&s.specialistes.length)specialistes=s.specialistes;
+    if(s.notes){document.getElementById('notesLibres').value=s.notes;}
+  }catch(e){}
+}
 
-// Spécialistes
+function setStrat(val){
+  strategie=val;
+  document.getElementById('cardTout').className='strat-card'+(val==='tout'?' sel-tout':'');
+  document.getElementById('cardMixte').className='strat-card'+(val==='mixte'?' sel-mixte':'');
+  document.getElementById('checkTout').textContent=val==='tout'?'✓':'';
+  document.getElementById('checkMixte').textContent=val==='mixte'?'✓':'';
+  save();
+}
+
 function renderSpecialistes(){
-  var list = document.getElementById('specialistesList');
-  list.innerHTML = '';
-  specialistes.forEach(function(sp, i){
-    var card = document.createElement('div'); card.className = 'specialiste-card';
-    var num = document.createElement('div'); num.className = 'sp-num'; num.textContent = i+1;
-    var body = document.createElement('div'); body.className = 'sp-body';
-
-    // Ligne produit
-    var r1 = document.createElement('div'); r1.className = 'sp-row';
-    var l1 = document.createElement('div'); l1.className = 'sp-label'; l1.textContent = 'Produit';
-    var i1 = document.createElement('input'); i1.className = 'sp-input'; i1.type = 'text';
-    i1.placeholder = 'Ex : Viande halal, Fromage frais, Farine bio…';
-    i1.value = sp.produit; i1.autocomplete = 'off';
-    i1.addEventListener('input', function(idx){return function(){specialistes[idx].produit=this.value;};}(i));
-    r1.appendChild(l1); r1.appendChild(i1);
-
-    // Ligne spécialiste
-    var r2 = document.createElement('div'); r2.className = 'sp-row';
-    var l2 = document.createElement('div'); l2.className = 'sp-label'; l2.textContent = 'Spécialiste';
-    var i2 = document.createElement('input'); i2.className = 'sp-input'; i2.type = 'text';
-    i2.placeholder = 'Ex : Boucher local, Maraîcher, Fromagerie…';
-    i2.value = sp.fournisseur; i2.autocomplete = 'off';
-    i2.addEventListener('input', function(idx){return function(){specialistes[idx].fournisseur=this.value;};}(i));
-    r2.appendChild(l2); r2.appendChild(i2);
-
-    body.appendChild(r1); body.appendChild(r2);
-
-    // Del
-    var del = document.createElement('button'); del.className = 'sp-del'; del.type = 'button'; del.textContent = '✕';
-    del.style.cssText = 'background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:14px;min-width:44px;min-height:80px;display:flex;align-items:center;justify-content:center;flex-shrink:0';
-    del.addEventListener('click', function(idx){return function(){
-      if(specialistes.length<=1){showToast('Il faut au moins un produit');return;}
-      specialistes.splice(idx,1);renderSpecialistes();
-    };}(i));
-
-    card.appendChild(num); card.appendChild(body); card.appendChild(del);
+  var list=document.getElementById('specialistesList');list.innerHTML='';
+  specialistes.forEach(function(sp,i){
+    var card=document.createElement('div');card.className='sp-card';
+    var num=document.createElement('div');num.className='sp-num';num.textContent=i+1;
+    var body=document.createElement('div');body.className='sp-body';
+    var r1=document.createElement('div');r1.className='sp-row';
+    var l1=document.createElement('div');l1.className='sp-label';l1.textContent='Produit';
+    var i1=document.createElement('input');i1.className='sp-input';i1.type='text';
+    i1.placeholder='Ex : Viande halal, Fromage frais…';i1.value=sp.produit;i1.autocomplete='off';
+    i1.addEventListener('input',function(idx){return function(){specialistes[idx].produit=this.value;save();};}(i));
+    r1.appendChild(l1);r1.appendChild(i1);
+    var r2=document.createElement('div');r2.className='sp-row';
+    var l2=document.createElement('div');l2.className='sp-label';l2.textContent='Spécialiste';
+    var i2=document.createElement('input');i2.className='sp-input';i2.type='text';
+    i2.placeholder='Ex : Boucher local, Maraîcher…';i2.value=sp.fournisseur;i2.autocomplete='off';
+    i2.addEventListener('input',function(idx){return function(){specialistes[idx].fournisseur=this.value;save();};}(i));
+    r2.appendChild(l2);r2.appendChild(i2);
+    body.appendChild(r1);body.appendChild(r2);
+    var del=document.createElement('button');del.className='sp-del';del.type='button';del.textContent='✕';
+    del.style.cssText='background:none;border:none;border-left:1px solid var(--border);cursor:pointer;color:var(--muted);font-size:14px;min-width:44px;min-height:80px;display:flex;align-items:center;justify-content:center;flex-shrink:0';
+    del.addEventListener('click',function(idx){return function(){if(specialistes.length<=1)return;specialistes.splice(idx,1);save();renderSpecialistes();};}(i));
+    card.appendChild(num);card.appendChild(body);card.appendChild(del);
     list.appendChild(card);
   });
 }
 
-document.getElementById('btnAddSp').addEventListener('click', function(){
-  specialistes.push({produit:'',fournisseur:''});
-  renderSpecialistes();
-});
+document.getElementById('cardTout').addEventListener('click',function(){setStrat('tout');});
+document.getElementById('cardMixte').addEventListener('click',function(){setStrat('mixte');});
+document.getElementById('btnAddSp').addEventListener('click',function(){specialistes.push({produit:'',fournisseur:''});save();renderSpecialistes();});
+document.getElementById('notesLibres').addEventListener('input',save);
+document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
 
-document.getElementById('notesLibres').addEventListener('input', function(){notes=this.value;});
-
-document.getElementById('btnPrint').addEventListener('click', function(){window.print();});
-
-document.getElementById('btnSave').addEventListener('click', function(){
-  notes = document.getElementById('notesLibres').value;
-  var data = JSON.stringify({fiche:'options-fournisseurs',v:1,date:new Date().toISOString(),strategie:strategie,specialistes:specialistes,notes:notes},null,2);
-  var a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(data); a.download = 'streetbiz-fiche-options-fournisseurs.json';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  showToast('Données sauvegardées ✓');
-});
-
-document.getElementById('btnLoad').addEventListener('click', function(){document.getElementById('fileInput').click();});
-document.getElementById('fileInput').addEventListener('change', function(e){
-  var file = e.target.files[0]; if(!file) return;
-  var reader = new FileReader();
-  reader.onload = function(ev){
-    try{
-      var d = JSON.parse(ev.target.result);
-      if(d.strategie) setStrat(d.strategie);
-      if(d.specialistes) specialistes = d.specialistes;
-      if(d.notes){notes=d.notes;document.getElementById('notesLibres').value=d.notes;}
-      renderSpecialistes();
-      showToast('Données restaurées ✓');
-    } catch(err){showToast('Fichier invalide');}
-  };
-  reader.readAsText(file); e.target.value='';
-});
-
-renderSpecialistes();
-
-// ── AUTOSAVE localStorage ──
-var _LSKEY = 'sb_options_v2';
-function _lsSave(){
-  try{
-    var _d = {};
-    var _el_notesLibres = document.getElementById('notesLibres');
-    if(_el_notesLibres) _d['notesLibres'] = _el_notesLibres.value;
-    if(typeof specialistes !== 'undefined') _d['specialistes'] = specialistes;
-    if(typeof strategie !== 'undefined') _d['strategie'] = strategie;
-    localStorage.setItem(_LSKEY, JSON.stringify(_d));
-  }catch(e){}
-}
-function _lsLoad(){
-  try{
-    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
-    if(!_s) return;
-    var _rel_notesLibres = document.getElementById('notesLibres');
-    if(_rel_notesLibres && _s['notesLibres']) _rel_notesLibres.value = _s['notesLibres'];
-    if(_s['specialistes']) { specialistes = _s['specialistes']; }
-    if(_s['strategie']) { strategie = _s['strategie']; }
-  }catch(e){}
-}
-// Attacher les listeners d'autosave aux inputs
-(function(){
-  var _ids = ["notesLibres"];
-  _ids.forEach(function(id){
-    var el = document.getElementById(id);
-    if(el) el.addEventListener('input', _lsSave);
-  });
-})();
-// Charger au démarrage
-_lsLoad();
+load();
 renderSpecialistes();
 </script>
 </body>

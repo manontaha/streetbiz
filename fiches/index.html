@@ -11,38 +11,33 @@
 :root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
 body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7;min-height:100vh}
 .page{max-width:680px;margin:0 auto;padding:0 0 3rem}
-
-/* HEADER */
 header{background:var(--black);padding:2rem 1.5rem 1.75rem;border-bottom:4px solid var(--orange)}
 .brand{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
 header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(28px,7vw,42px);text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:8px}
 header h1 em{color:var(--orange);font-style:normal}
 .header-sub{font-size:13px;color:#a8a498;line-height:1.6}
-
-/* INTRO */
 .intro{padding:1.5rem;background:var(--white);border-bottom:1px solid var(--border)}
-.intro p{font-size:13px;color:var(--ink);line-height:1.7}
+.intro p{font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:.75rem}
+.intro p:last-child{margin-bottom:0}
 .intro strong{color:var(--orange)}
+.intro .olive{color:var(--olive)}
 
-/* FICHES LIST */
-.fiches-list{padding:1.5rem;display:flex;flex-direction:column;gap:10px}
+/* BANNIÈRE SAUVEGARDE */
+.save-info{background:var(--black);border-left:4px solid var(--olive);padding:14px 16px;margin:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.7}
+.save-info strong{color:#9ab846}
+.save-info .warn{color:rgba(250,249,244,.5);font-size:11px;margin-top:6px;font-style:italic}
 
-.fiche-link{display:flex;align-items:stretch;background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);text-decoration:none;color:var(--ink);transition:border-left-color .15s,box-shadow .15s;overflow:hidden}
-.fiche-link:hover{border-left-color:var(--black);box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.fiches-list{padding:0 1.5rem;display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem}
+.fiche-link{display:flex;align-items:stretch;background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);text-decoration:none;color:var(--ink);overflow:hidden;transition:box-shadow .15s}
+.fiche-link:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
 .fiche-link.olive{border-left-color:var(--olive)}
-.fiche-link.olive:hover{border-left-color:var(--black)}
-
 .fiche-num{width:44px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .fiche-link.olive .fiche-num{background:var(--olive)}
-
 .fiche-body{flex:1;padding:12px 14px}
 .fiche-cp{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
 .fiche-title{font-family:'Archivo Black',sans-serif;font-size:14px;text-transform:uppercase;color:var(--black);margin-bottom:2px}
 .fiche-desc{font-size:12px;color:var(--muted);line-height:1.5}
-
 .fiche-arrow{display:flex;align-items:center;padding:0 14px;color:var(--muted);font-size:18px;flex-shrink:0}
-
-/* FOOTER */
 footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border)}
 footer p{font-size:11px;color:var(--muted)}
 footer strong{color:var(--orange)}
@@ -58,7 +53,15 @@ footer strong{color:var(--orange)}
 </header>
 
 <div class="intro">
-  <p>Chaque fiche correspond à une étape de ton kit. Remplis-les <strong>dans l'ordre</strong> — chaque fiche prépare la suivante. Tu peux sauvegarder tes données en JSON et les recharger à tout moment.</p>
+  <p>Remplis les fiches <strong>dans l'ordre</strong> — chaque fiche prépare la suivante.</p>
+  <p class="olive"><strong>✓ Tes données s'enregistrent automatiquement</strong> dans ton navigateur (Safari, Chrome…). Tu peux fermer et revenir plus tard : tout sera encore là.</p>
+</div>
+
+<div class="save-info">
+  <strong>📱 Important : comment fonctionne la sauvegarde</strong><br>
+  Tes données sont enregistrées directement sur <strong>ton appareil</strong>, dans la mémoire de ton navigateur. Personne d'autre n'y a accès.<br><br>
+  ⚠️ <strong>Attention</strong> : si tu changes de navigateur, de téléphone, ou si tu vides le cache de Safari, tes données seront perdues. Pour les conserver en sécurité, <strong>télécharge ton PDF</strong> dès que tu as fini une fiche.<br><br>
+  <span class="warn">Sur certains iPhone avec des réglages de confidentialité stricts (navigation privée ou blocage des cookies activé), la sauvegarde automatique peut ne pas fonctionner. Dans ce cas, vérifie dans Réglages → Safari que "Bloquer tous les cookies" est désactivé.</span>
 </div>
 
 <div class="fiches-list">

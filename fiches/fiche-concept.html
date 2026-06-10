@@ -45,7 +45,7 @@ main{padding:1.5rem}
 .actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
 .btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
 .btn-orange{background:var(--orange);color:var(--white)}
-@media print{
+@media print{.consigne-block,.note,.tableur-banner,.note-box,.note-rappel,.actions,.btn-add,.btn-add-fourn,.btn-add-lg,.btn-add-ligne,.btn-del-card,.btn-del-ing,.btn-del-recette,.btn-del-portion,.c-del,.lg-del,.fc-del,.pc-del,.menu-del,.sp-del,.ing-toggle,#saveStatus,.save-bar,.tabs-bar,.type-toggle,[id="btnPrint"]{display:none!important}
   .actions,.btn-add{display:none!important}
   header,.item-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   body{background:white}
@@ -64,6 +64,10 @@ main{padding:1.5rem}
   </div>
   <p class="header-sub">Définis ton offre principale</p>
 </header>
+<div id="saveStatus" style="background:var(--white);border-bottom:1px solid var(--border);padding:6px 1.5rem;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px">
+  <span id="saveDot" style="width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block"></span>
+  <span id="saveLabel">Sauvegarde automatique</span>
+</div>
 <main>
   <div class="consigne-block">
     <div class="consigne-label">📋 Comment remplir cette fiche</div>
@@ -94,7 +98,7 @@ main{padding:1.5rem}
   <button class="btn-add" id="btnAddP">＋  Ajouter un produit principal</button>
 
   <div class="section-title"><div class="section-num">3</div><h2>Mes produits faits maison</h2></div>
-  <div class="note"><strong>Produits faits maison :</strong> desserts, boissons, sauces, snacks… tout ce que tu prépares toi-même.</div>
+  <div class="note"><strong>Produits faits maison :</strong> desserts, boissons, snacks… tout ce que tu prépares toi-même et que tu vends directement à ton client.</div>
   <div id="maisonList"></div>
   <button class="btn-add" id="btnAddM">＋  Ajouter un produit maison</button>
 
@@ -117,7 +121,15 @@ function save() {
       maison: maison
     };
     localStorage.setItem(KEY, JSON.stringify(d));
-  } catch(e) {}
+    var dot = document.getElementById('saveDot');
+    var lbl = document.getElementById('saveLabel');
+    if(dot) dot.style.background = 'var(--olive)';
+    if(lbl) lbl.textContent = 'Sauvegardé ✓';
+    setTimeout(function(){ if(lbl) lbl.textContent = 'Sauvegarde automatique'; }, 1500);
+  } catch(e) {
+    var lbl = document.getElementById('saveLabel');
+    if(lbl) lbl.textContent = 'Erreur de sauvegarde';
+  }
 }
 
 function load() {

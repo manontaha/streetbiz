@@ -18,8 +18,9 @@ header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(20px,4vw,30px);
 header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+.save-bar{background:var(--white);border-bottom:1px solid var(--border);padding:6px 1.5rem;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--olive);display:inline-block;flex-shrink:0}
 main{padding:1.5rem}
-
 .consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
 .consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .consigne-body{display:flex;flex-direction:column;gap:12px}
@@ -27,25 +28,18 @@ main{padding:1.5rem}
 .consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;align-self:flex-start}
 .consigne-text{color:var(--ink)}
 .consigne-text div{margin-top:2px}
-
 .note{background:var(--black);border-left:4px solid var(--olive);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
 .note strong{color:#9ab846}
-
-/* PRODUIT CARD */
 .produit-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--orange);margin-bottom:16px;overflow:hidden}
-
 .card-head{display:flex;align-items:center;background:var(--black)}
 .card-num{width:38px;height:44px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .card-name{flex:1;border:none;background:transparent;font-family:'Archivo Black',sans-serif;font-size:14px;text-transform:uppercase;color:var(--white);padding:10px 12px;outline:none;-webkit-appearance:none;min-height:44px}
 .card-name::placeholder{color:#5a5a4a;font-weight:400;font-family:'Montserrat',sans-serif;font-size:12px;text-transform:none}
 .btn-del-card{background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.3);font-size:14px;min-width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-
-/* LIGNES */
 .card-row{display:flex;align-items:center;min-height:44px;border-top:1px solid var(--border)}
 .card-row-lbl{padding:0 12px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);flex-shrink:0;min-width:120px;border-right:1px solid var(--border)}
 .card-row-input{flex:1;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:10px 12px;outline:none;-webkit-appearance:none;min-height:44px}
 .card-row-input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
-.card-row-input.num{font-family:'Archivo Black',sans-serif;font-size:15px;text-align:right;color:var(--ink)}
 .card-row-input.orange{color:var(--orange)}
 .card-row-input.olive{color:var(--olive)}
 .card-row-unit{font-size:11px;font-weight:700;color:var(--muted);padding:0 12px;flex-shrink:0;border-left:1px solid var(--border)}
@@ -54,22 +48,13 @@ main{padding:1.5rem}
 .card-row.result{background:rgba(242,106,33,.06)}
 .card-row.result-final{background:rgba(109,122,47,.07)}
 .card-formula{font-size:10px;color:var(--muted);font-style:italic;padding:0 10px;border-right:1px solid var(--border)}
-
-/* ADD BTN */
 .btn-add{display:flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);border:none;padding:13px 16px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;width:100%;min-height:48px;margin-bottom:1.5rem;-webkit-appearance:none;border-radius:0}
 .btn-add:hover{opacity:.9}
-
 .actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:.5rem}
 .btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
 .btn-orange{background:var(--orange);color:var(--white)}
-.btn-black{background:var(--black);color:var(--white)}
-.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
-
-.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
-.toast.show{transform:translateY(0);opacity:1}
-
 @media print{
-  .consigne-block,.note,.actions,.btn-add,.btn-del-card{display:none!important}
+  .consigne-block,.note,.save-bar,.btn-add,.btn-del-card,.actions,[id="btnPrint"]{display:none!important}
   header,.card-head,.card-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   body{background:white}
   .produit-card{page-break-inside:avoid}
@@ -88,172 +73,87 @@ main{padding:1.5rem}
   </div>
   <p class="header-sub">Liste, coûts et prix de vente de tes produits complémentaires</p>
 </header>
+<div class="save-bar"><span class="save-dot"></span><span id="saveLabel">Sauvegarde automatique</span></div>
 <main>
   <div class="consigne-block">
     <div class="consigne-label">📋 Comment remplir cette fiche</div>
     <div class="consigne-body">
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--olive)">Checkpoint Bonus · Mission 1 · Étape 1</span>
-        <div class="consigne-text">
-          <div>Liste tous les <strong>produits complémentaires</strong> que tu veux vendre : boissons, desserts, chips, snacks…</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--orange)">Étape 2</span>
-        <div class="consigne-text">
-          <div>Note le <strong>conditionnement fournisseur</strong> et le <strong>tarif HT</strong>.</div>
-          <div>Calcule le <strong>tarif TTC</strong> : HT × 1,055.</div>
-        </div>
-      </div>
-      <div class="consigne-row">
-        <span class="consigne-cp" style="background:var(--black)">Étapes 3 &amp; 4</span>
-        <div class="consigne-text">
-          <div>Divise le TTC par le conditionnement → <strong>coût unitaire</strong>.</div>
-          <div>Multiplie le coût unitaire par <strong>3</strong> → <strong>prix de vente minimum conseillé</strong>.</div>
-        </div>
-      </div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Checkpoint Bonus · Mission 1 · Étape 1</span><div class="consigne-text">Liste tous les <strong>produits complémentaires</strong> : boissons, desserts, chips, snacks…</div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Étape 2</span><div class="consigne-text"><div>Note le <strong>conditionnement fournisseur</strong> et le <strong>tarif HT</strong>.</div><div>Calcule le <strong>tarif TTC</strong> : HT × 1,055.</div></div></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--black)">Étapes 3 &amp; 4</span><div class="consigne-text"><div>Divise le TTC par le conditionnement → <strong>coût unitaire</strong>.</div><div>Multiplie le coût unitaire par <strong>3</strong> → <strong>prix de vente minimum conseillé</strong>.</div></div></div>
     </div>
   </div>
-
   <div class="note"><strong>Rappel TVA alimentaire :</strong> HT × 1,055 = TTC<br>Ex : 24 canettes à 15,00 € HT → 15,83 € TTC → 0,66 € l'unité → Prix min. conseillé : 1,98 €</div>
-
   <div id="produitsList"></div>
   <button class="btn-add" id="btnAdd">＋  Ajouter un produit complémentaire</button>
-
-  <div class="actions">
-    <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
-    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
-    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
-  </div>
-  <input type="file" id="fileInput" accept=".json" style="display:none">
+  <div class="actions"><button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button></div>
 </main>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-var produits = [
-  {nom:'', cond:'', ht:'', ttc:'', unitaire:'', prixMin:''},
-];
+var KEY = 'sb_prodcomp_v3';
+var produits = [{nom:'',cond:'',ht:'',ttc:'',unitaire:'',prixMin:''}];
 
 function newP(){return {nom:'',cond:'',ht:'',ttc:'',unitaire:'',prixMin:''};}
 
-function showToast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
-
-function render(){
-  setTimeout(_lsSave, 100);
-  var list = document.getElementById('produitsList');
-  list.innerHTML = '';
-  produits.forEach(function(p, i){
-    list.appendChild(buildCard(p, i));
-  });
+function save(){
+  try{
+    localStorage.setItem(KEY,JSON.stringify({produits:produits}));
+    var l=document.getElementById('saveLabel');if(l){l.textContent='Sauvegardé ✓';setTimeout(function(){var x=document.getElementById('saveLabel');if(x)x.textContent='Sauvegarde automatique';},1500);}
+  }catch(e){}
+}
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY);if(!raw)return;
+    var s=JSON.parse(raw);
+    if(s.produits&&s.produits.length)produits=s.produits;
+  }catch(e){}
 }
 
-function buildCard(p, i){
-  var card = document.createElement('div'); card.className = 'produit-card';
+function render(){
+  var list=document.getElementById('produitsList');list.innerHTML='';
+  produits.forEach(function(p,i){list.appendChild(buildCard(p,i));});
+}
 
-  // Header
-  var head = document.createElement('div'); head.className = 'card-head';
-  var num = document.createElement('div'); num.className = 'card-num'; num.textContent = i+1;
-  var name = document.createElement('input'); name.className = 'card-name'; name.type = 'text';
-  name.placeholder = 'Nom du produit — Ex : Coca 33cl, Brownie, Chips…';
-  name.value = p.nom; name.autocomplete = 'off';
-  name.addEventListener('input', function(idx){return function(){produits[idx].nom=this.value;};}(i));
-  var del = document.createElement('button'); del.className = 'btn-del-card'; del.type = 'button'; del.textContent = '✕';
-  del.addEventListener('click', function(idx){return function(){
-    if(produits.length<=1){showToast('Il faut au moins un produit');return;}
-    produits.splice(idx,1); render();
-  };}(i));
-  head.appendChild(num); head.appendChild(name); head.appendChild(del);
-  card.appendChild(head);
+function buildCard(p,i){
+  var card=document.createElement('div');card.className='produit-card';
+  var head=document.createElement('div');head.className='card-head';
+  var num=document.createElement('div');num.className='card-num';num.textContent=i+1;
+  var name=document.createElement('input');name.className='card-name';name.type='text';
+  name.placeholder='Nom du produit — Ex : Coca 33cl, Brownie…';name.value=p.nom;name.autocomplete='off';
+  name.addEventListener('input',function(idx){return function(){produits[idx].nom=this.value;save();};}(i));
+  var del=document.createElement('button');del.className='btn-del-card';del.type='button';del.textContent='✕';
+  del.addEventListener('click',function(idx){return function(){if(produits.length<=1)return;produits.splice(idx,1);save();render();};}(i));
+  head.appendChild(num);head.appendChild(name);head.appendChild(del);card.appendChild(head);
 
-  // Conditionnement
-  var r1 = makeRow('Conditionnement', 'text', p.cond, 'Ex : 24 unités, 12 bouteilles…', '', false, i, 'cond');
-  card.appendChild(r1);
+  var rows=[
+    {lbl:'Conditionnement',type:'text',val:p.cond,ph:'Ex : 24 unités, 12 bouteilles…',field:'cond',colored:false,unit:'',formula:''},
+    {lbl:'Tarif HT',type:'number',val:p.ht,ph:'0.000',field:'ht',colored:false,unit:'€ HT',formula:''},
+    {lbl:'Tarif TTC',type:'number',val:p.ttc,ph:'0.000',field:'ttc',colored:false,unit:'€ TTC',formula:'HT × 1,055'},
+    {lbl:'Coût unitaire',type:'number',val:p.unitaire,ph:'0.000',field:'unitaire',colored:true,color:'orange',unit:'€ / unité',formula:'TTC ÷ conditionnement',cls:'result'},
+    {lbl:'Prix min. conseillé',type:'number',val:p.prixMin,ph:'0.00',field:'prixMin',colored:true,color:'olive',unit:'€ min.',formula:'Coût unitaire × 3',cls:'result-final'},
+  ];
 
-  // HT
-  var r2 = makeRow('Tarif HT', 'number', p.ht, '0.000', '€ HT', false, i, 'ht');
-  card.appendChild(r2);
-
-  // TTC
-  var r3 = makeRow('Tarif TTC', 'number', p.ttc, '0.000', '€ TTC', false, i, 'ttc', 'HT × 1,055');
-  card.appendChild(r3);
-
-  // Coût unitaire
-  var r4 = makeRow('Coût unitaire', 'number', p.unitaire, '0.000', '€ / unité', true, i, 'unitaire', 'TTC ÷ conditionnement');
-  r4.className += ' result';
-  card.appendChild(r4);
-
-  // Prix min
-  var r5 = makeRow('Prix min. conseillé', 'number', p.prixMin, '0.00', '€ min.', true, i, 'prixMin', 'Coût unitaire × 3');
-  r5.className += ' result-final';
-  card.appendChild(r5);
-
+  rows.forEach(function(r){
+    var row=document.createElement('div');row.className='card-row'+(r.cls?' '+r.cls:'');
+    var l=document.createElement('div');l.className='card-row-lbl';l.textContent=r.lbl;
+    var inp=document.createElement('input');
+    inp.className='card-row-input'+(r.colored?' '+r.color:'');
+    inp.type=r.type;inp.value=r.val;inp.placeholder=r.ph;inp.autocomplete='off';
+    if(r.type==='number'){inp.inputMode='decimal';inp.min='0';inp.step='any';}
+    inp.addEventListener('input',function(idx,field){return function(){produits[idx][field]=this.value;save();};}(i,r.field));
+    row.appendChild(l);
+    if(r.formula){var fm=document.createElement('div');fm.className='card-formula';fm.textContent=r.formula;row.appendChild(fm);}
+    row.appendChild(inp);
+    if(r.unit){var u=document.createElement('div');u.className='card-row-unit'+(r.colored?' '+r.color:'');u.textContent=r.unit;row.appendChild(u);}
+    card.appendChild(row);
+  });
   return card;
 }
 
-function makeRow(lbl, type, val, placeholder, unit, colored, pi, field, formula){
-  var row = document.createElement('div'); row.className = 'card-row';
-  var l = document.createElement('div'); l.className = 'card-row-lbl'; l.textContent = lbl;
-  var inp = document.createElement('input');
-  inp.className = 'card-row-input' + (colored ? (unit.indexOf('min') > -1 ? ' olive' : ' orange') : '');
-  inp.type = type; inp.value = val; inp.placeholder = placeholder; inp.autocomplete = 'off';
-  if(type === 'number'){inp.inputMode = 'decimal'; inp.min = '0'; inp.step = type==='number'?'any':'any';}
-  inp.addEventListener('input', function(idx, f){return function(){produits[idx][f]=this.value;};}(pi, field));
-  row.appendChild(l);
-  if(formula){
-    var fm = document.createElement('div'); fm.className = 'card-formula'; fm.textContent = formula;
-    row.appendChild(fm);
-  }
-  row.appendChild(inp);
-  if(unit){
-    var u = document.createElement('div');
-    u.className = 'card-row-unit' + (colored ? (unit.indexOf('min') > -1 ? ' olive' : ' orange') : '');
-    u.textContent = unit;
-    row.appendChild(u);
-  }
-  return row;
-}
-
-document.getElementById('btnAdd').addEventListener('click', function(){produits.push(newP());render();});
-document.getElementById('btnPrint').addEventListener('click', function(){window.print();});
-document.getElementById('btnSave').addEventListener('click', function(){
-  var data = JSON.stringify({fiche:'produits-complementaires',v:2,date:new Date().toISOString(),produits:produits},null,2);
-  var a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,'+encodeURIComponent(data); a.download = 'streetbiz-fiche-produits-complementaires.json';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  showToast('Données sauvegardées ✓');
-});
-document.getElementById('btnLoad').addEventListener('click', function(){document.getElementById('fileInput').click();});
-document.getElementById('fileInput').addEventListener('change', function(e){
-  var file = e.target.files[0]; if(!file) return;
-  var reader = new FileReader();
-  reader.onload = function(ev){
-    try{var d=JSON.parse(ev.target.result);if(d.produits){produits=d.produits;render();showToast('Données restaurées ✓');}}
-    catch(err){showToast('Fichier invalide');}
-  };
-  reader.readAsText(file); e.target.value='';
-});
-
-render();
-
-// ── AUTOSAVE localStorage ──
-var _LSKEY = 'sb_prodcomp_v2';
-function _lsSave(){
-  try{
-    var _d = {};
-    if(typeof produits !== 'undefined') _d['produits'] = produits;
-    localStorage.setItem(_LSKEY, JSON.stringify(_d));
-  }catch(e){}
-}
-function _lsLoad(){
-  try{
-    var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
-    if(!_s) return;
-    if(_s['produits']) { produits = _s['produits']; }
-  }catch(e){}
-}
-// Charger au démarrage
-_lsLoad();
-render();
+load();render();
+document.getElementById('btnAdd').addEventListener('click',function(){produits.push(newP());save();render();});
+document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
 </script>
 </body>
 </html>
