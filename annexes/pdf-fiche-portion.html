@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Fiche-Portion — StreetBiz</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#2a2a1a}
 body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.5;padding:1.5cm}
 @page{size:A4;margin:1.5cm}
-@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar,.total-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+@media print{body{padding:0}header,.section-bar,.total-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
 header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
 .header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -20,57 +19,37 @@ header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
 
-.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
-.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.cp{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:white;padding:2px 7px;margin-right:4px}
+.legende{background:var(--cream);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:.75rem;font-size:9pt;line-height:1.7}
+.legende-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.legende ul{padding-left:1.2em;margin-top:4px}
+.legende li{margin-bottom:3px}
+.legende strong{color:var(--black)}
 
-.nom-portion{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;padding:10px 14px;border:1px solid var(--border);background:var(--white)}
+.nom-portion{display:flex;align-items:center;gap:14px;margin-bottom:1rem;padding:10px 14px;border:1px solid var(--border);background:var(--white)}
 .nom-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);white-space:nowrap}
 .nom-line{flex:1;border-bottom:2px solid var(--black);height:32px}
 
-.section-bar{background:var(--black);padding:8px 12px;margin-bottom:.75rem;display:flex;align-items:center}
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:.5rem;margin-top:1rem;display:flex;align-items:center}
 .section-bar-title{font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
 
-/* TABLEAU INGRÉDIENTS — lisible */
-.ing-table{width:100%;border-collapse:collapse;margin-bottom:.5rem;font-size:9.5pt}
-.ing-table th{font-size:8.5pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:7px 8px;border:1px solid #999;text-align:center;color:white}
-.ing-table th.h-num{background:var(--black);width:28px}
-.ing-table th.h-nom{background:var(--black);text-align:left;width:32%}
-.ing-table th.h-qte{background:var(--olive);width:9%}
-.ing-table th.h-unite{background:var(--olive);width:9%}
-.ing-table th.h-am{background:var(--black);width:8%}
-.ing-table th.h-fourn{background:var(--orange);width:16%}
-.ing-table th.h-prix{background:var(--orange);width:10%}
-.ing-table th.h-cond{background:var(--orange);width:10%}
-.ing-table th.h-cout{background:var(--black);width:12%}
-.ing-table td{border:1px solid #ddd;height:30px;padding:0 6px}
-.ing-table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-weight:700}
-.ing-table td.am{text-align:center;font-size:8.5pt;color:#bbb}
+table{width:100%;border-collapse:collapse;margin-bottom:.4rem;font-size:9pt}
+table th{font-size:8pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:6px 6px;border:1px solid #999;text-align:center;color:white}
+table th.dark{background:var(--black)}
+table th.olive{background:var(--olive)}
+table th.orange{background:var(--orange)}
+table th.left{text-align:left}
+table td{border:1px solid #ddd;height:28px;padding:0 6px}
+table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-weight:700}
+table td.am{text-align:center;font-size:8.5pt;color:#bbb}
 
-/* TABLEAU EMBALLAGES */
-.emb-table{width:100%;border-collapse:collapse;margin-bottom:.5rem;font-size:9.5pt}
-.emb-table th{font-size:8.5pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:7px 8px;border:1px solid #999;text-align:center;color:white}
-.emb-table th.h-num{background:var(--black);width:28px}
-.emb-table th.h-nom{background:var(--black);text-align:left}
-.emb-table th.h-qte{background:var(--olive);width:10%}
-.emb-table th.h-fourn{background:var(--orange);width:18%}
-.emb-table th.h-prix{background:var(--orange);width:12%}
-.emb-table th.h-cond{background:var(--orange);width:12%}
-.emb-table th.h-cout{background:var(--black);width:13%}
-.emb-table td{border:1px solid #ddd;height:30px;padding:0 6px}
-.emb-table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-weight:700}
-
-.formula{font-size:8pt;color:var(--muted);font-style:italic;margin-bottom:1rem;padding-left:4px}
-
-.total-bar{background:var(--black);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:.5rem}
+.total-bar{background:var(--black);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:.5rem}
 .total-label{font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
 .total-right{display:flex;align-items:center;gap:10px}
 .total-field{border-bottom:2px solid var(--orange);width:110px;height:28px;display:inline-block}
 .total-op{color:#999;font-size:11pt;font-weight:700}
-.total-field2{border-bottom:2px solid white;width:110px;height:28px;display:inline-block}
+.total-field2{border-bottom:2px solid white;width:130px;height:28px;display:inline-block}
 .total-unit{color:var(--orange);font-size:9pt;font-weight:700}
 .total-unit2{color:white;font-size:9pt;font-weight:700}
-
 .footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
 </style>
 </head>
@@ -86,11 +65,6 @@ header h1 em{color:var(--orange);font-style:normal}
   </div>
 </header>
 
-<div class="consigne">
-  <div class="consigne-title">📋 Comment remplir cette fiche</div>
-  <div><span class="cp" style="background:var(--olive)">Checkpoint 2 · Mission 1</span> Liste les ingrédients et emballages. <strong>A = Acheté</strong> : coût réel = quantité × prix TTC ÷ conditionnement. <strong>M = Maison</strong> : coût réel = quantité × coût total de la recette ÷ rendement.</div>
-</div>
-
 <div class="nom-portion">
   <div class="nom-label">Nom de la portion :</div>
   <div class="nom-line"></div>
@@ -98,17 +72,30 @@ header h1 em{color:var(--orange);font-style:normal}
 
 <!-- INGRÉDIENTS -->
 <div class="section-bar" style="border-left:4px solid var(--olive)"><div class="section-bar-title">🥗 Ingrédients</div></div>
-<table class="ing-table">
+<div class="legende">
+  <div class="legende-title">Comment remplir ce tableau</div>
+  <ul>
+    <li><strong>Ingrédient</strong> : le nom du produit utilisé dans cette portion (ex : blanc de poulet, tomate, pita…)</li>
+    <li><strong>Qté</strong> : la quantité que tu utilises pour UNE portion (ex : 150, 2, 30…)</li>
+    <li><strong>Unité</strong> : l'unité de mesure (g, ml, unité, cl…)</li>
+    <li><strong>A/M</strong> : A = Acheté tel quel chez le fournisseur · M = Maison (tu le prépares toi-même, voir ta fiche-recette)</li>
+    <li><strong>Fournisseur / Recette</strong> : le nom du fournisseur si A, ou le nom de ta recette si M</li>
+    <li><strong>Prix TTC / Coût total</strong> : le prix TTC du conditionnement fournisseur si A · le coût total de ta recette si M</li>
+    <li><strong>Cond. / Rendement</strong> : la quantité totale vendue par le fournisseur si A · le rendement de ta recette si M</li>
+    <li><strong>Coût réel</strong> : le coût de cet ingrédient pour UNE portion. Formule : Quantité demandée par la portion × Prix TTC du fournisseur ÷ Conditionnement fournisseur</li>
+  </ul>
+</div>
+<table>
   <tr>
-    <th class="h-num">#</th>
-    <th class="h-nom">Ingrédient</th>
-    <th class="h-qte">Qté</th>
-    <th class="h-unite">Unité</th>
-    <th class="h-am">A/M</th>
-    <th class="h-fourn">Fournisseur / Recette</th>
-    <th class="h-prix">Prix TTC / Coût total</th>
-    <th class="h-cond">Cond. / Rendement</th>
-    <th class="h-cout">Coût réel €</th>
+    <th class="dark" style="width:28px">#</th>
+    <th class="dark left" style="width:28%">Ingrédient</th>
+    <th class="dark" style="width:7%">Qté</th>
+    <th class="dark" style="width:8%">Unité</th>
+    <th class="dark" style="width:7%">A/M</th>
+    <th class="orange" style="width:17%">Fournisseur / Recette</th>
+    <th class="orange" style="width:12%">Prix TTC / Coût total</th>
+    <th class="orange" style="width:10%">Cond. / Rendement</th>
+    <th class="olive" style="width:11%">Coût réel €</th>
   </tr>
   <tr><td class="n">1</td><td></td><td></td><td></td><td class="am">A/M</td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">2</td><td></td><td></td><td></td><td class="am">A/M</td><td></td><td></td><td></td><td></td></tr>
@@ -123,19 +110,29 @@ header h1 em{color:var(--orange);font-style:normal}
   <tr><td class="n">11</td><td></td><td></td><td></td><td class="am">A/M</td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">12</td><td></td><td></td><td></td><td class="am">A/M</td><td></td><td></td><td></td><td></td></tr>
 </table>
-<div class="formula">A = Acheté · M = Maison &nbsp;|&nbsp; Coût réel (A) = Quantité × Prix TTC ÷ Conditionnement &nbsp;|&nbsp; Coût réel (M) = Quantité × Coût total de la recette ÷ Rendement</div>
 
 <!-- EMBALLAGES -->
 <div class="section-bar" style="border-left:4px solid var(--orange)"><div class="section-bar-title">📦 Emballages & accessoires</div></div>
-<table class="emb-table">
+<div class="legende">
+  <div class="legende-title">Comment remplir ce tableau</div>
+  <ul>
+    <li><strong>Emballage / accessoire</strong> : ce que tu utilises pour emballer ou servir (ex : boîte kraft, barquette, serviette, sachet papier…)</li>
+    <li><strong>Qté</strong> : le nombre utilisé pour UNE portion (généralement 1)</li>
+    <li><strong>Fournisseur</strong> : le nom du fournisseur (ex : Raja, Retif…)</li>
+    <li><strong>Prix TTC</strong> : le prix TTC du lot acheté (ex : 12,00 €)</li>
+    <li><strong>Conditionnement</strong> : le nombre d'unités dans le lot (ex : 50 boîtes, 100 serviettes…)</li>
+    <li><strong>Coût réel</strong> : le coût pour UNE portion. Formule : Quantité demandée par la portion × Prix TTC du fournisseur ÷ Conditionnement fournisseur</li>
+  </ul>
+</div>
+<table>
   <tr>
-    <th class="h-num">#</th>
-    <th class="h-nom">Emballage / accessoire</th>
-    <th class="h-qte">Qté</th>
-    <th class="h-fourn">Fournisseur</th>
-    <th class="h-prix">Prix TTC</th>
-    <th class="h-cond">Conditionnement</th>
-    <th class="h-cout">Coût réel €</th>
+    <th class="dark" style="width:28px">#</th>
+    <th class="dark left">Emballage / accessoire</th>
+    <th class="dark" style="width:8%">Qté</th>
+    <th class="orange" style="width:18%">Fournisseur</th>
+    <th class="orange" style="width:12%">Prix TTC</th>
+    <th class="orange" style="width:14%">Conditionnement</th>
+    <th class="olive" style="width:13%">Coût réel €</th>
   </tr>
   <tr><td class="n">1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -144,15 +141,13 @@ header h1 em{color:var(--orange);font-style:normal}
   <tr><td class="n">5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
-<div class="formula">Coût réel = Quantité × Prix TTC ÷ Conditionnement</div>
 
-<!-- TOTAL -->
 <div class="total-bar">
   <div class="total-label">Coût total de la portion</div>
   <div class="total-right">
     <div class="total-field"></div><span class="total-unit">€</span>
     <span class="total-op">× 1,10 =</span>
-    <div class="total-field2"></div><span class="total-unit2">€ (avec marge de perte)</span>
+    <div class="total-field2"></div><span class="total-unit2">€ (coût de revient avec marge de perte)</span>
   </div>
 </div>
 

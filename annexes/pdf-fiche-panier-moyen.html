@@ -49,8 +49,8 @@ header h1 em{color:var(--orange);font-style:normal}
 .cmd-row:last-child{border-bottom:none}
 .cmd-nom{border-right:1px solid #f0f0f0;padding:0 6px;font-size:9pt;display:flex;align-items:center}
 .cmd-mnt{padding:0 4px;font-size:9pt;display:flex;align-items:center;justify-content:flex-end;color:var(--muted)}
-.cmd-total-row{background:var(--black);padding:5px 10px;display:flex;justify-content:space-between;align-items:center}
-.cmd-total-lbl{font-size:7.5pt;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.5px}
+.cmd-total-row{background:var(--cream);padding:5px 10px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.cmd-total-lbl{font-size:7.5pt;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 .cmd-total-field{border-bottom:1.5px solid var(--orange);width:60px;height:20px;display:inline-block}
 
 /* CALCUL FINAL */
@@ -118,14 +118,17 @@ header h1 em{color:var(--orange);font-style:normal}
 </div>
 
 <div class="section-bar">3 — Calcule ton panier moyen</div>
-<div class="calcul-bar">
-  <span class="calc-lbl">Total des 10 commandes</span>
-  <div class="calc-field"></div>
-  <span style="color:var(--orange);font-weight:700">€</span>
-  <span class="calc-op">÷ 10 =</span>
-  <span class="calc-result-lbl">Mon panier moyen</span>
-  <div class="calc-field olive"></div>
-  <span style="color:#9ab846;font-weight:700">€</span>
+<div style="border:1px solid var(--border);background:var(--white)">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)">
+    <div style="font-size:10pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);white-space:nowrap">Total des 10 commandes :</div>
+    <div style="border-bottom:2px solid var(--orange);width:140px;height:32px"></div>
+    <div style="font-size:11pt;font-weight:700;color:var(--orange)">€</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:#f5f7ee">
+    <div style="font-size:10pt;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--olive);white-space:nowrap">÷ 10 = Panier moyen par client :</div>
+    <div style="border-bottom:2px solid var(--olive);width:140px;height:32px"></div>
+    <div style="font-size:11pt;font-weight:700;color:var(--olive)">€</div>
+  </div>
 </div>
 
 <div class="footer">StreetBiz · Kit de validation</div>

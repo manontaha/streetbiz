@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Fiche-Concept — StreetBiz</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
-body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:11pt;line-height:1.6;padding:1.5cm}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#2a2a1a}
+body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);padding:1.5cm}
 @page{size:A4;margin:1.5cm}
-@media print{body{padding:0}.print-btn{display:none!important}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+@media print{body{padding:0}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
-/* HEADER — identique aux fiches interactives */
 header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
 .header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
@@ -21,77 +19,65 @@ header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
 
-/* CONSIGNE */
-.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1.5rem;font-size:10pt}
-.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.cp{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:white;padding:2px 7px;margin-right:4px}
+.legende{background:var(--cream);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.7}
+.legende-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.legende ul{padding-left:1.2em;margin-top:4px}
+.legende li{margin-bottom:3px}
+.legende strong{color:var(--black)}
 
-/* SECTIONS */
-.section-head{display:flex;align-items:center;gap:10px;margin:1.5rem 0 1rem}
-.section-num{width:26px;height:26px;background:var(--orange);color:white;font-family:'Archivo Black',sans-serif;font-size:13pt;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.section-num.olive{background:var(--olive)}
-.section-title{font-family:'Archivo Black',sans-serif;font-size:12pt;text-transform:uppercase;color:var(--black)}
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:.75rem;margin-top:1.25rem;display:flex;align-items:center}
+.section-bar-title{font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
 
-/* CHAMP NOM CONCEPT */
-.field-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.field-line{border-bottom:2px solid var(--black);height:36px;width:100%;margin-bottom:4px}
+table{width:100%;border-collapse:collapse;margin-bottom:.5rem;font-size:10pt}
+table th{font-size:8.5pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:7px 10px;border:1px solid #999;text-align:left;color:white;background:var(--black)}
+table td{border:1px solid #ddd;height:36px;padding:0 10px}
+table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-weight:700;width:28px}
 
-/* LIGNES PRODUITS */
-.produit-line{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.produit-num{background:var(--orange);color:white;font-family:'Archivo Black',sans-serif;font-size:14pt;width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.produit-num.olive{background:var(--olive)}
-.produit-field{flex:1;border-bottom:2px solid var(--black);height:34px}
-
-.note{font-size:9pt;color:var(--muted);font-style:italic;margin-bottom:1.5rem;padding:8px 12px;border-left:3px solid var(--olive);background:#f5f7ee}
-
-
-.footer{margin-top:2rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
+.footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-top">
     <div>
       <div class="brand">StreetBiz · Kit de validation</div>
       <h1>Fiche-<em>Concept</em></h1>
-      <p class="header-sub">Définis ton offre principale</p>
+      <p class="header-sub">Définis l'offre de ton stand</p>
     </div>
     <div class="fiche-badge">Annexe 1 / 10</div>
   </div>
 </header>
 
-<div class="consigne">
-  <div class="consigne-title">📋 Comment remplir cette fiche</div>
-  <span class="cp" style="background:var(--olive)">Checkpoint 1 · Mission 1</span> Note le <strong>nom de ton concept</strong>, tes <strong>produits principaux</strong> (1 à 3 max) et tes <strong>produits faits maison</strong> (desserts, boissons, snacks…).
+<div class="section-bar" style="border-left:4px solid var(--orange);margin-top:0"><div class="section-bar-title">Produits principaux — 3 maximum</div></div>
+<div class="legende">
+  <div class="legende-title">Comment remplir ce tableau</div>
+  <ul>
+    <li><strong>Produit principal</strong> : le nom du plat que tu vends (ex : wrap poulet, falafel, burger…). Maximum 3 — c'est la Règle de l'Expertise StreetBiz™.</li>
+    <li><strong>Description courte</strong> : ce qui compose le produit en quelques mots (ex : wrap, poulet mariné, salade, sauce maison).</li>
+  </ul>
 </div>
+<table>
+  <tr><th style="width:28px">#</th><th>Produit principal</th><th>Description courte</th></tr>
+  <tr><td class="n">1</td><td></td><td></td></tr>
+  <tr><td class="n">2</td><td></td><td></td></tr>
+  <tr><td class="n">3</td><td></td><td></td></tr>
+</table>
 
-<!-- SECTION 1 -->
-<div class="section-head">
-  <div class="section-num">1</div>
-  <div class="section-title">Nom de ton concept</div>
+<div class="section-bar" style="border-left:4px solid var(--olive)"><div class="section-bar-title">Produits maison — desserts, boissons, snacks</div></div>
+<div class="legende">
+  <div class="legende-title">Comment remplir ce tableau</div>
+  <ul>
+    <li><strong>Produit maison</strong> : un produit que tu fabriques toi-même <strong>et que tu vends directement au client</strong> (ex : brownie maison, limonade maison, cookie maison…). Ce sont des portions à part entière — pas des ingrédients de tes recettes comme une sauce ou une marinade.</li>
+    <li><strong>Type</strong> : dessert, boisson ou snack.</li>
+    <li><strong>Description courte</strong> : les ingrédients principaux ou le concept en quelques mots (ex : brownie chocolat noix, limonade menthe citron…).</li>
+  </ul>
 </div>
-<div class="field-label">Mon concept s'appelle</div>
-<div class="field-line"></div>
-
-<!-- SECTION 2 -->
-<div class="section-head">
-  <div class="section-num">2</div>
-  <div class="section-title">Mes produits principaux (1 à 3 max)</div>
-</div>
-<div class="produit-line"><div class="produit-num">1</div><div class="produit-field"></div></div>
-<div class="produit-line"><div class="produit-num">2</div><div class="produit-field"></div></div>
-<div class="produit-line"><div class="produit-num">3</div><div class="produit-field"></div></div>
-
-<!-- SECTION 3 -->
-<div class="section-head">
-  <div class="section-num olive">3</div>
-  <div class="section-title">Mes produits faits maison (1 à 3 max)</div>
-</div>
-<div class="note">Desserts, boissons, snacks… tout ce que tu prépares toi-même et que tu vends directement à ton client. Les sauces sont des recettes, pas des produits vendus seuls.</div>
-<div class="produit-line"><div class="produit-num olive">1</div><div class="produit-field"></div></div>
-<div class="produit-line"><div class="produit-num olive">2</div><div class="produit-field"></div></div>
-<div class="produit-line"><div class="produit-num olive">3</div><div class="produit-field"></div></div>
+<table>
+  <tr><th style="width:28px">#</th><th>Produit maison</th><th style="width:100px">Type</th><th>Description courte</th></tr>
+  <tr><td class="n">1</td><td></td><td></td><td></td></tr>
+  <tr><td class="n">2</td><td></td><td></td><td></td></tr>
+  <tr><td class="n">3</td><td></td><td></td><td></td></tr>
+</table>
 
 <div class="footer">StreetBiz · Kit de validation</div>
 </body>

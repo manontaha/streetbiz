@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Fiche-Recette — StreetBiz</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#2a2a1a}
 body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.5;padding:1.5cm}
 @page{size:A4;margin:1.5cm}
-@media print{body{padding:0}.print-btn{display:none!important}header,.section-bar,.total-bar,.rendement-block{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+@media print{body{padding:0}header,.section-bar,.total-bar,.rendement-block{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
 header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
 .header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -20,45 +19,39 @@ header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
 
-.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
-.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.cp{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:white;padding:2px 7px;margin-right:4px}
+.legende{background:var(--cream);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:.75rem;font-size:9pt;line-height:1.7}
+.legende-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.legende ul{padding-left:1.2em;margin-top:4px}
+.legende li{margin-bottom:3px}
+.legende strong{color:var(--black)}
 
 .nom-recette{display:flex;align-items:center;gap:14px;margin-bottom:1rem;padding:10px 14px;border:1px solid var(--border);background:var(--white)}
 .nom-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);white-space:nowrap}
 .nom-line{flex:1;border-bottom:2px solid var(--black);height:32px}
 
-.rendement-block{background:var(--black);padding:12px 16px;margin-bottom:1.5rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.rendement-block{background:var(--black);padding:12px 16px;margin-bottom:1rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .rend-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange)}
 .rend-txt{color:#999;font-size:10pt}
 .rend-field{border-bottom:2px solid var(--orange);width:80px;height:26px;display:inline-block}
 .rend-unit{border-bottom:2px solid #555;width:70px;height:26px;display:inline-block;margin-left:8px}
 .rend-help{font-size:8.5pt;color:rgba(255,255,255,.4);font-style:italic;width:100%;margin-top:6px}
 
-.section-bar{background:var(--black);padding:8px 12px;margin-bottom:.75rem;border-left:4px solid var(--olive);display:flex;align-items:center}
+.section-bar{background:var(--black);padding:8px 12px;margin-bottom:.5rem;margin-top:1rem;border-left:4px solid var(--olive);display:flex;align-items:center}
 .section-bar-title{font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
 
-table{width:100%;border-collapse:collapse;margin-bottom:.5rem;font-size:9.5pt}
-table th{font-size:8.5pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:7px 8px;border:1px solid #999;text-align:center;color:white}
-table th.h-num{background:var(--black);width:28px}
-table th.h-nom{background:var(--black);text-align:left;width:28%}
-table th.h-qte{background:var(--olive);width:9%}
-table th.h-unite{background:var(--olive);width:9%}
-table th.h-fourn{background:var(--orange);width:18%}
-table th.h-prix{background:var(--orange);width:11%}
-table th.h-cond{background:var(--orange);width:11%}
-table th.h-cout{background:var(--black);width:12%;text-align:center}
-table td{border:1px solid #ddd;height:30px;padding:0 6px}
-table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-weight:700}
-
-.formula{font-size:8pt;color:var(--muted);font-style:italic;margin-bottom:1rem}
+table{width:100%;border-collapse:collapse;margin-bottom:.4rem;font-size:9pt}
+table th{font-size:8pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:6px 6px;border:1px solid #999;text-align:center;color:white}
+table th.dark{background:var(--black);text-align:left}
+table th.olive{background:var(--olive)}
+table th.orange{background:var(--orange)}
+table td{border:1px solid #ddd;height:28px;padding:0 6px}
+table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-weight:700;width:28px}
 
 .total-bar{background:var(--black);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-top:.5rem}
 .total-label{font-family:'Archivo Black',sans-serif;font-size:11pt;text-transform:uppercase;color:var(--white)}
 .total-right{display:flex;align-items:center;gap:10px}
 .total-field{border-bottom:2px solid var(--orange);width:120px;height:28px;display:inline-block}
 .total-unit{color:var(--orange);font-size:9pt;font-weight:700}
-
 .footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
 </style>
 </head>
@@ -74,11 +67,6 @@ table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-we
   </div>
 </header>
 
-<div class="consigne">
-  <div class="consigne-title">📋 Comment remplir cette fiche</div>
-  <span class="cp" style="background:var(--olive)">Checkpoint 2 · Mission 2</span> Note le rendement et liste les ingrédients. <span class="cp" style="background:var(--orange)">Checkpoint 3 · Mission 3</span> Reporte fournisseur, prix TTC et conditionnement. Calcule le <strong>coût réel</strong> : Quantité × Prix TTC ÷ Conditionnement. Additionne → coût total de la recette.
-</div>
-
 <div class="nom-recette">
   <div class="nom-label">Nom de la recette :</div>
   <div class="nom-line"></div>
@@ -87,20 +75,34 @@ table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-we
 <div class="rendement-block">
   <div class="rend-label">Rendement de la recette</div>
   <div><span class="rend-txt">Cette recette produit</span> <span class="rend-field"></span> <span class="rend-unit"></span></div>
-  <div class="rend-help">Grammes si tu pèses · ml si tu mesures · unités si tu comptes (10 falafels, 6 parts…)</div>
+  <div class="rend-help">⚠️ Le rendement doit être exprimé dans la même unité que celle utilisée dans ta fiche-portion.<br><br>
+  <strong style="color:var(--orange)">Exemple 1</strong> — Tu utilises 3 falafels dans ta portion : note le rendement en nombre de falafels → <em>Cette recette produit 100 falafels.</em><br><br>
+  <strong style="color:var(--orange)">Exemple 2</strong> — Tu mets 300 g de paella dans ta portion : note le rendement en grammes → <em>Cette recette produit 8 000 g.</em></div>
 </div>
 
 <div class="section-bar"><div class="section-bar-title">🥗 Ingrédients de la recette</div></div>
+<div class="legende">
+  <div class="legende-title">Comment remplir ce tableau</div>
+  <ul>
+    <li><strong>Ingrédient</strong> : le nom de chaque ingrédient qui entre dans cette recette (ex : pois chiches, ail, coriandre…)</li>
+    <li><strong>Qté</strong> : la quantité utilisée pour toute la recette (pas pour une portion)</li>
+    <li><strong>Unité</strong> : l'unité de mesure (g, ml, unité, cl…)</li>
+    <li><strong>Fournisseur</strong> : le nom du fournisseur où tu achètes cet ingrédient</li>
+    <li><strong>Prix TTC</strong> : le prix TTC du conditionnement fournisseur (ex : 2,50 € pour 1 kg de pois chiches)</li>
+    <li><strong>Cond.</strong> : la quantité totale vendue par le fournisseur (ex : 1000 g, 1 L, 12 unités…)</li>
+    <li><strong>Coût réel</strong> : le coût de cet ingrédient pour cette recette. Formule : Quantité demandée par la recette × Prix TTC du fournisseur ÷ Conditionnement fournisseur</li>
+  </ul>
+</div>
 <table>
   <tr>
-    <th class="h-num">#</th>
-    <th class="h-nom">Ingrédient</th>
-    <th class="h-qte">Qté</th>
-    <th class="h-unite">Unité</th>
-    <th class="h-fourn">Fournisseur</th>
-    <th class="h-prix">Prix TTC</th>
-    <th class="h-cond">Cond.</th>
-    <th class="h-cout">Coût réel €</th>
+    <th class="dark" style="width:28px">#</th>
+    <th class="dark" style="width:28%">Ingrédient</th>
+    <th class="olive" style="width:8%">Qté</th>
+    <th class="olive" style="width:8%">Unité</th>
+    <th class="orange" style="width:18%">Fournisseur</th>
+    <th class="orange" style="width:11%">Prix TTC</th>
+    <th class="orange" style="width:10%">Cond.</th>
+    <th class="dark" style="width:11%;text-align:center">Coût réel €</th>
   </tr>
   <tr><td class="n">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -118,13 +120,11 @@ table td.n{text-align:center;color:#bbb;font-size:9pt;background:#f9f9f9;font-we
   <tr><td class="n">14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">15</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
-<div class="formula">Coût réel = Quantité demandée × Prix TTC fournisseur ÷ Conditionnement fournisseur</div>
 
 <div class="total-bar">
   <div class="total-label">Coût total de la recette</div>
   <div class="total-right"><div class="total-field"></div><span class="total-unit">€</span></div>
 </div>
-
 <div class="footer">StreetBiz · Kit de validation</div>
 </body>
 </html>

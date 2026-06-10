@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Fiche-Prix de vente — StreetBiz</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--red:#c0392b;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--red:#c0392b;--muted:#7a7a6a;--border:#e0dcd0;--ink:#2a2a1a}
 body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.6;padding:1.5cm}
 @page{size:A4;margin:1.5cm}
-@media print{body{padding:0}.print-btn{display:none!important}header,.portion-num,.accept-lbl-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+@media print{body{padding:0}header,.portion-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
 header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
 .header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -20,34 +19,41 @@ header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
 
-.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
-.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.cp{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:white;padding:2px 7px;margin-right:4px}
+.legende{background:var(--cream);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.7}
+.legende-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.legende ul{padding-left:1.2em;margin-top:4px}
+.legende li{margin-bottom:3px}
+.legende strong{color:var(--black)}
+
 .note{border-left:4px solid var(--orange);background:#fff5f0;padding:8px 14px;margin-bottom:1.5rem;font-size:9.5pt}
 .note strong{color:var(--orange)}
 
-.portion-block{border:1px solid var(--border);margin-bottom:1.5rem;page-break-inside:avoid}
+.portion-block{border:1px solid var(--border);margin-bottom:1.25rem;page-break-inside:avoid}
+
 .portion-head{background:var(--black);display:flex;align-items:center;gap:12px;padding:10px 14px}
 .portion-num{background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:16pt;width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .portion-nom-label{color:#999;font-size:9pt;white-space:nowrap}
 .portion-nom-line{flex:1;border-bottom:1.5px solid #444;height:26px}
 
-.portion-calcul{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;padding:14px 16px;gap:0;border-bottom:1px solid var(--border)}
-.calc-cell{display:flex;flex-direction:column;gap:4px}
-.calc-cell-label{font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
-.calc-cell-field{border-bottom:2px solid var(--border);height:36px;width:100%}
-.calc-cell-field.result{border-bottom-color:var(--olive)}
-.calc-x{font-family:'Archivo Black',sans-serif;font-size:20pt;color:var(--orange);text-align:center}
+/* CALCUL : Coût de revient × 3 */
+.calcul-row{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--border)}
+.calcul-cell{flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--border)}
+.calcul-cell:last-child{border-right:none}
+.calcul-cell-label{font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.calcul-field{border-bottom:2px solid var(--border);height:36px;width:100%}
+.calcul-field.result{border-bottom-color:var(--orange)}
+.calcul-op{font-family:'Archivo Black',sans-serif;font-size:24pt;color:var(--orange);padding:0 16px;display:flex;align-items:center;border-right:1px solid var(--border)}
 
-.accept-block{background:#eeeade;border-top:1px solid var(--border)}
-.accept-lbl-bar{background:rgba(109,122,47,.15);padding:5px 14px;font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--olive);border-bottom:1px solid var(--border)}
-.accept-body{display:flex;align-items:stretch}
-.accept-prix{flex:1;padding:12px 14px;border-right:1px solid var(--border);font-size:10pt;color:var(--muted);display:flex;align-items:center;gap:8px}
-.accept-field{border-bottom:2px solid var(--olive);width:80px;height:28px;display:inline-block}
-.accept-oui-non{display:flex;flex-direction:column;min-width:160px}
-.accept-q{font-size:8pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);text-align:center;padding:5px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.03)}
+/* BLOC ACCEPTABILITÉ */
+.accept-block{display:flex;align-items:stretch;min-height:72px}
+.accept-left{flex:1;padding:12px 16px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:6px}
+.accept-left-label{font-size:8.5pt;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.accept-left-question{font-size:10pt;color:var(--ink);font-weight:600}
+.accept-left-field{border-bottom:2px solid var(--orange);width:80px;height:28px;display:inline-block;margin-left:4px;vertical-align:bottom}
+.accept-right{display:flex;flex-direction:column;width:180px;flex-shrink:0}
+.accept-right-label{font-size:8pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);text-align:center;padding:5px;border-bottom:1px solid var(--border);background:#fafafa}
 .accept-btns{display:flex;flex:1}
-.accept-btn{flex:1;display:flex;align-items:center;justify-content:center;font-size:11pt;font-weight:700;border-right:1px solid var(--border);padding:10px}
+.accept-btn{flex:1;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:13pt;border-right:1px solid var(--border);padding:10px}
 .accept-btn:last-child{border-right:none}
 .oui{color:var(--olive)}
 .non{color:var(--red)}
@@ -61,34 +67,53 @@ header h1 em{color:var(--orange);font-style:normal}
     <div>
       <div class="brand">StreetBiz · Kit de validation</div>
       <h1>Fiche-<em>Prix de vente</em></h1>
-      <p class="header-sub">Calcule le prix de vente minimum conseillé pour chaque portion</p>
+      <p class="header-sub">Calcule le prix de vente minimum pour chaque portion</p>
     </div>
     <div class="fiche-badge">Annexe 6 / 10</div>
   </div>
 </header>
 
-<div class="consigne">
-  <div class="consigne-title">📋 Comment remplir cette fiche</div>
-  <span class="cp" style="background:var(--olive)">Checkpoint 4 · Mission 1</span> Reporte le coût de revient (coût total × 1,10) depuis ta fiche-portion. Multiplie par <strong>3</strong> → prix min. conseillé.
-  <div style="margin-top:6px"><span class="cp" style="background:var(--black)">Checkpoint 4 · Mission 2</span> OUI → on continue. NON → revois tes coûts.</div>
+<div class="legende">
+  <div class="legende-title">Comment remplir cette fiche</div>
+  <ul>
+    <li><strong>Nom de la portion</strong> : reporte le nom exact de ta portion (ex : wrap poulet, barquette de falafels…)</li>
+    <li><strong>Coût de revient (× 1,10)</strong> : reporte le coût de revient depuis ta fiche-portion (coût total × 1,10)</li>
+    <li><strong>Prix minimum conseillé</strong> : multiplie le coût de revient par 3 — c'est le Coefficient minimum du Système StreetBiz™</li>
+    <li><strong>Mon client paierait au maximum</strong> : note le prix maximum que tu penses que ton client accepterait de payer pour cette portion devant ton stand</li>
+    <li><strong>Prix acceptable ?</strong> : si ton prix minimum est inférieur ou égal à ce que le client paierait → OUI. Sinon → NON, et il faut revoir tes coûts.</li>
+  </ul>
 </div>
-<div class="note"><strong>C'est un plancher, pas un plafond.</strong> Tu es libre de vendre plus cher — et c'est même conseillé.</div>
+
+<div class="note"><strong>C'est un plancher, pas un plafond.</strong><br>Tu es libre de vendre plus cher — et c'est même recommandé !</div>
 
 <!-- PORTION 1 -->
 <div class="portion-block">
-  <div class="portion-head"><div class="portion-num">1</div><div class="portion-nom-label">Nom de la portion :</div><div class="portion-nom-line"></div></div>
-  <div class="portion-calcul">
-    <div class="calc-cell"><div class="calc-cell-label">Coût de revient (× 1,10)</div><div class="calc-cell-field"></div></div>
-    <div class="calc-x">× 3</div>
-    <div class="calc-cell"><div class="calc-cell-label">Prix minimum conseillé</div><div class="calc-cell-field result"></div></div>
+  <div class="portion-head">
+    <div class="portion-num">1</div>
+    <div class="portion-nom-label">Nom de la portion :</div>
+    <div class="portion-nom-line"></div>
+  </div>
+  <div class="calcul-row">
+    <div class="calcul-cell">
+      <div class="calcul-cell-label">Coût de revient (× 1,10)</div>
+      <div class="calcul-field"></div>
+    </div>
+    <div class="calcul-op">× 3</div>
+    <div class="calcul-cell">
+      <div class="calcul-cell-label">Prix minimum conseillé</div>
+      <div class="calcul-field result"></div>
+    </div>
   </div>
   <div class="accept-block">
-    <div class="accept-lbl-bar">↳ Acceptabilité client</div>
-    <div class="accept-body">
-      <div class="accept-prix">Prix maximum que ton client accepterait de payer : <div class="accept-field"></div> €</div>
-      <div class="accept-oui-non">
-        <div class="accept-q">Acceptable ?</div>
-        <div class="accept-btns"><div class="accept-btn oui">✓ OUI</div><div class="accept-btn non">✗ NON</div></div>
+    <div class="accept-left">
+      <div class="accept-left-label">Acceptabilité client</div>
+      <div class="accept-left-question">Mon client paierait au maximum :<div class="accept-left-field"></div> €</div>
+    </div>
+    <div class="accept-right">
+      <div class="accept-right-label">Prix acceptable ?</div>
+      <div class="accept-btns">
+        <div class="accept-btn oui">✓ OUI</div>
+        <div class="accept-btn non">✗ NON</div>
       </div>
     </div>
   </div>
@@ -96,19 +121,32 @@ header h1 em{color:var(--orange);font-style:normal}
 
 <!-- PORTION 2 -->
 <div class="portion-block">
-  <div class="portion-head"><div class="portion-num">2</div><div class="portion-nom-label">Nom de la portion :</div><div class="portion-nom-line"></div></div>
-  <div class="portion-calcul">
-    <div class="calc-cell"><div class="calc-cell-label">Coût de revient (× 1,10)</div><div class="calc-cell-field"></div></div>
-    <div class="calc-x">× 3</div>
-    <div class="calc-cell"><div class="calc-cell-label">Prix minimum conseillé</div><div class="calc-cell-field result"></div></div>
+  <div class="portion-head">
+    <div class="portion-num">2</div>
+    <div class="portion-nom-label">Nom de la portion :</div>
+    <div class="portion-nom-line"></div>
+  </div>
+  <div class="calcul-row">
+    <div class="calcul-cell">
+      <div class="calcul-cell-label">Coût de revient (× 1,10)</div>
+      <div class="calcul-field"></div>
+    </div>
+    <div class="calcul-op">× 3</div>
+    <div class="calcul-cell">
+      <div class="calcul-cell-label">Prix minimum conseillé</div>
+      <div class="calcul-field result"></div>
+    </div>
   </div>
   <div class="accept-block">
-    <div class="accept-lbl-bar">↳ Acceptabilité client</div>
-    <div class="accept-body">
-      <div class="accept-prix">Prix maximum que ton client accepterait de payer : <div class="accept-field"></div> €</div>
-      <div class="accept-oui-non">
-        <div class="accept-q">Acceptable ?</div>
-        <div class="accept-btns"><div class="accept-btn oui">✓ OUI</div><div class="accept-btn non">✗ NON</div></div>
+    <div class="accept-left">
+      <div class="accept-left-label">Acceptabilité client</div>
+      <div class="accept-left-question">Mon client paierait au maximum :<div class="accept-left-field"></div> €</div>
+    </div>
+    <div class="accept-right">
+      <div class="accept-right-label">Prix acceptable ?</div>
+      <div class="accept-btns">
+        <div class="accept-btn oui">✓ OUI</div>
+        <div class="accept-btn non">✗ NON</div>
       </div>
     </div>
   </div>
@@ -116,19 +154,32 @@ header h1 em{color:var(--orange);font-style:normal}
 
 <!-- PORTION 3 -->
 <div class="portion-block">
-  <div class="portion-head"><div class="portion-num">3</div><div class="portion-nom-label">Nom de la portion :</div><div class="portion-nom-line"></div></div>
-  <div class="portion-calcul">
-    <div class="calc-cell"><div class="calc-cell-label">Coût de revient (× 1,10)</div><div class="calc-cell-field"></div></div>
-    <div class="calc-x">× 3</div>
-    <div class="calc-cell"><div class="calc-cell-label">Prix minimum conseillé</div><div class="calc-cell-field result"></div></div>
+  <div class="portion-head">
+    <div class="portion-num">3</div>
+    <div class="portion-nom-label">Nom de la portion :</div>
+    <div class="portion-nom-line"></div>
+  </div>
+  <div class="calcul-row">
+    <div class="calcul-cell">
+      <div class="calcul-cell-label">Coût de revient (× 1,10)</div>
+      <div class="calcul-field"></div>
+    </div>
+    <div class="calcul-op">× 3</div>
+    <div class="calcul-cell">
+      <div class="calcul-cell-label">Prix minimum conseillé</div>
+      <div class="calcul-field result"></div>
+    </div>
   </div>
   <div class="accept-block">
-    <div class="accept-lbl-bar">↳ Acceptabilité client</div>
-    <div class="accept-body">
-      <div class="accept-prix">Prix maximum que ton client accepterait de payer : <div class="accept-field"></div> €</div>
-      <div class="accept-oui-non">
-        <div class="accept-q">Acceptable ?</div>
-        <div class="accept-btns"><div class="accept-btn oui">✓ OUI</div><div class="accept-btn non">✗ NON</div></div>
+    <div class="accept-left">
+      <div class="accept-left-label">Acceptabilité client</div>
+      <div class="accept-left-question">Mon client paierait au maximum :<div class="accept-left-field"></div> €</div>
+    </div>
+    <div class="accept-right">
+      <div class="accept-right-label">Prix acceptable ?</div>
+      <div class="accept-btns">
+        <div class="accept-btn oui">✓ OUI</div>
+        <div class="accept-btn non">✗ NON</div>
       </div>
     </div>
   </div>

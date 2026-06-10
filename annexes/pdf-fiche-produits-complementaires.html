@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Fiche-Produits Complémentaires — StreetBiz</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--orange:#F26A21;--black:#1F1F1F;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#2a2a1a}
 body{font-family:'Montserrat',sans-serif;background:white;color:var(--ink);font-size:10pt;line-height:1.6;padding:1.5cm}
 @page{size:A4;margin:1.5cm}
-@media print{body{padding:0}.print-btn{display:none!important}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+@media print{body{padding:0}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 
 header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange);margin-bottom:1.5rem}
 .header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -20,20 +19,24 @@ header h1 em{color:var(--orange);font-style:normal}
 .fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
 .header-sub{font-size:12px;color:#a8a498;margin-top:4px}
 
-.consigne{border-left:4px solid var(--orange);background:var(--white);padding:10px 14px;margin-bottom:1rem;font-size:9.5pt;line-height:1.6}
-.consigne-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.cp{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:white;padding:2px 7px;margin-right:4px}
-.note{border-left:4px solid var(--olive);background:#f5f7ee;padding:8px 14px;margin-bottom:1.5rem;font-size:9.5pt}
-.note strong{color:var(--olive)}
+.legende{background:var(--cream);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:.75rem;font-size:9.5pt;line-height:1.7}
+.legende-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.legende ul{padding-left:1.2em;margin-top:4px}
+.legende li{margin-bottom:3px}
+.legende strong{color:var(--black)}
 
-table{width:100%;border-collapse:collapse;margin-bottom:1rem}
+.exemples{background:var(--black);padding:10px 14px;margin-bottom:1.25rem;font-size:9.5pt;line-height:1.8}
+.exemples-title{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.exemple-line{color:rgba(255,255,255,.7);margin-bottom:2px}
+.exemple-line strong{color:var(--white)}
+
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:9.5pt}
 table th{font-size:9pt;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:8px 10px;border:1px solid #999;text-align:center;color:white}
 table th.dark{background:var(--black);text-align:left}
 table th.olive{background:var(--olive)}
 table th.orange{background:var(--orange)}
 table td{border:1px solid #ddd;height:36px;padding:0 10px}
 table td.n{text-align:center;font-weight:700;color:white;background:var(--orange);width:28px;font-size:10pt}
-.formula{font-size:8.5pt;color:var(--muted);font-style:italic;margin-bottom:1.5rem}
 
 .footer{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:8px;font-size:8pt;color:#bbb;text-align:center}
 </style>
@@ -44,27 +47,49 @@ table td.n{text-align:center;font-weight:700;color:white;background:var(--orange
     <div>
       <div class="brand">StreetBiz · Kit de validation</div>
       <h1>Fiche-<em>Produits</em><br>complémentaires</h1>
-      <p class="header-sub">Liste, coûts et prix de vente de tes produits complémentaires</p>
+      <p class="header-sub">Boissons, snacks, desserts — les extras qui boostent ton panier moyen</p>
     </div>
     <div class="fiche-badge">Annexe 9 / 10</div>
   </div>
 </header>
 
-<div class="consigne">
-  <div class="consigne-title">📋 Comment remplir cette fiche</div>
-  <span class="cp" style="background:var(--olive)">Checkpoint Bonus · Mission 1</span> Pour chaque produit : <strong>TTC</strong> = HT × 1,055 · <strong>Coût unitaire</strong> = TTC ÷ conditionnement · <strong>Prix min. conseillé</strong> = coût unitaire × 3.
+<div class="legende">
+  <div class="legende-title">Comment remplir ce tableau</div>
+  <ul>
+    <li><strong>Produit</strong> : le nom du produit complémentaire (ex : Coca 33cl, chips nature, brownie maison…)</li>
+    <li><strong>Cond.</strong> : la quantité vendue dans le lot fournisseur (ex : pack de 24, lot de 100…)</li>
+    <li><strong>Tarif HT</strong> : le prix hors taxes du lot fournisseur</li>
+    <li><strong>Tarif TTC</strong> : HT × 1,055 si alimentaire · HT × 1,20 si non alimentaire</li>
+    <li><strong>Coût unitaire</strong> : Tarif TTC ÷ Conditionnement = le coût d'une unité</li>
+    <li><strong>Prix min. conseillé</strong> : Coût unitaire × 3 — c'est le Coefficient StreetBiz™</li>
+  </ul>
 </div>
-<div class="note"><strong>Rappel :</strong> HT × 1,055 = TTC &nbsp;·&nbsp; Ex : 24 canettes à 15,00 € HT → 15,83 € TTC → 0,66 € l'unité → Prix min. conseillé : 1,98 €</div>
 
-<table>
+<div class="exemples">
+  <div class="exemples-title">Exemples de produits complémentaires</div>
+  <div class="exemple-line"><strong>Boissons</strong> : Coca-Cola 33cl, eau minérale, jus de fruits, limonade maison — <strong>3 maximum conseillés</strong></div>
+  <div class="exemple-line"><strong>Chips / snacks</strong> : sachet de chips, biscuits salés, crackers — <strong>2 maximum conseillés</strong></div>
+  <div class="exemple-line"><strong>Desserts</strong> : brownie maison, cookie, madeleine — <strong>1 maximum conseillé</strong></div>
+</div>
+
+<table style="table-layout:fixed;width:100%">
+  <colgroup>
+    <col style="width:28px">
+    <col>
+    <col style="width:90px">
+    <col style="width:75px">
+    <col style="width:75px">
+    <col style="width:75px">
+    <col style="width:85px">
+  </colgroup>
   <tr>
-    <th class="dark" style="width:28px">#</th>
+    <th class="dark">#</th>
     <th class="dark">Produit</th>
-    <th class="dark" style="width:110px">Conditionnement</th>
-    <th class="orange" style="width:80px">Tarif HT</th>
-    <th class="orange" style="width:80px">Tarif TTC</th>
-    <th class="olive" style="width:85px">Coût unitaire</th>
-    <th class="olive" style="width:95px">Prix min. conseillé</th>
+    <th class="orange">Cond.</th>
+    <th class="orange">Tarif HT</th>
+    <th class="orange">Tarif TTC</th>
+    <th class="olive">Coût unit.</th>
+    <th class="olive">Prix min. cons.</th>
   </tr>
   <tr><td class="n">1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -75,7 +100,10 @@ table td.n{text-align:center;font-weight:700;color:white;background:var(--orange
   <tr><td class="n">7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   <tr><td class="n">8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
-<div class="formula">TTC = HT × 1,055 &nbsp;·&nbsp; Coût unitaire = TTC ÷ conditionnement &nbsp;·&nbsp; Prix min. conseillé = coût unitaire × 3</div>
+
+<div style="font-size:8.5pt;color:var(--muted);font-style:italic">
+  TTC = HT × 1,055 (alimentaire) · HT × 1,20 (non alimentaire) &nbsp;·&nbsp; Coût unitaire = TTC ÷ Conditionnement &nbsp;·&nbsp; Prix min. conseillé = Coût unitaire × 3
+</div>
 
 <div class="footer">StreetBiz · Kit de validation</div>
 </body>
