@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fiche-Panier Moyen — StreetBiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--orange:#F26A21;--black:#1F1F1F;--cream:#F4F0E6;--white:#FAF9F4;--olive:#6D7A2F;--muted:#7a7a6a;--border:#e0dcd0;--ink:#3a3a2a}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+.page{max-width:760px;margin:0 auto}
+header{background:var(--black);padding:1.5rem;border-bottom:3px solid var(--orange)}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+header h1{font-family:'Archivo Black',sans-serif;font-size:clamp(22px,5vw,34px);text-transform:uppercase;color:var(--white);line-height:1}
+header h1 em{color:var(--orange);font-style:normal}
+.fiche-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.header-sub{font-size:12px;color:#a8a498;margin-top:4px}
+main{padding:1.5rem}
+.consigne-block{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--orange);padding:12px 14px;margin-bottom:1.5rem}
+.consigne-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.consigne-body{display:flex;flex-direction:column;gap:8px}
+.consigne-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.6}
+.consigne-cp{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--white);padding:3px 8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.note{background:var(--black);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:1.5rem;font-size:12px;color:rgba(250,249,244,.85);line-height:1.6}
+.note strong{color:var(--orange)}
+.section-title{display:flex;align-items:center;gap:10px;margin:1.75rem 0 1rem}
+.section-num{width:30px;height:30px;background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title h2{font-family:'Archivo Black',sans-serif;font-size:12pt;text-transform:uppercase;color:var(--black)}
+
+.tbl-wrap{border:1px solid var(--border);margin-bottom:.75rem}
+.tbl-head{display:grid;grid-template-columns:1fr 110px 44px;background:var(--black)}
+.th{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;color:rgba(255,255,255,.55);border-right:1px solid rgba(255,255,255,.1)}
+.th:last-child{border-right:none}
+
+.produit-row{display:grid;grid-template-columns:1fr 110px 44px;background:var(--white);border-bottom:1px solid var(--border)}
+.c-nom{border-right:1px solid var(--border)}
+.c-nom input{width:100%;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:13px;color:var(--ink);padding:13px 10px;outline:none;-webkit-appearance:none;min-height:48px;display:block}
+.c-nom input::placeholder{color:#c8c4bc;font-style:italic;font-size:12px}
+.c-prix{display:flex;align-items:center;justify-content:flex-end;gap:6px;padding:0 10px;border-right:1px solid var(--border)}
+.c-prix input{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--ink);width:60px;text-align:right;outline:none;-webkit-appearance:none;padding:4px 2px;min-height:48px}
+.c-prix input:focus{border-bottom-color:var(--orange)}
+.c-eu{font-size:11px;font-weight:700;color:var(--muted)}
+.c-del{display:flex;align-items:center;justify-content:center;background:var(--white)}
+.c-del button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;min-width:44px;min-height:48px;display:flex;align-items:center;justify-content:center;width:100%;padding:0}
+
+.cmd-block{background:var(--white);border:1px solid var(--border);margin-bottom:12px}
+.cmd-head{display:flex;align-items:center;justify-content:space-between;background:var(--black);padding:10px 12px;gap:8px}
+.cmd-badge{background:var(--orange);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0 5px}
+.cmd-lbl{font-family:'Archivo Black',sans-serif;font-size:12px;color:var(--white);text-transform:uppercase;flex:1}
+.cmd-tw{display:flex;align-items:center;gap:6px}
+.cmd-tl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.cmd-ti{background:transparent;border:none;border-bottom:2px solid var(--orange);font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--orange);width:72px;text-align:right;outline:none;-webkit-appearance:none;padding:2px;min-height:36px}
+.cmd-te{font-size:11px;font-weight:700;color:var(--orange)}
+.lg-head{display:grid;grid-template-columns:1fr 90px 44px;background:rgba(0,0,0,.04);border-bottom:1px solid var(--border)}
+.lg-th{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:6px 10px;border-right:1px solid var(--border)}
+.lg-th:last-child{border-right:none}
+.lg-row{display:grid;grid-template-columns:1fr 90px 44px;border-bottom:1px solid var(--border)}
+.lg-nom{border-right:1px solid var(--border)}
+.lg-nom input{width:100%;border:none;background:transparent;font-family:'Montserrat',sans-serif;font-size:12.5px;color:var(--ink);padding:11px 10px;outline:none;-webkit-appearance:none;min-height:44px;display:block}
+.lg-nom input::placeholder{color:#c8c4bc;font-style:italic;font-size:11.5px}
+.lg-mnt{display:flex;align-items:center;justify-content:flex-end;gap:4px;padding:0 8px;border-right:1px solid var(--border)}
+.lg-mnt input{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:13px;color:var(--ink);width:46px;text-align:right;outline:none;-webkit-appearance:none;padding:2px;min-height:44px}
+.lg-mnt input:focus{border-bottom-color:var(--olive)}
+.eu{font-size:10px;font-weight:700;color:var(--muted)}
+.lg-del{display:flex;align-items:center;justify-content:center}
+.lg-del button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;width:100%;padding:0}
+
+.btn-add-lg{display:flex;align-items:center;gap:6px;background:none;border:none;padding:12px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;border-top:1px solid var(--border);width:100%;min-height:48px;-webkit-appearance:none}
+
+.calcul-bloc{background:var(--white);border:1px solid var(--border);margin-bottom:2rem}
+.calcul-head{background:var(--black);padding:8px 14px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange)}
+.calc-line{display:flex;align-items:center;padding:14px 16px;gap:10px;border-bottom:1px solid var(--border)}
+.calc-line:last-child{border-bottom:none;background:rgba(242,106,33,.06)}
+.calc-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);flex:1;line-height:1.4}
+.calc-inp{border:none;border-bottom:2px solid var(--border);background:transparent;font-family:'Archivo Black',sans-serif;font-size:20px;color:var(--black);width:110px;text-align:right;outline:none;-webkit-appearance:none;padding:4px}
+.calc-inp.orange{color:var(--orange);border-bottom-color:var(--orange)}
+.calc-unit{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}
+
+.btn-add{display:flex;align-items:center;gap:8px;background:none;border:2px dashed var(--border);padding:12px 14px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;width:100%;min-height:48px;margin-bottom:1rem;-webkit-appearance:none;border-radius:0}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem}
+.btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:12px 16px;border:none;cursor:pointer;min-height:44px;-webkit-appearance:none;border-radius:0}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-black{background:var(--black);color:var(--white)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--border)}
+.toast{position:fixed;bottom:20px;right:20px;left:20px;background:var(--black);color:var(--white);padding:12px 16px;font-size:12px;font-weight:600;transform:translateY(120px);opacity:0;transition:transform .3s,opacity .3s;z-index:100;border-left:3px solid var(--orange);text-align:center}
+.toast.show{transform:translateY(0);opacity:1}
+@media print{
+  .actions,.btn-add,.btn-add-lg,.c-del,.lg-del{display:none!important}
+  header,.tbl-head,.cmd-head,.calcul-head{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:white}
+  .cmd-block{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand">StreetBiz · Kit de validation</div>
+      <h1>Fiche-<em>Panier moyen</em></h1>
+    </div>
+    <div class="fiche-badge">Fiche 8 / 10</div>
+  </div>
+  <p class="header-sub">Estime le montant moyen dépensé à chaque passage en caisse</p>
+</header>
+<main>
+  <div class="consigne-block">
+    <div class="consigne-label">📋 Checkpoint 5 · Mission 2 — Comment remplir cette fiche</div>
+    <div class="consigne-body">
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--black)">Étape 1</span><span>Liste les <strong>produits</strong> que tu envisages de vendre et fixe leur prix.</span></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--olive)">Étapes 2 à 4</span><span>Imagine tes <strong>10 premiers clients</strong>. Pour chaque commande, détaille les produits et leur prix, puis note le total.</span></div>
+      <div class="consigne-row"><span class="consigne-cp" style="background:var(--orange)">Étape 5</span><span>Additionne les 10 totaux ÷ 10 → ton <strong>panier moyen</strong>. Reporte-le dans ta fiche-revenu.</span></div>
+    </div>
+  </div>
+  <div class="note"><strong>Un passage en caisse ≠ une seule personne.</strong> Un client peut acheter pour lui, pour un couple, des amis ou toute sa famille.</div>
+
+  <div class="section-title"><div class="section-num">1</div><h2>Liste tes produits et leurs prix</h2></div>
+  <div class="tbl-wrap">
+    <div class="tbl-head">
+      <div class="th">Produit</div>
+      <div class="th" style="text-align:right">Prix de vente</div>
+      <div class="th"></div>
+    </div>
+    <div id="produitsList"></div>
+  </div>
+  <button class="btn-add" id="btnAddProduit">＋  Ajouter un produit</button>
+
+  <div class="section-title"><div class="section-num">2</div><h2>Imagine tes 10 premiers clients</h2></div>
+  <div id="commandesList"></div>
+
+  <div class="section-title"><div class="section-num">3</div><h2>Calcule ton panier moyen</h2></div>
+  <div class="calcul-bloc">
+    <div class="calcul-head">Total des 10 commandes ÷ 10 = Panier moyen</div>
+    <div class="calc-line">
+      <div class="calc-lbl">Total des 10 commandes</div>
+      <input class="calc-inp" id="fTotal" type="number" inputmode="decimal" min="0" step=".01" placeholder="0.00">
+      <div class="calc-unit">€</div>
+    </div>
+    <div class="calc-line" style="padding:8px 16px;background:rgba(0,0,0,.03)">
+      <div class="calc-lbl" style="font-size:10px">÷ 10 commandes</div>
+    </div>
+    <div class="calc-line">
+      <div class="calc-lbl" style="color:var(--orange)">Mon panier moyen</div>
+      <input class="calc-inp orange" id="fPanier" type="number" inputmode="decimal" min="0" step=".01" placeholder="0.00">
+      <div class="calc-unit" style="color:var(--orange)">€</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-orange" id="btnPrint">⬇ Télécharger le PDF</button>
+    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
+    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
+  </div>
+  <input type="file" id="fileInput" accept=".json" style="display:none">
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var produits = [{nom:'',prix:''},{nom:'',prix:''},{nom:'',prix:''}];
+var commandes = [];
+for(var i=0;i<10;i++) commandes.push({lignes:[{p:'',m:''},{p:'',m:''}],total:''});
+
+function toast(msg){var e=document.getElementById('toast');e.textContent=msg;e.classList.add('show');setTimeout(function(){e.classList.remove('show');},2800);}
+
+function mkInput(type,placeholder,value,cls){
+  var el=document.createElement('input');
+  el.type=type;if(type==='number'){el.inputMode='decimal';el.min='0';el.step='.01';}
+  el.placeholder=placeholder||'';el.value=value||'';if(cls)el.className=cls;
+  el.autocomplete='off';el.style.webkitAppearance='none';
+  return el;
+}
+
+function renderProduits(){
+  var el=document.getElementById('produitsList');el.innerHTML='';
+  produits.forEach(function(p,i){
+    var row=document.createElement('div');row.className='produit-row';
+    var cn=document.createElement('div');cn.className='c-nom';
+    var n=mkInput('text','Ex : Coca 33cl, Chips…',p.nom);
+    n.style.minHeight='48px';n.style.display='block';n.style.width='100%';
+    n.style.border='none';n.style.background='transparent';n.style.fontFamily='Montserrat,sans-serif';n.style.fontSize='13px';n.style.padding='13px 10px';n.style.outline='none';
+    n.addEventListener('input',function(idx){return function(){produits[idx].nom=this.value;};}(i));
+    cn.appendChild(n);
+    var cp=document.createElement('div');cp.className='c-prix';
+    var p2=mkInput('number','0.00',p.prix);
+    p2.style.width='60px';p2.style.textAlign='right';p2.style.minHeight='48px';
+    p2.style.border='none';p2.style.borderBottom='2px solid var(--border)';p2.style.background='transparent';
+    p2.style.fontFamily="'Archivo Black',sans-serif";p2.style.fontSize='15px';p2.style.padding='4px 2px';p2.style.outline='none';
+    p2.addEventListener('input',function(idx){return function(){produits[idx].prix=this.value;};}(i));
+    var eu=document.createElement('span');eu.className='c-eu';eu.textContent='€';
+    cp.appendChild(p2);cp.appendChild(eu);
+    var cd=document.createElement('div');cd.className='c-del';
+    var db=document.createElement('button');db.type='button';db.textContent='✕';db.style.cssText='background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;min-width:44px;min-height:48px;display:flex;align-items:center;justify-content:center;width:100%;padding:0';
+    db.addEventListener('click',function(idx){return function(){if(produits.length<=1){toast('Il faut au moins un produit');return;}produits.splice(idx,1);renderProduits();};}(i));
+    cd.appendChild(db);
+    row.appendChild(cn);row.appendChild(cp);row.appendChild(cd);
+    el.appendChild(row);
+  });
+}
+
+function renderCommandes(){
+  var el=document.getElementById('commandesList');el.innerHTML='';
+  commandes.forEach(function(cmd,ci){
+    var block=document.createElement('div');block.className='cmd-block';
+    // Header
+    var head=document.createElement('div');head.className='cmd-head';
+    var badge=document.createElement('div');badge.className='cmd-badge';badge.textContent=ci+1;
+    var lbl=document.createElement('div');lbl.className='cmd-lbl';lbl.textContent='Commande '+(ci+1);
+    var tw=document.createElement('div');tw.className='cmd-tw';
+    var tl=document.createElement('span');tl.className='cmd-tl';tl.textContent='Total';
+    var ti=document.createElement('input');ti.className='cmd-ti';ti.type='number';ti.inputMode='decimal';ti.min='0';ti.step='.01';ti.placeholder='0.00';ti.value=cmd.total;ti.style.webkitAppearance='none';
+    ti.addEventListener('input',function(idx){return function(){commandes[idx].total=this.value;};}(ci));
+    var te=document.createElement('span');te.className='cmd-te';te.textContent='€';
+    tw.appendChild(tl);tw.appendChild(ti);tw.appendChild(te);
+    head.appendChild(badge);head.appendChild(lbl);head.appendChild(tw);
+    block.appendChild(head);
+    // Lignes header
+    var lh=document.createElement('div');lh.className='lg-head';
+    lh.innerHTML='<div class="lg-th">Produit</div><div class="lg-th">Prix</div><div class="lg-th"></div>';
+    block.appendChild(lh);
+    // Lignes
+    cmd.lignes.forEach(function(lg,li){block.appendChild(mkLgRow(ci,li,lg));});
+    // Bouton ajouter
+    var ab=document.createElement('button');ab.type='button';ab.className='btn-add-lg';ab.textContent='＋  Ajouter un produit';ab.style.webkitAppearance='none';
+    ab.addEventListener('click',function(idx){return function(){commandes[idx].lignes.push({p:'',m:''});renderCommandes();};}(ci));
+    block.appendChild(ab);
+    el.appendChild(block);
+  });
+}
+
+function mkLgRow(ci,li,lg){
+  var row=document.createElement('div');row.className='lg-row';
+  var dn=document.createElement('div');dn.className='lg-nom';
+  var inp=document.createElement('input');inp.type='text';inp.autocomplete='off';inp.placeholder='Ex : Wrap falafel…';inp.value=lg.p;inp.style.cssText='width:100%;border:none;background:transparent;font-family:Montserrat,sans-serif;font-size:12.5px;color:var(--ink);padding:11px 10px;outline:none;-webkit-appearance:none;min-height:44px;display:block';
+  inp.addEventListener('input',function(c,l){return function(){commandes[c].lignes[l].p=this.value;};}(ci,li));
+  dn.appendChild(inp);
+  var dm=document.createElement('div');dm.className='lg-mnt';
+  var inp2=document.createElement('input');inp2.type='number';inp2.inputMode='decimal';inp2.min='0';inp2.step='.01';inp2.placeholder='0.00';inp2.value=lg.m;inp2.style.cssText='border:none;border-bottom:2px solid var(--border);background:transparent;font-family:"Archivo Black",sans-serif;font-size:13px;color:var(--ink);width:46px;text-align:right;outline:none;-webkit-appearance:none;padding:2px;min-height:44px';
+  inp2.addEventListener('input',function(c,l){return function(){commandes[c].lignes[l].m=this.value;};}(ci,li));
+  var eu=document.createElement('span');eu.className='eu';eu.textContent='€';
+  dm.appendChild(inp2);dm.appendChild(eu);
+  var dd=document.createElement('div');dd.className='lg-del';
+  var db=document.createElement('button');db.type='button';db.textContent='✕';db.style.cssText='background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;width:100%;padding:0;-webkit-appearance:none';
+  db.addEventListener('click',function(c,l){return function(){if(commandes[c].lignes.length<=1){toast('Il faut au moins une ligne');return;}commandes[c].lignes.splice(l,1);renderCommandes();};}(ci,li));
+  dd.appendChild(db);
+  row.appendChild(dn);row.appendChild(dm);row.appendChild(dd);
+  return row;
+}
+
+document.getElementById('btnAddProduit').addEventListener('click',function(){produits.push({nom:'',prix:''});renderProduits();});
+document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
+document.getElementById('btnSave').addEventListener('click',function(){
+  var data={fiche:'panier-moyen',v:6,date:new Date().toISOString(),produits:produits,commandes:commandes,total:document.getElementById('fTotal').value,panier:document.getElementById('fPanier').value};
+  var a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(data,null,2));a.download='streetbiz-panier-moyen.json';document.body.appendChild(a);a.click();document.body.removeChild(a);toast('Données sauvegardées ✓');
+});
+document.getElementById('btnLoad').addEventListener('click',function(){document.getElementById('fileInput').click();});
+document.getElementById('fileInput').addEventListener('change',function(e){
+  var file=e.target.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){try{var d=JSON.parse(ev.target.result);if(d.produits)produits=d.produits;if(d.commandes)commandes=d.commandes;if(d.total)document.getElementById('fTotal').value=d.total;if(d.panier)document.getElementById('fPanier').value=d.panier;renderProduits();renderCommandes();toast('Données restaurées ✓');}catch(err){toast('Fichier invalide');}};
+  reader.readAsText(file);e.target.value='';
+});
+
+renderProduits();
+renderCommandes();
+</script>
+</body>
+</html>
