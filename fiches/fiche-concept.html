@@ -96,7 +96,7 @@ main{padding:1.5rem}
   <div class="section-title"><div class="section-num">1</div><h2>Nom de ton concept</h2></div>
   <div class="concept-block">
     <div class="field-label">Mon concept s'appelle</div>
-    <input class="concept-input" type="text" placeholder="Ex : Les Falafels de Manon" autocomplete="off">
+    <input class="concept-input" type="text" placeholder="Ex : Les Falafels de Manon" autocomplete="off" oninput="_lsSave()">
   </div>
 
   <!-- ÉTAPE 2 : Produits principaux -->
@@ -112,10 +112,7 @@ main{padding:1.5rem}
 
   <div class="actions">
     <button class="btn btn-orange" id="btnPrint">↓ Télécharger le PDF</button>
-    <button class="btn btn-black" id="btnSave">💾 Sauvegarder</button>
-    <button class="btn btn-outline" id="btnLoad">↑ Reprendre</button>
   </div>
-  <input type="file" id="fileInput" accept=".json" style="display:none">
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -126,6 +123,7 @@ var principaux = ['','',''];
 var maison = ['',''];
 
 function renderList(data, containerId, type) {
+  setTimeout(_lsSave, 50);
   var el = document.getElementById(containerId);
   el.innerHTML = '';
   data.forEach(function(val, i) {
@@ -162,13 +160,7 @@ document.getElementById('btnAddMaison').addEventListener('click', function() {
 
 document.getElementById('btnPrint').addEventListener('click', function() { window.print(); });
 
-document.getElementById('btnSave').addEventListener('click', function(){
-  var data = JSON.stringify({
-    fiche:'concept', v:1, date:new Date().toISOString(),
-    concept: document.querySelector('.concept-input') ? document.querySelector('.concept-input').value : '',
-    principaux: principaux,
-    maison: maison
-  }, null, 2);
+
   var a = document.createElement('a');
   a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(data);
   a.download = 'streetbiz-fiche-concept.json';
@@ -176,24 +168,9 @@ document.getElementById('btnSave').addEventListener('click', function(){
   showToast('Données sauvegardées ✓');
 });
 
-document.getElementById('btnLoad').addEventListener('click', function(){
-  document.getElementById('fileInput').click();
+
 });
 
-document.getElementById('fileInput').addEventListener('change', function(e){
-  var file = e.target.files[0]; if(!file) return;
-  var reader = new FileReader();
-  reader.onload = function(ev){
-    try{
-      var d = JSON.parse(ev.target.result);
-      if(d.concept){var ci=document.querySelector('.concept-input');if(ci)ci.value=d.concept;}
-      if(d.principaux){principaux=d.principaux;renderList(principaux,'principauxList','principal');}
-      if(d.maison){maison=d.maison;renderList(maison,'maisonList','maison');}
-      showToast('Données restaurées ✓');
-    } catch(err){showToast('Fichier invalide');}
-  };
-  reader.readAsText(file); e.target.value='';
-});
 
 renderList(principaux, 'principauxList', 'principal');
 renderList(maison, 'maisonList', 'maison');
@@ -203,6 +180,8 @@ var _LSKEY = 'sb_concept_v2';
 function _lsSave(){
   try{
     var _d = {};
+    var _ci = document.querySelector('.concept-input');
+    if(_ci) _d['concept'] = _ci.value;
     if(typeof principaux !== 'undefined') _d['principaux'] = principaux;
     if(typeof maison !== 'undefined') _d['maison'] = maison;
     localStorage.setItem(_LSKEY, JSON.stringify(_d));
@@ -212,6 +191,7 @@ function _lsLoad(){
   try{
     var _s = JSON.parse(localStorage.getItem(_LSKEY)||'null');
     if(!_s) return;
+    if(_s['concept']) { var _ci = document.querySelector('.concept-input'); if(_ci) _ci.value = _s['concept']; }
     if(_s['principaux']) { principaux = _s['principaux']; }
     if(_s['maison']) { maison = _s['maison']; }
   }catch(e){}
